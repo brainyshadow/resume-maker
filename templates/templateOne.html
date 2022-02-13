@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="./assets/fontawesome/css/all.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <title>Page Title</title>
     <style>
       html,
@@ -29,17 +40,19 @@
       }
       .vl {
         position: absolute;
-        border-left: 2px solid #A9A9A9	;
+        border-left: 2px solid #a9a9a9;
         height: 120%;
       }
       .text-container {
-        margin: auto;
+        margin: 0rem auto 0rem auto;
         width: 90%;
       }
       .resume-title {
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 450;
-        font-size: 1.5rem;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+      }
+      .resume-content {
+        font-family: "Lato", sans-serif;
       }
     </style>
     <script>
@@ -51,17 +64,29 @@
       <tr>
         <th class="two-sixth-width">
           <div class="text-container">
-            <h2 class="resume-title">Summary Of Qualifications</h2>
+            <h2 class="resume-title">SUMMARY OF QUALIFICATIONS</h2>
             <hr />
           </div>
         </th>
         <th class="third-width">
           <div class="vl"></div>
           <div class="text-container">
-            <h2 class="resume-title">Name</h2>
+            <h2 class="resume-title">NAME</h2>
             <hr />
           </div>
         </th>
+      </tr>
+      <tr>
+        <td class="two-sixth-width">
+          <div class="text-container">
+            <p class="resume-content">This is some sample text where the sumary of qualifications would go.</p>
+          </div>
+        </td>
+        <td class="third-width">
+          <div class="text-container">
+            <p class="resume-content">This is where the contact info of the user would go.</p>
+          </div>
+        </td>
       </tr>
     </table>
   </body>
