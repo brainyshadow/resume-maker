@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="./assets/fontawesome/css/all.css" rel="stylesheet" />
     <title>Page Title</title>
+    <style>
+      html,
+      body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+      }
+      .full-width {
+        width: 100%;
+        table-layout: fixed;
+      }
+      .third-width {
+        text-align: left;
+        width: 33%;
+      }
+      .two-sixth-width {
+        text-align: left;
+        width: 66%;
+      }
+      .divider {
+        text-align: left;
+        width: 1%;
+      }
+      .vl {
+        position: absolute;
+        border-left: 2px solid #A9A9A9	;
+        height: 120%;
+      }
+      .text-container {
+        margin: auto;
+        width: 90%;
+      }
+      .resume-title {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 450;
+        font-size: 1.5rem;
+      }
+    </style>
+    <script>
+      var name = "Example Name";
+    </script>
   </head>
   <body>
-    <table>
+    <table class="full-width">
       <tr>
-        <th>Title 1</th>
-        <th>Title 2</th>
-        <th>Title 3</th>
-      </tr>
-      <tr>
-        <td>Alfreds Futterkiste</td>
-        <td>Maria Anders</td>
-        <td>Germany</td>
-      </tr>
-      <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
+        <th class="two-sixth-width">
+          <div class="text-container">
+            <h2 class="resume-title">Summary Of Qualifications</h2>
+            <hr />
+          </div>
+        </th>
+        <th class="third-width">
+          <div class="vl"></div>
+          <div class="text-container">
+            <h2 class="resume-title">Name</h2>
+            <hr />
+          </div>
+        </th>
       </tr>
     </table>
   </body>
