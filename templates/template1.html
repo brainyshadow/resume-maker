@@ -41,11 +41,15 @@
       .vl {
         position: absolute;
         border-left: 2px solid #a9a9a9;
-        height: 110%;
+        height: 100%;
       }
       .text-container {
         margin: 1rem auto 0.2rem auto;
         width: 90%;
+      }
+      .resume-name{
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.5rem;
       }
       .resume-title {
         font-family: "Montserrat", sans-serif;
@@ -64,15 +68,15 @@
     <table class="full-width">
       <tr>
         <th class="two-sixth-width">
-          <div class="text-container">
+          <div class="text-container" style="margin-top: 2rem">
             <h2 class="resume-title">SUMMARY OF QUALIFICATIONS</h2>
             <hr />
           </div>
         </th>
         <th class="third-width">
           <div class="vl"></div>
-          <div class="text-container">
-            <h2 class="resume-title">NAME</h2>
+          <div class="text-container" style="margin-top: 2rem">
+            <h2 id="name" class="resume-name">NAME</h2>
             <hr />
           </div>
         </th>
