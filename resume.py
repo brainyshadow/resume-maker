@@ -17,18 +17,21 @@ html = open(
 # Parse HTML file in Beautiful Soup
 soup = bs(html, 'html.parser')
 
-name = "Joe Smith"
+name = input("Please Enter your name:\n")
+qualifications = input("Please enter a summary of your qualifications:\n")
+jobOne = input("Enter some info about your first job:\n") 
 
 # Replace Name
 old_text = soup.find("h2", {"id": "name"})
 new_text = old_text.find(text=re.compile('NAME')).replace_with(name.upper())
 
 
+
 # Replace Qualifications
 old_text = soup.find("p", {"id": "qulificationSummary"})
 new_text = old_text.find(
     text=re.compile('This is where a summary of qualifications will go.')
-).replace_with('This is the replacted list of some of my qualifications.')
+).replace_with(qualifications)
 
 
 # Alter HTML file to see the changes done
