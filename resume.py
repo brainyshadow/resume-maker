@@ -27,8 +27,11 @@ skills = input("Enter a brief summary of your skills:\n")
 technicalSkills = input("Enter some of your Technical Skills:\n")
 softSkills = input("Enter some of your soft skills:\n")
 jobOneName = input("Enter enter the name and location of your first job:\n")
-jonOneDescription = input("Enter a brief summary of your first job:\n")
+jobOneDescription = input("Enter a brief summary of your first job:\n")
 jobTwoName = input("Enter enter the name and location of your second job:\n")
+jobTwoDescripton = input("Enter a brief summary of your second job:\n")
+jobThreeName = input("Enter enter the name and location of your third job:\n")
+jobThreeDescription = input("Enter a brief summary of your third job:\n")
 
 
 # Replace Name
@@ -72,24 +75,32 @@ new_text = old_text.find(
     text=re.compile('For example here is where soft skils can be put.'
                     )).replace_with(softSkills)
 
-#Replace job one name 
+#Replace job one name
 old_text = soup.find("p", {"id": "jobeOneName"})
-new_text = old_text.find(
-    text=re.compile('Job Name.'
-                    )).replace_with(jobOneName)
+new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobOneName)
 
 #Replace the job one description
 old_text = soup.find("p", {"id": "jobOne"})
 new_text = old_text.find(
-    text=re.compile('First Job.'
-                    )).replace_with(jonOneDescription)
+    text=re.compile('First Job.')).replace_with(jobOneDescription)
 
 #Replace the job two name
 old_text = soup.find("p", {"id": "jobeTwoName"})
-new_text = old_text.find(
-    text=re.compile('Job Name'
-                    )).replace_with(jobTwoName)
+new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobTwoName)
 
+#Replace the job two description
+old_text = soup.find("p", {"id": "jobTwo"})
+new_text = old_text.find(
+    text=re.compile('Second Job.')).replace_with(jobTwoDescripton)
+
+#Replace the job two name
+old_text = soup.find("p", {"id": "jobeThreeName"})
+new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobThreeName)
+
+#Replace the job two description
+old_text = soup.find("p", {"id": "jobThree"})
+new_text = old_text.find(
+    text=re.compile('Third Job.')).replace_with(jobThreeDescription)
 
 # Alter HTML file to see the changes done
 with open("temp.html", "wb") as f_output:
