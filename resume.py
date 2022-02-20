@@ -23,11 +23,13 @@ currectOccupation = input(
     "Please enter enter your education or current occupation:\n")
 region = input("Enter your City and State or Province:\n")
 email = input("Enter your email:\n")
-skills = input("Enter a breif summary of your skills:\n")
+skills = input("Enter a brief summary of your skills:\n")
 technicalSkills = input("Enter some of your Technical Skills:\n")
 softSkills = input("Enter some of your soft skills:\n")
+jobOneName = input("Enter enter the name and location of your first job:\n")
+jonOneDescription = input("Enter a brief summary of your first job:\n")
+jobTwoName = input("Enter enter the name and location of your second job:\n")
 
-jobOne = input("Enter some info about your first job:\n")
 
 # Replace Name
 old_text = soup.find("h2", {"id": "name"})
@@ -64,10 +66,30 @@ new_text = old_text.find(
     text=re.compile('For example here is where technical skills can be put.'
                     )).replace_with(technicalSkills)
 
+#Replace soft skills
 old_text = soup.find("p", {"id": "softSkills"})
 new_text = old_text.find(
     text=re.compile('For example here is where soft skils can be put.'
                     )).replace_with(softSkills)
+
+#Replace job one name 
+old_text = soup.find("p", {"id": "jobeOneName"})
+new_text = old_text.find(
+    text=re.compile('Job Name.'
+                    )).replace_with(jobOneName)
+
+#Replace the job one description
+old_text = soup.find("p", {"id": "jobOne"})
+new_text = old_text.find(
+    text=re.compile('First Job.'
+                    )).replace_with(jonOneDescription)
+
+#Replace the job two name
+old_text = soup.find("p", {"id": "jobeTwoName"})
+new_text = old_text.find(
+    text=re.compile('Job Name'
+                    )).replace_with(jobTwoName)
+
 
 # Alter HTML file to see the changes done
 with open("temp.html", "wb") as f_output:
