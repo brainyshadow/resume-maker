@@ -32,7 +32,9 @@ jobTwoName = input("Enter enter the name and location of your second job:\n")
 jobTwoDescripton = input("Enter a brief summary of your second job:\n")
 jobThreeName = input("Enter enter the name and location of your third job:\n")
 jobThreeDescription = input("Enter a brief summary of your third job:\n")
-
+hobbyOne = input("Enter a brief summary of your first hobby:\n")
+hobbyTwo = input("Enter a brief summary of your second hobby:\n")
+hobbyThree = input("Enter a brief summary of your third hobby:\n")
 
 # Replace Name
 old_text = soup.find("h2", {"id": "name"})
@@ -95,12 +97,29 @@ new_text = old_text.find(
 
 #Replace the job two name
 old_text = soup.find("p", {"id": "jobeThreeName"})
-new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobThreeName)
+new_text = old_text.find(
+    text=re.compile('Job Name')).replace_with(jobThreeName)
 
 #Replace the job two description
 old_text = soup.find("p", {"id": "jobThree"})
 new_text = old_text.find(
     text=re.compile('Third Job.')).replace_with(jobThreeDescription)
+
+#Replace the job two description
+old_text = soup.find("p", {"id": "hobbyOne"})
+new_text = old_text.find(
+    text=re.compile('Hobby one')).replace_with(hobbyOne)
+
+#Replace the job two description
+old_text = soup.find("p", {"id": "hobbyTwo"})
+new_text = old_text.find(
+    text=re.compile('Hobby two')).replace_with(hobbyTwo)
+
+#Replace the job two description
+old_text = soup.find("p", {"id": "hobbyThree"})
+new_text = old_text.find(
+    text=re.compile('Hobby three')).replace_with(hobbyThree)
+
 
 # Alter HTML file to see the changes done
 with open("temp.html", "wb") as f_output:
