@@ -8,7 +8,7 @@ import re
 # Remove the last segment of the path
 base = os.path.dirname(os.path.abspath(__file__))
 
-templateNumber = 1
+templateNumber = 2
 
 # Open the HTML in which you want to make changes
 html = open(
