@@ -46,6 +46,11 @@
         margin: 1rem auto 0.2rem auto;
         width: 85%;
       }
+      .text-container-no-margin {
+        margin: 0 auto 0 auto;
+        width: 85%;
+      }
+
       .resume-name {
         font-family: "Montserrat", sans-serif;
         font-size: 1.5rem;
@@ -60,8 +65,13 @@
         font-weight: 100;
       }
       .fixed-third-width {
+        margin: 0;
         width: 33%;
         position: absolute;
+      }
+      .sub-content {
+        width: 85%;
+        margin: auto;
       }
     </style>
   </head>
@@ -107,23 +117,116 @@
         </th>
         <th class="third-width">
           <div class="vl"></div>
-          <div class="text-container">
+          <div class="text-container-no-margin">
             <h2 class="resume-title">SKILLS</h2>
             <hr />
           </div>
           <div class="fixed-third-width">
-            <div class="text-container">
-              <p id="skills" class="resume-content">
-                This is where the user inputted skills will go.
-              </p>
-              <p id="technicalSkills" class="resume-content">
-                For example here is where technical skills can be put.
-              </p>
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="first-skill-section" class="resume-content">
+                    Skill Section One
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="first-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
 
-              <p id="softSkills" class="resume-content">
-                For example here is where soft skils can be put.
-              </p>
-            </div>
+            <hr style="width: 85%" />
+
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="first-skill-section" class="resume-content">
+                    Skill Section Two
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="second-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            <hr style="width: 85%" />
+
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="first-skill-section" class="resume-content">
+                    Skill Section Three
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="third-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
           </div>
         </th>
       </tr>

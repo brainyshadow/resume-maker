@@ -107,19 +107,16 @@ new_text = old_text.find(
 
 #Replace the job two description
 old_text = soup.find("p", {"id": "hobbyOne"})
-new_text = old_text.find(
-    text=re.compile('Hobby one')).replace_with(hobbyOne)
+new_text = old_text.find(text=re.compile('Hobby one')).replace_with(hobbyOne)
 
 #Replace the job two description
 old_text = soup.find("p", {"id": "hobbyTwo"})
-new_text = old_text.find(
-    text=re.compile('Hobby two')).replace_with(hobbyTwo)
+new_text = old_text.find(text=re.compile('Hobby two')).replace_with(hobbyTwo)
 
 #Replace the job two description
 old_text = soup.find("p", {"id": "hobbyThree"})
 new_text = old_text.find(
     text=re.compile('Hobby three')).replace_with(hobbyThree)
-
 
 # Alter HTML file to see the changes done
 with open("temp.html", "wb") as f_output:
@@ -155,3 +152,5 @@ try:
 except:
     print("An error occured")
 os.remove('temp.html')
+
+
