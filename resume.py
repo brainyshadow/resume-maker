@@ -23,9 +23,25 @@ currectOccupation = input(
     "Please enter enter your education or current occupation:\n")
 region = input("Enter your City and State or Province:\n")
 email = input("Enter your email:\n")
-skills = input("Enter a brief summary of your skills:\n")
-technicalSkills = input("Enter some of your Technical Skills:\n")
-softSkills = input("Enter some of your soft skills:\n")
+
+skillSectionOne = input("Enter your first Skills Section:\n")
+firstSkillOne = input("Enter your first Skill:\n")
+secondSkillOne = input("Enter your second Skill:\n")
+thirdSkillOne = input("Enter your third Skill:\n")
+fourthSkillOne = input("Enter your fourth Skill:\n")
+
+skillSectionTwo = input("Enter your second Skills Section:\n")
+firstSkillTwo = input("Enter your first Skill:\n")
+secondSkillTwo = input("Enter your second Skill:\n")
+thirdSkillTwo = input("Enter your third Skill:\n")
+fourthSkillTwo = input("Enter your fourth Skill:\n")
+
+skillSectionThree = input("Enter your third Skills Section:\n")
+firstSkillThree = input("Enter your first Skill:\n")
+secondSkillThree = input("Enter your second Skill:\n")
+thirdSkillThree = input("Enter your third Skill:\n")
+fourthSkillThree = input("Enter your fourth Skill:\n")
+
 jobOneName = input("Enter enter the name and location of your first job:\n")
 jobOneDescription = input("Enter a brief summary of your first job:\n")
 jobTwoName = input("Enter enter the name and location of your second job:\n")
@@ -61,21 +77,29 @@ old_text = soup.find("p", {"id": "email"})
 new_text = old_text.find(text=re.compile('Email')).replace_with(email)
 
 #Replace first skill
-old_text = soup.find("p", {"id": "skills"})
+old_text = soup.find("p", {"id": "first-skill-section"})
 new_text = old_text.find(text=re.compile(
-    'This is where the user inputted skills will go.')).replace_with(skills)
+    'Skill Section One')).replace_with(skillSectionOne)
+
+#Replace two skill
+old_text = soup.find("p", {"id": "second-skill-section"})
+new_text = old_text.find(text=re.compile(
+    'Skill Section One')).replace_with(skillSectionTwo)
+
+#Replace third skill
+old_text = soup.find("p", {"id": "first-skill-section"})
+new_text = old_text.find(text=re.compile(
+    'Skill Section One')).replace_with(skillSectionThree)
 
 #Replace first skill
-old_text = soup.find("p", {"id": "technicalSkills"})
-new_text = old_text.find(
-    text=re.compile('For example here is where technical skills can be put.'
-                    )).replace_with(technicalSkills)
+old_text = soup.find("p", {"id": "first-skill-one"})
+new_text = old_text.find(text=re.compile(
+    'Skill Section One')).replace_with(firstSkillOne)
 
-#Replace soft skills
-old_text = soup.find("p", {"id": "softSkills"})
-new_text = old_text.find(
-    text=re.compile('For example here is where soft skils can be put.'
-                    )).replace_with(softSkills)
+#Replace second skill
+old_text = soup.find("p", {"id": "first-skill-one"})
+new_text = old_text.find(text=re.compile(
+    'Skill Section Two')).replace_with(firstSkillTwo)
 
 #Replace job one name
 old_text = soup.find("p", {"id": "jobeOneName"})
@@ -152,5 +176,3 @@ try:
 except:
     print("An error occured")
 os.remove('temp.html')
-
-
