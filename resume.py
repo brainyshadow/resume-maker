@@ -17,234 +17,247 @@ html = open(
 # Parse HTML file in Beautiful Soup
 soup = bs(html, 'html.parser')
 
-name = input("Please Enter your name:\n")
-qualifications = input("Please enter a summary of your qualifications:\n")
-currectOccupation = input(
-    "Please enter enter your education or current occupation:\n")
-region = input("Enter your City and State or Province:\n")
-email = input("Enter your email:\n")
 
-skillSectionOne = input("Enter your first Skills Section:\n")
-firstSkillOne = input("Enter your first Skill:\n")
-secondSkillOne = input("Enter your second Skill:\n")
-thirdSkillOne = input("Enter your third Skill:\n")
-fourthSkillOne = input("Enter your fourth Skill:\n")
+async def generateResume():
+    name = input("Please Enter your name:\n")
+    qualifications = input("Please enter a summary of your qualifications:\n")
+    currectOccupation = input(
+        "Please enter enter your education or current occupation:\n")
+    region = input("Enter your City and State or Province:\n")
+    email = input("Enter your email:\n")
 
-skillSectionTwo = input("Enter your second Skills Section:\n")
-firstSkillTwo = input("Enter your first Skill:\n")
-secondSkillTwo = input("Enter your second Skill:\n")
-thirdSkillTwo = input("Enter your third Skill:\n")
-fourthSkillTwo = input("Enter your fourth Skill:\n")
+    skillSectionOne = input("Enter your first Skills Section:\n")
+    firstSkillOne = input("Enter your first Skill:\n")
+    secondSkillOne = input("Enter your second Skill:\n")
+    thirdSkillOne = input("Enter your third Skill:\n")
+    fourthSkillOne = input("Enter your fourth Skill:\n")
 
-skillSectionThree = input("Enter your third Skills Section:\n")
-firstSkillThree = input("Enter your first Skill:\n")
-secondSkillThree = input("Enter your second Skill:\n")
-thirdSkillThree = input("Enter your third Skill:\n")
-fourthSkillThree = input("Enter your fourth Skill:\n")
+    skillSectionTwo = input("Enter your second Skills Section:\n")
+    firstSkillTwo = input("Enter your first Skill:\n")
+    secondSkillTwo = input("Enter your second Skill:\n")
+    thirdSkillTwo = input("Enter your third Skill:\n")
+    fourthSkillTwo = input("Enter your fourth Skill:\n")
 
-jobOneName = input("Enter enter the name and location of your first job:\n")
-jobOneDescription = input("Enter a brief summary of your first job:\n")
-jobTwoName = input("Enter enter the name and location of your second job:\n")
-jobTwoDescripton = input("Enter a brief summary of your second job:\n")
-jobThreeName = input("Enter enter the name and location of your third job:\n")
-jobThreeDescription = input("Enter a brief summary of your third job:\n")
-hobbyOne = input("Enter a brief summary of your first hobby:\n")
-hobbyTwo = input("Enter a brief summary of your second hobby:\n")
-hobbyThree = input("Enter a brief summary of your third hobby:\n")
+    skillSectionThree = input("Enter your third Skills Section:\n")
+    firstSkillThree = input("Enter your first Skill:\n")
+    secondSkillThree = input("Enter your second Skill:\n")
+    thirdSkillThree = input("Enter your third Skill:\n")
+    fourthSkillThree = input("Enter your fourth Skill:\n")
 
-projectOne = input(
-    "Enter a brief summary of your first personal project you have done:\n")
-projectTwo = input(
-    "Enter a brief summary of your second personal project you have done:\n")
-projectThree = input(
-    "Enter a brief summary of your third personal project you have done:\n")
+    jobOneName = input(
+        "Enter enter the name and location of your first job:\n")
+    jobOneDescription = input("Enter a brief summary of your first job:\n")
+    jobTwoName = input(
+        "Enter enter the name and location of your second job:\n")
+    jobTwoDescripton = input("Enter a brief summary of your second job:\n")
+    jobThreeName = input(
+        "Enter enter the name and location of your third job:\n")
+    jobThreeDescription = input("Enter a brief summary of your third job:\n")
+    hobbyOne = input("Enter a brief summary of your first hobby:\n")
+    hobbyTwo = input("Enter a brief summary of your second hobby:\n")
+    hobbyThree = input("Enter a brief summary of your third hobby:\n")
 
-# Replace Name
-old_text = soup.find("h2", {"id": "name"})
-new_text = old_text.find(text=re.compile('NAME')).replace_with(name.upper())
+    projectOne = input(
+        "Enter a brief summary of your first personal project you have done:\n"
+    )
+    projectTwo = input(
+        "Enter a brief summary of your second personal project you have done:\n"
+    )
+    projectThree = input(
+        "Enter a brief summary of your third personal project you have done:\n"
+    )
 
-# Replace Qualifications
-old_text = soup.find("p", {"id": "qulificationSummary"})
-new_text = old_text.find(
-    text=re.compile('This is where a summary of qualifications will go.'
-                    )).replace_with(qualifications)
+    # Replace Name
+    old_text = soup.find("h2", {"id": "name"})
+    new_text = old_text.find(text=re.compile('NAME')).replace_with(
+        name.upper())
 
-# Replace Occupation
-old_text = soup.find("p", {"id": "occupation"})
-new_text = old_text.find(
-    text=re.compile('Education/Occupation')).replace_with(currectOccupation)
+    # Replace Qualifications
+    old_text = soup.find("p", {"id": "qulificationSummary"})
+    new_text = old_text.find(
+        text=re.compile('This is where a summary of qualifications will go.'
+                        )).replace_with(qualifications)
 
-#Replace Region
-old_text = soup.find("p", {"id": "region"})
-new_text = old_text.find(
-    text=re.compile('City, State/Province')).replace_with(region)
+    # Replace Occupation
+    old_text = soup.find("p", {"id": "occupation"})
+    new_text = old_text.find(text=re.compile(
+        'Education/Occupation')).replace_with(currectOccupation)
 
-#Replace Email
-old_text = soup.find("p", {"id": "email"})
-new_text = old_text.find(text=re.compile('Email')).replace_with(email)
+    #Replace Region
+    old_text = soup.find("p", {"id": "region"})
+    new_text = old_text.find(
+        text=re.compile('City, State/Province')).replace_with(region)
 
-#Replace first skill
-old_text = soup.find("p", {"id": "first-skill-section"})
-new_text = old_text.find(
-    text=re.compile('Skill Section One')).replace_with(skillSectionOne)
+    #Replace Email
+    old_text = soup.find("p", {"id": "email"})
+    new_text = old_text.find(text=re.compile('Email')).replace_with(email)
 
-#Replace second skill
-old_text = soup.find("p", {"id": "second-skill-section"})
-new_text = old_text.find(
-    text=re.compile('Skill Section Two')).replace_with(skillSectionTwo)
+    #Replace first skill
+    old_text = soup.find("p", {"id": "first-skill-section"})
+    new_text = old_text.find(
+        text=re.compile('Skill Section One')).replace_with(skillSectionOne)
 
-#Replace third skill section
-old_text = soup.find("p", {"id": "third-skill-section"})
-new_text = old_text.find(
-    text=re.compile('Skill Section Three')).replace_with(skillSectionThree)
+    #Replace second skill
+    old_text = soup.find("p", {"id": "second-skill-section"})
+    new_text = old_text.find(
+        text=re.compile('Skill Section Two')).replace_with(skillSectionTwo)
 
-#Replace first skill
-old_text = soup.find("p", {"id": "first-skill-one"})
-new_text = old_text.find(
-    text=re.compile('First Skills')).replace_with(firstSkillOne)
+    #Replace third skill section
+    old_text = soup.find("p", {"id": "third-skill-section"})
+    new_text = old_text.find(
+        text=re.compile('Skill Section Three')).replace_with(skillSectionThree)
 
-#Replace second skill
-old_text = soup.find("p", {"id": "first-skill-two"})
-new_text = old_text.find(
-    text=re.compile('Second Skills')).replace_with(secondSkillOne)
+    #Replace first skill
+    old_text = soup.find("p", {"id": "first-skill-one"})
+    new_text = old_text.find(
+        text=re.compile('First Skills')).replace_with(firstSkillOne)
 
-#Replace third skill
-old_text = soup.find("p", {"id": "first-skill-three"})
-new_text = old_text.find(
-    text=re.compile('Third Skills')).replace_with(thirdSkillOne)
+    #Replace second skill
+    old_text = soup.find("p", {"id": "first-skill-two"})
+    new_text = old_text.find(
+        text=re.compile('Second Skills')).replace_with(secondSkillOne)
 
-#Replace fourth skill
-old_text = soup.find("p", {"id": "first-skill-four"})
-new_text = old_text.find(
-    text=re.compile('Fourth Skills')).replace_with(fourthSkillOne)
+    #Replace third skill
+    old_text = soup.find("p", {"id": "first-skill-three"})
+    new_text = old_text.find(
+        text=re.compile('Third Skills')).replace_with(thirdSkillOne)
 
-#Replace first skill
-old_text = soup.find("p", {"id": "second-skill-one"})
-new_text = old_text.find(
-    text=re.compile('First Skills')).replace_with(firstSkillOne)
+    #Replace fourth skill
+    old_text = soup.find("p", {"id": "first-skill-four"})
+    new_text = old_text.find(
+        text=re.compile('Fourth Skills')).replace_with(fourthSkillOne)
 
-#Replace second skill
-old_text = soup.find("p", {"id": "second-skill-two"})
-new_text = old_text.find(
-    text=re.compile('Second Skills')).replace_with(secondSkillOne)
+    #Replace first skill
+    old_text = soup.find("p", {"id": "second-skill-one"})
+    new_text = old_text.find(
+        text=re.compile('First Skills')).replace_with(firstSkillTwo)
 
-#Replace third skill
-old_text = soup.find("p", {"id": "second-skill-three"})
-new_text = old_text.find(
-    text=re.compile('Third Skills')).replace_with(thirdSkillOne)
+    #Replace second skill
+    old_text = soup.find("p", {"id": "second-skill-two"})
+    new_text = old_text.find(
+        text=re.compile('Second Skills')).replace_with(secondSkillTwo)
 
-#Replace fourth skill
-old_text = soup.find("p", {"id": "second-skill-four"})
-new_text = old_text.find(
-    text=re.compile('Fourth Skills')).replace_with(fourthSkillOne)
+    #Replace third skill
+    old_text = soup.find("p", {"id": "second-skill-three"})
+    new_text = old_text.find(
+        text=re.compile('Third Skills')).replace_with(thirdSkillTwo)
 
-#Replace first skill
-old_text = soup.find("p", {"id": "third-skill-one"})
-new_text = old_text.find(
-    text=re.compile('First Skills')).replace_with(firstSkillOne)
+    #Replace fourth skill
+    old_text = soup.find("p", {"id": "second-skill-four"})
+    new_text = old_text.find(
+        text=re.compile('Fourth Skills')).replace_with(fourthSkillTwo)
 
-#Replace second skill
-old_text = soup.find("p", {"id": "third-skill-two"})
-new_text = old_text.find(
-    text=re.compile('Second Skills')).replace_with(secondSkillOne)
+    #Replace first skill
+    old_text = soup.find("p", {"id": "third-skill-one"})
+    new_text = old_text.find(
+        text=re.compile('First Skills')).replace_with(firstSkillThree)
 
-#Replace third skill
-old_text = soup.find("p", {"id": "third-skill-three"})
-new_text = old_text.find(
-    text=re.compile('Third Skills')).replace_with(thirdSkillOne)
+    #Replace second skill
+    old_text = soup.find("p", {"id": "third-skill-two"})
+    new_text = old_text.find(
+        text=re.compile('Second Skills')).replace_with(secondSkillThree)
 
-#Replace fourth skill
-old_text = soup.find("p", {"id": "third-skill-four"})
-new_text = old_text.find(
-    text=re.compile('Fourth Skills')).replace_with(fourthSkillOne)
+    #Replace third skill
+    old_text = soup.find("p", {"id": "third-skill-three"})
+    new_text = old_text.find(
+        text=re.compile('Third Skills')).replace_with(thirdSkillThree)
 
-#Replace job one name
-old_text = soup.find("p", {"id": "jobeOneName"})
-new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobOneName)
+    #Replace fourth skill
+    old_text = soup.find("p", {"id": "third-skill-four"})
+    new_text = old_text.find(
+        text=re.compile('Fourth Skills')).replace_with(fourthSkillThree)
 
-#Replace the job one description
-old_text = soup.find("p", {"id": "jobOne"})
-new_text = old_text.find(
-    text=re.compile('First Job.')).replace_with(jobOneDescription)
+    #Replace job one name
+    old_text = soup.find("p", {"id": "jobeOneName"})
+    new_text = old_text.find(
+        text=re.compile('Job Name')).replace_with(jobOneName)
 
-#Replace the job two name
-old_text = soup.find("p", {"id": "jobeTwoName"})
-new_text = old_text.find(text=re.compile('Job Name')).replace_with(jobTwoName)
+    #Replace the job one description
+    old_text = soup.find("p", {"id": "jobOne"})
+    new_text = old_text.find(
+        text=re.compile('First Job.')).replace_with(jobOneDescription)
 
-#Replace the job two description
-old_text = soup.find("p", {"id": "jobTwo"})
-new_text = old_text.find(
-    text=re.compile('Second Job.')).replace_with(jobTwoDescripton)
+    #Replace the job two name
+    old_text = soup.find("p", {"id": "jobeTwoName"})
+    new_text = old_text.find(
+        text=re.compile('Job Name')).replace_with(jobTwoName)
 
-#Replace the job two name
-old_text = soup.find("p", {"id": "jobeThreeName"})
-new_text = old_text.find(
-    text=re.compile('Job Name')).replace_with(jobThreeName)
+    #Replace the job two description
+    old_text = soup.find("p", {"id": "jobTwo"})
+    new_text = old_text.find(
+        text=re.compile('Second Job.')).replace_with(jobTwoDescripton)
 
-#Replace the job three description
-old_text = soup.find("p", {"id": "jobThree"})
-new_text = old_text.find(
-    text=re.compile('Third Job.')).replace_with(jobThreeDescription)
+    #Replace the job two name
+    old_text = soup.find("p", {"id": "jobeThreeName"})
+    new_text = old_text.find(
+        text=re.compile('Job Name')).replace_with(jobThreeName)
 
-#Replace the first porject
-old_text = soup.find("p", {"id": "projectOne"})
-new_text = old_text.find(
-    text=re.compile('Project one')).replace_with(projectOne)
+    #Replace the job three description
+    old_text = soup.find("p", {"id": "jobThree"})
+    new_text = old_text.find(
+        text=re.compile('Third Job.')).replace_with(jobThreeDescription)
 
-#Replace the second porject
-old_text = soup.find("p", {"id": "projectTwo"})
-new_text = old_text.find(
-    text=re.compile('Project two')).replace_with(projectTwo)
+    #Replace the first porject
+    old_text = soup.find("p", {"id": "projectOne"})
+    new_text = old_text.find(
+        text=re.compile('Project one')).replace_with(projectOne)
 
-#Replace the second porject
-old_text = soup.find("p", {"id": "projectThree"})
-new_text = old_text.find(
-    text=re.compile('Project three')).replace_with(projectThree)
+    #Replace the second porject
+    old_text = soup.find("p", {"id": "projectTwo"})
+    new_text = old_text.find(
+        text=re.compile('Project two')).replace_with(projectTwo)
 
-#Replace the job two description
-old_text = soup.find("p", {"id": "hobbyOne"})
-new_text = old_text.find(text=re.compile('Hobby one')).replace_with(hobbyOne)
+    #Replace the second porject
+    old_text = soup.find("p", {"id": "projectThree"})
+    new_text = old_text.find(
+        text=re.compile('Project three')).replace_with(projectThree)
 
-#Replace the job two description
-old_text = soup.find("p", {"id": "hobbyTwo"})
-new_text = old_text.find(text=re.compile('Hobby two')).replace_with(hobbyTwo)
+    #Replace the job two description
+    old_text = soup.find("p", {"id": "hobbyOne"})
+    new_text = old_text.find(
+        text=re.compile('Hobby one')).replace_with(hobbyOne)
 
-#Replace the job two description
-old_text = soup.find("p", {"id": "hobbyThree"})
-new_text = old_text.find(
-    text=re.compile('Hobby three')).replace_with(hobbyThree)
+    #Replace the job two description
+    old_text = soup.find("p", {"id": "hobbyTwo"})
+    new_text = old_text.find(
+        text=re.compile('Hobby two')).replace_with(hobbyTwo)
 
-# Alter HTML file to see the changes done
-with open("temp.html", "wb") as f_output:
-    f_output.write(soup.prettify("utf-8"))
+    #Replace the job two description
+    old_text = soup.find("p", {"id": "hobbyThree"})
+    new_text = old_text.find(
+        text=re.compile('Hobby three')).replace_with(hobbyThree)
 
-fileName = "Resume"
+    # Alter HTML file to see the changes done
+    with open("temp.html", "wb") as f_output:
+        f_output.write(soup.prettify("utf-8"))
 
-options = {
-    'page-size':
-    'Letter',
-    'margin-top':
-    '0.25in',
-    'margin-right':
-    '0in',
-    'margin-bottom':
-    '0.25in',
-    'margin-left':
-    '0in',
-    'encoding':
-    "UTF-8",
-    'custom-header': [('Accept-Encoding', 'gzip')],
-    'cookie': [
-        ('cookie-name1', 'cookie-value1'),
-        ('cookie-name2', 'cookie-value2'),
-    ],
-    'outline-depth':
-    10,
-}
+    fileName = "Resume"
 
-try:
-    pdfkit.from_file('temp.html', fileName + '.pdf', options=options)
+    options = {
+        'page-size':
+        'Letter',
+        'margin-top':
+        '0.25in',
+        'margin-right':
+        '0in',
+        'margin-bottom':
+        '0.25in',
+        'margin-left':
+        '0in',
+        'encoding':
+        "UTF-8",
+        'custom-header': [('Accept-Encoding', 'gzip')],
+        'cookie': [
+            ('cookie-name1', 'cookie-value1'),
+            ('cookie-name2', 'cookie-value2'),
+        ],
+        'outline-depth':
+        10,
+    }
 
-except:
-    print("An error occured")
-os.remove('temp.html')
+    try:
+        pdfkit.from_file('temp.html', fileName + '.pdf', options=options)
+
+    except:
+        print("An error occured")
+    os.remove('temp.html')
