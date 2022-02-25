@@ -5,18 +5,16 @@ import json
 
 app = Flask(__name__)
 
-async def makeResume():
-    await generateResume()
+async def makeResume(argument):
+    await generateResume(argument)
     return 1
 
 @app.route('/download', methods=['POST'])
 def downloadFile ():
-    content = json.loads(request.data)
-    json_formatted_str = json.dumps(content, indent=2)
-
+    content = request.data
     asyncio.set_event_loop(asyncio.new_event_loop())
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(makeResume())
+    loop.run_until_complete(makeResume(content))
     path = "./Resume.pdf"
     return send_file(path, as_attachment=True)
 app.run()

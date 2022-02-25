@@ -4,11 +4,12 @@ from bs4 import BeautifulSoup as bs
 import os
 
 import re
+import json
 
 # Remove the last segment of the path
 base = os.path.dirname(os.path.abspath(__file__))
 
-templateNumber = 2
+templateNumber = 1
 
 # Open the HTML in which you want to make changes
 html = open(
@@ -18,54 +19,48 @@ html = open(
 soup = bs(html, 'html.parser')
 
 
-async def generateResume():
-    name = input("Please Enter your name:\n")
-    qualifications = input("Please enter a summary of your qualifications:\n")
-    currectOccupation = input(
-        "Please enter enter your education or current occupation:\n")
-    region = input("Enter your City and State or Province:\n")
-    email = input("Enter your email:\n")
+# Open the HTML in which you want to make changes
+async def generateResume(passedJson):
+    jsonData = json.loads(passedJson)
 
-    skillSectionOne = input("Enter your first Skills Section:\n")
-    firstSkillOne = input("Enter your first Skill:\n")
-    secondSkillOne = input("Enter your second Skill:\n")
-    thirdSkillOne = input("Enter your third Skill:\n")
-    fourthSkillOne = input("Enter your fourth Skill:\n")
+    name = jsonData["name"]
+    qualifications = jsonData["qualifications"]
+    currentOccupation = jsonData["currentOccupation"]
+    region = jsonData["region"]
+    email = jsonData["email"]
 
-    skillSectionTwo = input("Enter your second Skills Section:\n")
-    firstSkillTwo = input("Enter your first Skill:\n")
-    secondSkillTwo = input("Enter your second Skill:\n")
-    thirdSkillTwo = input("Enter your third Skill:\n")
-    fourthSkillTwo = input("Enter your fourth Skill:\n")
+    skillSectionOne = jsonData["skillSectionOne"]
+    firstSkillOne = jsonData["firstSkillOne"]
 
-    skillSectionThree = input("Enter your third Skills Section:\n")
-    firstSkillThree = input("Enter your first Skill:\n")
-    secondSkillThree = input("Enter your second Skill:\n")
-    thirdSkillThree = input("Enter your third Skill:\n")
-    fourthSkillThree = input("Enter your fourth Skill:\n")
+    secondSkillOne = jsonData["secondSkillOne"]
+    thirdSkillOne = jsonData["thirdSkillOne"]
+    fourthSkillOne = jsonData["fourthSkillOne"]
 
-    jobOneName = input(
-        "Enter enter the name and location of your first job:\n")
-    jobOneDescription = input("Enter a brief summary of your first job:\n")
-    jobTwoName = input(
-        "Enter enter the name and location of your second job:\n")
-    jobTwoDescripton = input("Enter a brief summary of your second job:\n")
-    jobThreeName = input(
-        "Enter enter the name and location of your third job:\n")
-    jobThreeDescription = input("Enter a brief summary of your third job:\n")
-    hobbyOne = input("Enter a brief summary of your first hobby:\n")
-    hobbyTwo = input("Enter a brief summary of your second hobby:\n")
-    hobbyThree = input("Enter a brief summary of your third hobby:\n")
+    skillSectionTwo = jsonData["skillSectionTwo"]
+    firstSkillTwo = jsonData["firstSkillTwo"]
+    secondSkillTwo = jsonData["secondSkillTwo"]
+    thirdSkillTwo = jsonData["thirdSkillTwo"]
+    fourthSkillTwo = jsonData["fourthSkillTwo"]
 
-    projectOne = input(
-        "Enter a brief summary of your first personal project you have done:\n"
-    )
-    projectTwo = input(
-        "Enter a brief summary of your second personal project you have done:\n"
-    )
-    projectThree = input(
-        "Enter a brief summary of your third personal project you have done:\n"
-    )
+    skillSectionThree = jsonData["skillSectionThree"]
+    firstSkillThree = jsonData["firstSkillThree"]
+    secondSkillThree = jsonData["secondSkillThree"]
+    thirdSkillThree = jsonData["thirdSkillThree"]
+    fourthSkillThree = jsonData["fourthSkillThree"]
+
+    jobOneName = jsonData["jobOneName"]
+    jobOneDescription = jsonData["jobOneDescription"]
+    jobTwoName = jsonData["jobTwoName"]
+    jobTwoDescripton = jsonData["jobTwoDescripton"]
+    jobThreeName = jsonData["jobThreeName"]
+    jobThreeDescription = jsonData["jobThreeDescription"]
+    hobbyOne = jsonData["hobbyOne"]
+    hobbyTwo = jsonData["hobbyTwo"]
+    hobbyThree = jsonData["hobbyThree"]
+
+    projectOne = jsonData["projectOne"]
+    projectTwo = jsonData["projectTwo"]
+    projectThree = jsonData["projectThree"]
 
     # Replace Name
     old_text = soup.find("h2", {"id": "name"})
@@ -81,7 +76,7 @@ async def generateResume():
     # Replace Occupation
     old_text = soup.find("p", {"id": "occupation"})
     new_text = old_text.find(text=re.compile(
-        'Education/Occupation')).replace_with(currectOccupation)
+        'Education/Occupation')).replace_with(currentOccupation)
 
     #Replace Region
     old_text = soup.find("p", {"id": "region"})
