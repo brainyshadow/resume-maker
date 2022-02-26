@@ -1,9 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Navigate replace to="/home" />} />
+      <Route path="home" element={<><div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,7 +22,10 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div></>} />
+    </Routes>
+  </BrowserRouter>
+    
   );
 }
 
