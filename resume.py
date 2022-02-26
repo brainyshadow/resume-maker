@@ -6,22 +6,24 @@ import os
 import re
 import json
 
-# Remove the last segment of the path
-base = os.path.dirname(os.path.abspath(__file__))
-
-templateNumber = 1
-
-# Open the HTML in which you want to make changes
-html = open(
-    os.path.join(base, './templates/template' + str(templateNumber) + '.html'))
-
-# Parse HTML file in Beautiful Soup
-soup = bs(html, 'html.parser')
-
 
 # Open the HTML in which you want to make changes
 async def generateResume(passedJson):
+
     jsonData = json.loads(passedJson)
+
+    # Remove the last segment of the path
+    base = os.path.dirname(os.path.abspath(__file__))
+
+    templateNumber = jsonData["Template Id"]
+
+    # Open the HTML in which you want to make changes
+    html = open(
+        os.path.join(base,
+                     './templates/template' + str(templateNumber) + '.html'))
+
+    # Parse HTML file in Beautiful Soup
+    soup = bs(html, 'html.parser')
 
     name = jsonData["name"]
     qualifications = jsonData["qualifications"]
