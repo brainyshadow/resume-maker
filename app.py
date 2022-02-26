@@ -1,7 +1,6 @@
 from flask import send_file, request, Flask
 import asyncio
 from resume import generateResume 
-import json
 
 app = Flask(__name__)
 
@@ -17,4 +16,5 @@ def downloadFile ():
     loop.run_until_complete(makeResume(content))
     path = "./Resume.pdf"
     return send_file(path, as_attachment=True)
+
 app.run()
