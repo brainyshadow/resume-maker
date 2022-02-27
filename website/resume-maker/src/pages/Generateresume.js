@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class Generateresume extends Component {
   constructor(props) {
@@ -7,14 +10,17 @@ class Generateresume extends Component {
     this.state = { DataisLoaded: DataisLoaded };
   }
 
-  async getResume() {
+  async handleSubmit(e) {
+    e.preventDefault();
+    let userInput = e.target.elements;
+
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "");
     var raw = JSON.stringify({
       "Template Id": 1,
-      name: "Bob Smith",
-      qualifications: "Here's a brief overview of some of my qualifications",
+      name: userInput.name.value,
+      qualifications: userInput.qualifications.value,
       currentOccupation: "Working",
       region: "New York City, New York",
       email: "test@gmail.com",
@@ -71,7 +77,19 @@ class Generateresume extends Component {
   render() {
     return (
       <>
-        <div></div>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group className="mb-3" controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control placeholder="Name" />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="qualifications">
+            <Form.Label>A Brief Summary of Your Qualifications</Form.Label>
+            <Form.Control as="textarea" rows={3} placeholder="Qualifications" />
+          </Form.Group>
+          <Button type="submit" className="btn btn-primary">
+            Generateresume
+          </Button>
+        </Form>
       </>
     );
   }
