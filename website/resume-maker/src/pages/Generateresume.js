@@ -1,17 +1,16 @@
 import React, { Component } from "react";
 
-class Download extends Component {
+class Generateresume extends Component {
   constructor(props) {
     super(props);
     const DataisLoaded = false;
     this.state = { DataisLoaded: DataisLoaded };
   }
 
-  async componentDidMount() {
+  async getResume() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "");
-
     var raw = JSON.stringify({
       "Template Id": 1,
       name: "Bob Smith",
@@ -78,4 +77,4 @@ class Download extends Component {
   }
 }
 
-export default Download;
+export default Generateresume;
