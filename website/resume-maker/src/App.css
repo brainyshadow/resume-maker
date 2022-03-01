@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.resume-form {
+  height: 35rem;
+  width: 50%;
+  margin: auto;
+  overflow: auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
