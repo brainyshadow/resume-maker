@@ -4,9 +4,8 @@ import "../App.css";
 import ResumeForm from "../components/Resumeform";
 
 class Generateresume extends Component {
-
+  
   async handleSubmit(e) {
-    console.log("jhere");
     e.preventDefault();
     let userInput = e.target.elements;
 
