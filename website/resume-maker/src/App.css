@@ -42,6 +42,16 @@
   margin: 1rem auto 1rem auto;
 }
 
+
+.footer {
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #212529;
+  text-align: center;
+  display: flex;
+  height: 4rem;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

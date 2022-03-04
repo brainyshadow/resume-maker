@@ -14,10 +14,9 @@ class ResumeCarousel extends Component {
         <Carousel
           showThumbs={false}
           dynamicHeight={true}
-          swipeable={true}
           autoPlay={true}
-          interval={500}
-          infinite={true}
+          interval={5000}
+          infiniteLoop={true}
           useKeyboardArrows={true}
         >
           <div className="template-container">
