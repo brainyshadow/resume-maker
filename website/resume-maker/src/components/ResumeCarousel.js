@@ -10,14 +10,21 @@ class ResumeCarousel extends Component {
   render() {
     return (
       <>
-        <Carousel dynamicHeight={true}>
-          <div>
+        <Carousel
+          showThumbs={false}
+          dynamicHeight={true}
+          swipeable={true}
+          autoPlay={true}
+          interval={500}
+          infinite={true}
+
+          useKeyboardArrows={true}
+        >
+          <div style={{ width: "40%", margin: "auto" }}>
             <img src={TemplateOne} />
-            <p className="legend">Template One</p>
           </div>
-          <div>
+          <div style={{ width: "40%", margin: "auto" }}>
             <img src={TemplateTwo} />
-            <p className="legend">Template Two</p>
           </div>
         </Carousel>
       </>
