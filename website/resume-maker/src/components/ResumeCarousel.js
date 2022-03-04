@@ -5,6 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import { Form } from "react-bootstrap";
 import TemplateOne from "../assets/TemplateOne.jpg";
 import TemplateTwo from "../assets/TemplateTwo.jpg";
+import "../App.css";
 
 class ResumeCarousel extends Component {
   render() {
@@ -17,13 +18,12 @@ class ResumeCarousel extends Component {
           autoPlay={true}
           interval={500}
           infinite={true}
-
           useKeyboardArrows={true}
         >
-          <div style={{ width: "40%", margin: "auto" }}>
+          <div className="template-container">
             <img src={TemplateOne} />
           </div>
-          <div style={{ width: "40%", margin: "auto" }}>
+          <div className="template-container">
             <img src={TemplateTwo} />
           </div>
         </Carousel>
