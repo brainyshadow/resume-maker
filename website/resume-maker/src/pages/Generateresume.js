@@ -90,9 +90,9 @@ class Generateresume extends Component {
       <>
         <div className="resume-form">
           {qualificationsDone ? (
-            <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
-          ) : (
             <Templates />
+          ) : (
+            <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
           )}
         </div>
       </>

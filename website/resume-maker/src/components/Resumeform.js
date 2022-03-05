@@ -6,9 +6,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
 class ResumeForm extends Component {
- 
-
-
   render() {
     return (
       <>
@@ -152,7 +149,7 @@ class ResumeForm extends Component {
             className="btn btn-primary"
             style={{ display: "flex" }}
           >
-            Generateresume
+            Select Template
           </Button>
         </Form>
       </>

@@ -9,10 +9,10 @@ class Templates extends Component {
       <>
         <div class="grid-container">
           <div class="grid-item">
-            <img src={TemplateOne} style={{ width: "100%" }}></img>
+            <img src={TemplateOne} className="resume-template"></img>
           </div>
           <div class="grid-item">
-            <img src={TemplateTwo} style={{ width: "100%" }}></img>{" "}
+            <img src={TemplateTwo} className="resume-template"></img>{" "}
           </div>
         </div>
       </>
