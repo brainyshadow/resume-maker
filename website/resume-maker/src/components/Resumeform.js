@@ -6,15 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 
 class ResumeForm extends Component {
-  constructor(props) {
-    super(props);
-    const DataisLoaded = false;
-    this.state = { DataisLoaded: DataisLoaded };
-  }
+ 
 
-  async handleSubmit(e) {
-   
-  }
 
   render() {
     return (

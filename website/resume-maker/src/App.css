@@ -36,12 +36,37 @@
   overflow: auto;
 }
 
+.grid-container {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-item {
+  width: 80%;
+}
+
+.grid-item:hover {
+  width: 100%;
+}
+
+img {
+  image-rendering: crisp-edges;
+
+  /* Safari seems to support, but seems deprecated and does the same thing as the others. */
+  image-rendering: -webkit-optimize-contrast;
+}
+
 .template-container {
   background-color: white;
   width: 40%;
   margin: 1rem auto 1rem auto;
 }
 
+.main-container {
+  margin: auto;
+  width: 75%;
+}
 
 .footer {
   margin-top: 1rem;

@@ -2,18 +2,50 @@ import React from "react";
 import { Component } from "react";
 import "../App.css";
 import ResumeForm from "../components/Resumeform";
+import Templates from "../components/Templates";
 
 class Generateresume extends Component {
-  
+  constructor(props) {
+    super(props);
+    const qualificationsDone = false;
+    const attributes = new Object();
+    this.state = {
+      qualificationsDone: qualificationsDone,
+      attributes: attributes,
+    };
+  }
+
+  async generateResume() {
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Authorization", "");
+    const attributes = this.state.attributes;
+    var requestOptions = {
+      method: "POST",
+      headers: myHeaders,
+      body: attributes,
+      redirect: "follow",
+    };
+
+    let fileName = "resume.pdf";
+    fetch("http://127.0.0.1:5000/download", requestOptions)
+      .then((res) => res.blob())
+      .then((blob) => {
+        var url = window.URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
+        a.click();
+        a.remove(); //afterwards we remove the element again
+      });
+  }
+
   async handleSubmit(e) {
     e.preventDefault();
     let userInput = e.target.elements;
 
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Authorization", "");
-    var raw = JSON.stringify({
-      "Template Id": 1,
+    var data = JSON.stringify({
       name: userInput.name.value,
       qualifications: userInput.qualifications.value,
       currentOccupation: userInput.occupation.value,
@@ -47,33 +79,21 @@ class Generateresume extends Component {
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
     });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    let fileName = "resume.pdf";
-    fetch("http://127.0.0.1:5000/download", requestOptions)
-      .then((res) => res.blob())
-      .then((blob) => {
-        var url = window.URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = fileName;
-        document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
-        a.click();
-        a.remove(); //afterwards we remove the element again
-      });
+    console.log(this);
+    this.setState({ qualificationsDone: true, attributes: data });
   }
 
   render() {
+    const qualificationsDone = true;
+    console.log(qualificationsDone);
     return (
       <>
         <div className="resume-form">
-          <ResumeForm onSubmit={this.handleSubmit} />
+          {qualificationsDone ? (
+            <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
+          ) : (
+            <Templates />
+          )}
         </div>
       </>
     );
