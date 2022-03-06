@@ -31,7 +31,7 @@
 
 .resume-form {
   height: 35rem;
-  width: 50%;
+  width: 65%;
   margin: auto;
   overflow: auto;
 }
@@ -51,10 +51,7 @@
 }
 
 img {
-  image-rendering: crisp-edges;
-
-  /* Safari seems to support, but seems deprecated and does the same thing as the others. */
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
 }
 
 .template-container {
@@ -79,6 +76,36 @@ img {
 
 .resume-template {
   width: 100%;
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin: 1rem auto 1rem auto;
+}
+
+.content-container {
+  width: 75%;
+  margin: auto;
+}
+
+.content-container-center {
+  display: flex;
+  width: 75%;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 @keyframes App-logo-spin {
