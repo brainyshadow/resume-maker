@@ -64,6 +64,14 @@ img {
   position: absolute;
   top: 0.5rem;
   z-index: 1;
+  background-color: white;
+  width: 65%;
+  left: 18%;
+  display: flex;
+}
+
+.centered-element {
+  margin: auto;
 }
 
 .main-container {

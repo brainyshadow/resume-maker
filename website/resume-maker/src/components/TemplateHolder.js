@@ -10,6 +10,7 @@ import {
 import { Component } from "react";
 import "../App.css";
 import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
+import { AiOutlineCloseCircle } from "@react-icons/all-files/ai/AiOutlineCloseCircle";
 
 class ProjectCard extends Component {
   constructor(props) {
@@ -26,7 +27,8 @@ class ProjectCard extends Component {
     this.state = initialState;
   }
   displayPreview() {
-    this.setState({ displayPreview: true });
+    const displayPreview = this.state.displayPreview;
+    this.setState({ displayPreview: !displayPreview });
   }
   render() {
     const {
@@ -52,11 +54,20 @@ class ProjectCard extends Component {
         >
           {displayPreview ? (
             <div className="template-preview">
-              <img src={preview}></img>
+              <AiOutlineCloseCircle
+                onClick={() => this.displayPreview()}
+                style={{
+                  position: "absolute",
+                  top: "0.75rem",
+                  right: "0.75rem",
+                }}
+              />
+              <img className="centered-element" src={preview}></img>
             </div>
           ) : (
             <div></div>
           )}
+
           <Box sx={{ p: 2, display: "flex", width: "20rem" }}>
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
@@ -73,7 +84,6 @@ class ProjectCard extends Component {
             </Stack>
           </Box>
           <Divider />
-
           <Stack
             direction="row"
             alignItems="center"

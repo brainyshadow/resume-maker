@@ -16,7 +16,6 @@ class Home extends Component {
     return (
       <>
         <Header />
-
         <div className="main-container">
           <Card
             sx={{
