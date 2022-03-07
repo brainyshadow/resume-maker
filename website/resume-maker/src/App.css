@@ -60,6 +60,12 @@ img {
   margin: 1rem auto 1rem auto;
 }
 
+.template-preview {
+  position: absolute;
+  top: 0.5rem;
+  z-index: 1;
+}
+
 .main-container {
   margin: auto;
   width: 75%;

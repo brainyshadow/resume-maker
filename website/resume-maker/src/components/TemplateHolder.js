@@ -9,9 +9,7 @@ import {
 } from "@mui/material";
 import { Component } from "react";
 import "../App.css";
-
-import { createTheme } from "@mui/material/styles";
-import { makeStyles } from "@mui/styles";
+import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
 
 class ProjectCard extends Component {
   constructor(props) {
@@ -21,15 +19,25 @@ class ProjectCard extends Component {
       githubLink: props.projectLink,
       templateName: props.name,
       description: props.description,
-      src: props.src,
+      preview: props.preview,
       id: props.id,
+      displayPreview: false,
     };
     this.state = initialState;
   }
+  displayPreview() {
+    this.setState({ displayPreview: true });
+  }
   render() {
-    const { templateName, complexity, description, src, id } = this.state;
+    const {
+      templateName,
+      complexity,
+      description,
+      preview,
+      id,
+      displayPreview,
+    } = this.state;
     let color = "#6495ED";
-    const displayedComplext = "Complexity: " + complexity;
     return (
       <div className="card-container">
         <Card
@@ -42,15 +50,28 @@ class ProjectCard extends Component {
             fontWeight: "bold",
           }}
         >
+          {displayPreview ? (
+            <div className="template-preview">
+              <img src={preview}></img>
+            </div>
+          ) : (
+            <div></div>
+          )}
           <Box sx={{ p: 2, display: "flex", width: "20rem" }}>
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
-              <Typography variant="body2" color="text.secondary">
-                {description}
-              </Typography>
+              <div style={{ display: "flex" }}>
+                <div style={{ width: "95%" }}>
+                  <Typography variant="body2" color="text.secondary">
+                    {description}
+                  </Typography>
+                </div>
+                <div onClick={() => this.displayPreview()}>
+                  <AiOutlinePaperClip style={{ width: "200%" }} />
+                </div>
+              </div>
             </Stack>
           </Box>
-
           <Divider />
 
           <Stack

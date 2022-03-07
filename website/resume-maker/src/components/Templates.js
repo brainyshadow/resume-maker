@@ -50,6 +50,7 @@ class Templates extends Component {
               description="A template that has a personal section on the right and a large section for all your qualifications on the left."
               id="00000001"
               onClick={() => this.templateSelect("00000001")}
+              preview={TemplateOne}
             />
             <TemplateHolder
               name="Simple Resume 2"
