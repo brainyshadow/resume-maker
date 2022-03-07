@@ -22,11 +22,12 @@ class ProjectCard extends Component {
       templateName: props.name,
       description: props.description,
       src: props.src,
+      id: props.id,
     };
     this.state = initialState;
   }
   render() {
-    const { templateName, complexity, description, src } = this.state;
+    const { templateName, complexity, description, src, id } = this.state;
     let color = "#6495ED";
     const displayedComplext = "Complexity: " + complexity;
     return (
@@ -61,7 +62,11 @@ class ProjectCard extends Component {
             <div></div>
 
             <Typography color="white" fontWeight={300}>
-              <Chip sx={{ backgroundColor: color }} label={"Select Template"} />
+              <Chip
+                sx={{ backgroundColor: color }}
+                label={"Select Template"}
+                onClick={this.props.onClick}
+              />
             </Typography>
           </Stack>
         </Card>

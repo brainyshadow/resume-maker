@@ -8,6 +8,10 @@ import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 
 class Templates extends Component {
+  templateSelect(id) {
+    this.props.templateSelect(id);
+  }
+
   render() {
     return (
       <>
@@ -42,19 +46,16 @@ class Templates extends Component {
 
           <div className="project-container" id="main-area">
             <TemplateHolder
-              complexity=""
               name="Simple Resume 1"
               description="A template that has a personal section on the right and a large section for all your qualifications on the left."
+              id="00000001"
+              onClick={() => this.templateSelect("00000001")}
             />
             <TemplateHolder
-              complexity=""
               name="Simple Resume 2"
               description="A template that has a personal section on the left and a large section for all your qualifications on the right."
-            />
-            <TemplateHolder
-              complexity=""
-              name="Simple Resume 3"
-              description="A template that has a personal section on the left and a large section for all your qualifications on the right."
+              id="00000002"
+              onClick={() => this.templateSelect("00000002")}
             />
           </div>
         </Paper>

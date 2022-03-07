@@ -8,22 +8,21 @@ class Generateresume extends Component {
   constructor(props) {
     super(props);
     const qualificationsDone = false;
-    const attributes = new Object();
+    const attributes = "";
     this.state = {
       qualificationsDone: qualificationsDone,
       attributes: attributes,
     };
   }
 
-  async generateResume() {
+  async generateResume(passedAttributes) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "");
-    const attributes = this.state.attributes;
     var requestOptions = {
       method: "POST",
       headers: myHeaders,
-      body: attributes,
+      body: passedAttributes,
       redirect: "follow",
     };
 
@@ -38,6 +37,9 @@ class Generateresume extends Component {
         document.body.appendChild(a); // we need to append the element to the dom -> otherwise it will not work in firefox
         a.click();
         a.remove(); //afterwards we remove the element again
+      })
+      .then(() => {
+        this.setState({ qualificationsDone: false });
       });
   }
 
@@ -45,7 +47,7 @@ class Generateresume extends Component {
     e.preventDefault();
     let userInput = e.target.elements;
 
-    var data = JSON.stringify({
+    var data = {
       name: userInput.name.value,
       qualifications: userInput.qualifications.value,
       currentOccupation: userInput.occupation.value,
@@ -78,19 +80,26 @@ class Generateresume extends Component {
       projectOne: userInput.projectOneName.value,
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
-    });
-    console.log(this);
-    this.setState({ qualificationsDone: true, attributes: data });
+    };
+    this.setState({ qualificationsDone: true });
+    this.attributes = data;
+  }
+
+  async selectTemplate(id) {
+    let attributes = this.attributes;
+    attributes["Template Id"] = parseInt(id);
+    const raw = JSON.stringify(attributes);
+    this.attributes = raw;
+    this.generateResume(raw);
   }
 
   render() {
-    const qualificationsDone = true;
-    console.log(qualificationsDone);
+    const qualificationsDone = this.state.qualificationsDone;
     return (
       <>
         <div className="resume-form">
           {qualificationsDone ? (
-            <Templates />
+            <Templates templateSelect={(id) => this.selectTemplate(id)} />
           ) : (
             <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
           )}
