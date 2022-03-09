@@ -30,7 +30,7 @@
 }
 
 .resume-form {
-  height: 35rem;
+  height: 100vh;
   width: 65%;
   margin: auto;
   overflow: auto;
@@ -70,6 +70,14 @@ img {
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 1rem;
+}
+
+.form-container {
+  background-color: #DCDCDC	;
+  padding: 2rem;
+  border: 0.075rem solid black;
+
+  border-radius: 2rem;
 }
 
 .centered-element {
