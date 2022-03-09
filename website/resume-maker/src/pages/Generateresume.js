@@ -1,7 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import "../App.css";
-import ResumeForm from "../components/Resumeform";
+import ResumeForm from "../components/ResumeForm";
 import Templates from "../components/Templates";
 
 class Generateresume extends Component {
