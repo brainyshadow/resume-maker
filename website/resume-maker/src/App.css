@@ -30,10 +30,10 @@
 }
 
 .resume-form {
-  height: 100vh;
   width: 65%;
-  margin: auto;
+  margin: 0rem auto 0rem auto;
   overflow: auto;
+  height: 83vh;
 }
 
 .grid-container {
@@ -56,7 +56,7 @@ img {
 
 .template-container {
   background-color: white;
-  width: 50%;
+  width: 75%;
   margin: 1rem auto 1rem auto;
 }
 
@@ -65,18 +65,18 @@ img {
   top: 0.5rem;
   z-index: 1;
   background-color: white;
-  width: 65%;
-  left: 18%;
+  width: 50%;
+  left: 25%;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 1rem;
 }
 
 .form-container {
-  background-color: #DCDCDC	;
+  margin: 1rem auto 1rem auto;
+  background-color: #dcdcdc;
   padding: 2rem;
   border: 0.075rem solid black;
-
   border-radius: 2rem;
 }
 
@@ -86,16 +86,30 @@ img {
 
 .main-container {
   margin: auto;
-  width: 75%;
+  width: 80%;
+  min-height: 82vh;
 }
 
 .footer {
-  margin-top: 1rem;
   text-align: center;
   background-color: #212529;
   text-align: center;
   display: flex;
-  height: 4rem;
+  height: 4.5rem;
+}
+
+.left-part {
+  width: 75%;
+  float: left;
+  min-height: 80vh;
+  display: flex;
+}
+
+.right-part {
+  width: 25%;
+  float: right;
+  min-height: 80vh;
+  display: flex;
 }
 
 .resume-template {
@@ -121,6 +135,10 @@ img {
 
 .content-container {
   width: 75%;
+  margin: auto;
+}
+
+.vertical-center {
   margin: auto;
 }
 

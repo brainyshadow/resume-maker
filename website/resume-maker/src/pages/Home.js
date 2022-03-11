@@ -1,72 +1,36 @@
 import React from "react";
 import { Component } from "react";
 import Header from "../components/Header";
-import ResumeCarousel from "../components/ResumeCarousel";
-import Footer from "../components/Footer";
-import Card from "@mui/material/Card";
-import { CardHeader } from "@mui/material";
 import { Typography } from "@mui/material";
-import { Divider } from "@mui/material";
-import { CardContent } from "@mui/material";
-import { CardActions } from "@mui/material";
-import { Button } from "react-bootstrap";
-
+import Footer from "../components/Footer";
+import { Paper } from "@mui/material";
+import { Document, Page, pdfjs } from "react-pdf";
 
 class Home extends Component {
   render() {
+
     return (
       <>
         <Header />
         <div className="main-container">
-          <Card
-            sx={{
-              alignItems: "center",
-              bgcolor: "background.paper",
-              borderRadius: "12px",
-              boxShadow: 1,
-              fontWeight: "bold",
-              margin: "1rem ",
-            }}
-          >
-            <CardHeader
-              subheader={
-                <Typography variant="title" color="text.primary">
-                  Resume Maker
-                </Typography>
-              }
-              sx={{ margin: "0.2rem" }}
-            ></CardHeader>
-            <Divider
-              sx={{
-                width: "95%",
-                display: "flex",
-                margin: "auto",
-              }}
-            ></Divider>
-            <CardContent>
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                fontSize={"0.9rem"}
-              >
-                Your all in one Resume Maker to generate a custom resume based
-                on a host of user generated templates. It's this simple. Input
-                your credentials, select a template and export your resume as a
-                PDF.
+          <div className="left-part">
+            <div className="vertical-center">
+              <Typography fontSize={"3rem"} align="center" variant="h1">
+                Build your resume.
               </Typography>
-            </CardContent>
-            <CardActions sx={{ margin: "auto " }}>
-              <Button size="small" href="/resume">
-                Generate Resume
-              </Button>
-              <Button size="small" href="/upload">
-                Upload a Template
-              </Button>
-            </CardActions>
-          </Card>
+              <Typography align="center" variant="body">
+                Simple. No Acounts. Open Source.
+              </Typography>
+            </div>
+          </div>
+          <div className="right-part">
+            <div className="vertical-center">
+              <Paper>
+              
+              </Paper>
+            </div>
+          </div>
         </div>
-
-        <ResumeCarousel />
         <Footer />
       </>
     );

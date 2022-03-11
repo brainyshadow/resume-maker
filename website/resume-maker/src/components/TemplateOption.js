@@ -1,3 +1,6 @@
+import "../App.css";
+import React, { Component } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 import {
   Card,
   Box,
@@ -7,12 +10,12 @@ import {
   Divider,
   Chip,
 } from "@mui/material";
-import { Component } from "react";
 import "../App.css";
 import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
 import { AiOutlineCloseCircle } from "@react-icons/all-files/ai/AiOutlineCloseCircle";
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-class ProjectCard extends Component {
+class TemplateOption extends Component {
   constructor(props) {
     super(props);
     const initialState = {
@@ -26,6 +29,17 @@ class ProjectCard extends Component {
     };
     this.state = initialState;
   }
+
+  state = { numPages: null, pageNumber: 1 };
+
+  onDocumentLoadSuccess = ({ numPages }) => {
+    this.setState({ numPages });
+  };
+
+  goToPrevPage = () =>
+    this.setState((state) => ({ pageNumber: state.pageNumber - 1 }));
+  goToNextPage = () =>
+    this.setState((state) => ({ pageNumber: state.pageNumber + 1 }));
   displayPreview() {
     const displayPreview = this.state.displayPreview;
     this.setState({ displayPreview: !displayPreview });
@@ -62,7 +76,14 @@ class ProjectCard extends Component {
                   right: "0.75rem",
                 }}
               />
-              <img className="centered-element" src={preview}></img>
+              <div className="vertical-center">
+                <Document
+                  style={{ display: "block", margin: "auto" }}
+                  file={preview}
+                >
+                  <Page pageNumber={1} />
+                </Document>
+              </div>
             </div>
           ) : (
             <div></div>
@@ -106,4 +127,4 @@ class ProjectCard extends Component {
   }
 }
 
-export default ProjectCard;
+export default TemplateOption;

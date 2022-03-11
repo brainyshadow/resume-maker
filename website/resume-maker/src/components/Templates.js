@@ -1,11 +1,10 @@
 import { Component } from "react";
-import TemplateHolder from "../components/TemplateHolder";
-import TemplateOne from "../assets/TemplateOne.jpg";
-import TemplateTwo from "../assets/TemplateTwo.jpg";
+import TemplateOne from "../assets/TemplateOne.pdf";
 import "../App.css";
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
+import TemplateOption from "./TemplateOption";
 
 class Templates extends Component {
   templateSelect(id) {
@@ -45,18 +44,12 @@ class Templates extends Component {
           ></Divider>
 
           <div className="project-container" id="main-area">
-            <TemplateHolder
+            <TemplateOption
               name="Simple Resume 1"
               description="A template that has a personal section on the right and a large section for all your qualifications on the left."
               id="00000001"
               onClick={() => this.templateSelect("00000001")}
               preview={TemplateOne}
-            />
-            <TemplateHolder
-              name="Simple Resume 2"
-              description="A template that has a personal section on the left and a large section for all your qualifications on the right."
-              id="00000002"
-              onClick={() => this.templateSelect("00000002")}
             />
           </div>
         </Paper>

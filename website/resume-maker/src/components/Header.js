@@ -8,7 +8,12 @@ import "../App.css";
 function Header() {
   return (
     <>
-      <Navbar collapseOnSelect expand="xl" bg="dark" variant="dark">
+      <Navbar
+        collapseOnSelect
+        bg="dark"
+        variant="dark"
+        style={{ height: "4rem" }}
+      >
         <Container>
           <Navbar.Brand href="home">Resume Maker</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

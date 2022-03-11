@@ -3,6 +3,8 @@ import { Component } from "react";
 import "../App.css";
 import ResumeForm from "../components/ResumeForm";
 import Templates from "../components/Templates";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 class Generateresume extends Component {
   constructor(props) {
@@ -94,9 +96,10 @@ class Generateresume extends Component {
   }
 
   render() {
-    const qualificationsDone = this.state.qualificationsDone;
+    const qualificationsDone = true;
     return (
       <>
+        <Header />
         <div className="resume-form">
           {qualificationsDone ? (
             <Templates templateSelect={(id) => this.selectTemplate(id)} />
@@ -104,6 +107,7 @@ class Generateresume extends Component {
             <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
           )}
         </div>
+        <Footer />
       </>
     );
   }
