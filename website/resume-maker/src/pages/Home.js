@@ -31,9 +31,13 @@ class Home extends Component {
           </div>
           <div className="right-part">
             <div className="only-vertical-center">
-              <Document file={TemplateOne}>
-                <Page scale={0.6} pageNumber={1} />
-              </Document>
+              <div className="yellow-accent">
+                <div className="vertical-center">
+                  <Document file={TemplateOne}>
+                    <Page scale={0.7} pageNumber={1} />
+                  </Document>
+                </div>
+              </div>
             </div>
           </div>
         </div>

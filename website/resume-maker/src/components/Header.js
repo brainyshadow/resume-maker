@@ -19,11 +19,11 @@ function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link className="spaced-link" href="/home">
-                Home
-              </Nav.Link>
               <Nav.Link className="spaced-link" href="/resume">
                 Generate Resume
+              </Nav.Link>
+              <Nav.Link className="spaced-link" href="/upload">
+                Upload Template
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

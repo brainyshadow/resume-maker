@@ -74,10 +74,10 @@ img {
 
 .form-container {
   margin: 1rem auto 1rem auto;
-  background-color: #dcdcdc;
+  background-color: #e8e8e8;
   padding: 2rem;
   border: 0.075rem solid black;
-  border-radius: 2rem;
+  border-radius: 1rem;
 }
 
 .centered-element {
@@ -88,6 +88,14 @@ img {
   margin: auto;
   width: 80%;
   min-height: 82vh;
+}
+
+.yellow-accent {
+  background-color: #fecf6a;
+  width: 120%;
+  border-radius: 50%;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
 .footer {
@@ -116,7 +124,7 @@ img {
   width: 100%;
 }
 
-.only-vertical-center{
+.only-vertical-center {
   margin: auto 0rem auto 0rem;
 }
 
