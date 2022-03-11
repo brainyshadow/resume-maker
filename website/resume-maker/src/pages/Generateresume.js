@@ -96,7 +96,7 @@ class Generateresume extends Component {
   }
 
   render() {
-    const qualificationsDone = true;
+    const qualificationsDone = this.state.qualificationsDone;
     return (
       <>
         <Header />

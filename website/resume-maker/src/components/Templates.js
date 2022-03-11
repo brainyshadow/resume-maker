@@ -1,5 +1,7 @@
 import { Component } from "react";
 import TemplateOne from "../assets/TemplateOne.pdf";
+import TemplateTwo from "../assets/TemplateTwo.pdf";
+
 import "../App.css";
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
@@ -50,6 +52,13 @@ class Templates extends Component {
               id="00000001"
               onClick={() => this.templateSelect("00000001")}
               preview={TemplateOne}
+            />
+            <TemplateOption
+              name="Simple Resume 2"
+              description="A template that has a personal section on the left and a large section for all your qualifications on the right."
+              id="00000002"
+              onClick={() => this.templateSelect("00000002")}
+              preview={TemplateTwo}
             />
           </div>
         </Paper>

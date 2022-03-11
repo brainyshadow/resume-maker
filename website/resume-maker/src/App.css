@@ -99,14 +99,14 @@ img {
 }
 
 .left-part {
-  width: 75%;
+  width: 60%;
   float: left;
   min-height: 80vh;
   display: flex;
 }
 
 .right-part {
-  width: 25%;
+  width: 40%;
   float: right;
   min-height: 80vh;
   display: flex;
@@ -114,6 +114,10 @@ img {
 
 .resume-template {
   width: 100%;
+}
+
+.only-vertical-center{
+  margin: auto 0rem auto 0rem;
 }
 
 .project-container {

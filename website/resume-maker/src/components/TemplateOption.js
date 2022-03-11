@@ -1,6 +1,4 @@
 import "../App.css";
-import React, { Component } from "react";
-import { Document, Page, pdfjs } from "react-pdf";
 import {
   Card,
   Box,
@@ -13,6 +11,8 @@ import {
 import "../App.css";
 import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
 import { AiOutlineCloseCircle } from "@react-icons/all-files/ai/AiOutlineCloseCircle";
+import React, { Component } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class TemplateOption extends Component {
@@ -72,8 +72,8 @@ class TemplateOption extends Component {
                 onClick={() => this.displayPreview()}
                 style={{
                   position: "absolute",
-                  top: "0.75rem",
-                  right: "0.75rem",
+                  top: "1rem",
+                  right: "1rem",
                 }}
               />
               <div className="vertical-center">
@@ -89,7 +89,7 @@ class TemplateOption extends Component {
             <div></div>
           )}
 
-          <Box sx={{ p: 2, display: "flex", width: "20rem" }}>
+          <Box sx={{ p: 2, display: "flex", width: "20rem", bgcolor: "white" }}>
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
               <div style={{ display: "flex" }}>
@@ -104,15 +104,14 @@ class TemplateOption extends Component {
               </div>
             </Stack>
           </Box>
-          <Divider />
+          <Divider sx={{ width: "90%", margin: "auto" }} />
           <Stack
             direction="row"
             alignItems="center"
             justifyContent="space-between"
-            sx={{ px: 2, py: 1, bgcolor: "#A9A9A9" }}
+            sx={{ px: 2, py: 1 }}
           >
             <div></div>
-
             <Typography color="white" fontWeight={300}>
               <Chip
                 sx={{ backgroundColor: color }}
