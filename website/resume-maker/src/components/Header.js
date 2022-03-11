@@ -12,7 +12,7 @@ function Header() {
         collapseOnSelect
         bg="dark"
         variant="dark"
-        style={{ height: "4rem" }}
+        style={{ height: "4.5rem" }}
       >
         <Container>
           <Navbar.Brand href="home">Resume Maker</Navbar.Brand>

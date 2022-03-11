@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Page Title</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .full-width {
+          margin-top: 1rem;
+        width: 100%;
+        table-layout: fixed;
+      }
+      .third-width {
+        text-align: left;
+        width: 33%;
+      }
+      .two-third-width {
+        text-align: left;
+        width: 66%;
+      }
+      .divider {
+        text-align: left;
+        width: 1%;
+      }
+      .vl {
+        position: absolute;
+        border-left: 2px solid #a9a9a9;
+        height: 75%;
+      }
+      .text-container {
+        margin: 1rem auto 0.2rem auto;
+        width: 85%;
+      }
+      .text-container-no-margin {
+        margin: 0 auto 0 auto;
+        width: 85%;
+      }
+
+      .resume-name {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.5rem;
+      }
+      .resume-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.2rem;
+      }
+      .resume-content {
+        font-family: "Lato", sans-serif;
+        font-size: 1rem;
+        font-weight: 100;
+      }
+      .fixed-third-width {
+        margin: 0;
+        width: 33%;
+        position: absolute;
+      }
+      .sub-content {
+        width: 85%;
+        margin: auto;
+      }
+      #name {
+        text-align: center;
+      }
+      #occupation {
+        text-align: center;
+      }
+      #region {
+        text-align: center;
+      }
+      #email {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-container" style="margin-top: 2rem">
+      <h2 id="name" class="resume-name">NAME</h2>
+      <hr />
+    </div>
+    <div class="text-container">
+      <p id="occupation" class="resume-content">Education/Occupation</p>
+      <p id="region" class="resume-content">City, State/Province</p>
+      <p id="email" class="resume-content">Email</p>
+    </div>
+    <div class="text-container" style="margin-top: 2rem">
+      <h2 class="resume-title">SUMMARY OF QUALIFICATIONS</h2>
+      <hr />
+    </div>
+    <div class="text-container">
+      <p id="qulificationSummary" class="resume-content">
+        This is where a summary of qualifications will go.
+      </p>
+    </div>
+
+    <table class="full-width">
+      <tr>
+        <th class="two-third-width">
+          <div class="text-container">
+            <h2 class="resume-title">WORK EXPERIENCE</h2>
+            <hr />
+          </div>
+        </th>
+        <th class="third-width">
+          <div class="vl"></div>
+          <div class="text-container-no-margin">
+            <h2 class="resume-title">SKILLS</h2>
+            <hr />
+          </div>
+          <div class="fixed-third-width">
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="first-skill-section" class="resume-content">
+                    Skill Section One
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="first-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="first-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            <hr style="width: 85%" />
+
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="second-skill-section" class="resume-content">
+                    Skill Section Two
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="second-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="second-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
+
+            <hr style="width: 85%" />
+
+            <table class="sub-content">
+              <tr>
+                <th>
+                  <p id="third-skill-section" class="resume-content">
+                    Skill Section Three
+                  </p>
+                </th>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p class="resume-content" id="third-skill-one">
+                    First Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-two" class="resume-content">
+                    Second Skills
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-three" class="resume-content">
+                    Third Skills
+                  </p>
+                </td>
+                <td style="width: 50%; text-align: center">
+                  <p id="third-skill-four" class="resume-content">
+                    Fourth Skills
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="jobeOneName" class="resume-content">Job Name</p>
+            <p id="jobOne" class="resume-content">First Job.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="jobeTwoName" class="resume-content">Job Name</p>
+            <p id="jobTwo" class="resume-content">Second Job.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="jobeThreeName" class="resume-content">Job Name</p>
+            <p id="jobThree" class="resume-content">Third Job.</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th class="two-third-width">
+          <div class="text-container">
+            <h2 class="resume-title">INDEPENDENT PROJECTS</h2>
+            <hr />
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="projectOne" class="resume-content">Project one</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="projectTwo" class="resume-content">Project two</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="projectThree" class="resume-content">Project three</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <th class="two-third-width">
+          <div class="text-container">
+            <h2 class="resume-title">HOBBIES AND ACADEMICS</h2>
+            <hr />
+          </div>
+        </th>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="hobbyOne" class="resume-content">Hobby one</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="hobbyTwo" class="resume-content">Hobby two</p>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="two-third-width">
+          <div class="text-container">
+            <p id="hobbyThree" class="resume-content">Hobby three</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
