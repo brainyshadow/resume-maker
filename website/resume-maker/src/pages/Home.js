@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import { Paper } from "@mui/material";
 import { Document, Page, pdfjs } from "react-pdf";
 import TemplateOne from "../assets/TemplateOne.pdf";
+import CompletionBar from "../components/CompletionBar";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -40,17 +41,11 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div className="left-half">
-            <div className="vertical-center">
-           
-            </div>
-          </div>
-          <div className="right-half">
-            <div className="only-vertical-center">
-             
-            </div>
-          </div>
+          
+          <CompletionBar progress={"50%"}/>
+          
         </div>
+
         <Footer />
       </>
     );
