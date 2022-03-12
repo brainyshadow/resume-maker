@@ -120,6 +120,20 @@ img {
   display: flex;
 }
 
+.left-half {
+  width: 50%;
+  float: left;
+  min-height: 80vh;
+  display: flex;
+}
+
+.right-half {
+  width: 50%;
+  float: right;
+  min-height: 80vh;
+  display: flex;
+}
+
 .resume-template {
   width: 100%;
 }

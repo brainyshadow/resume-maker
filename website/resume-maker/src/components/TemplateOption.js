@@ -28,6 +28,7 @@ class TemplateOption extends Component {
       displayPreview: false,
     };
     this.state = initialState;
+    this.escFunction = this.escFunction.bind(this);
   }
 
   state = { numPages: null, pageNumber: 1 };
@@ -44,6 +45,24 @@ class TemplateOption extends Component {
     const displayPreview = this.state.displayPreview;
     this.setState({ displayPreview: !displayPreview });
   }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.escFunction, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escFunction, false);
+  }
+
+  escFunction(event) {
+    const popupIsOpen = this.state.displayPreview;
+    if (event.key === "Escape") {
+      console.log("Here");
+      if (popupIsOpen) {
+        this.setState({ displayPreview: false });
+      }
+    }
+  }
+
   render() {
     const {
       templateName,

@@ -40,6 +40,16 @@ class Home extends Component {
               </div>
             </div>
           </div>
+          <div className="left-half">
+            <div className="vertical-center">
+           
+            </div>
+          </div>
+          <div className="right-half">
+            <div className="only-vertical-center">
+             
+            </div>
+          </div>
         </div>
         <Footer />
       </>
