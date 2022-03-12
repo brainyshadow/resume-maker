@@ -1,12 +1,13 @@
 import { Component } from "react";
-import TemplateOne from "../assets/TemplateOne.pdf";
-import TemplateTwo from "../assets/TemplateTwo.pdf";
-
 import "../App.css";
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 import TemplateOption from "./TemplateOption";
+
+import TemplateOne from "../assets/TemplateOne.pdf";
+import TemplateTwo from "../assets/TemplateTwo.pdf";
+import TemplateThree from "../assets/TemplateThree.pdf";
 
 class Templates extends Component {
   templateSelect(id) {
@@ -59,6 +60,13 @@ class Templates extends Component {
               id="00000002"
               onClick={() => this.templateSelect("00000002")}
               preview={TemplateTwo}
+            />
+            <TemplateOption
+              name="Name Focused Resume"
+              description="A template that focuses attention to your name and has all the qualifications below, neatly orginized."
+              id="00000003"
+              onClick={() => this.templateSelect("00000003")}
+              preview={TemplateThree}
             />
           </div>
         </Paper>

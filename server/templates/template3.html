@@ -22,7 +22,7 @@
         padding: 0;
       }
       .full-width {
-          margin-top: 1rem;
+        margin-top: 1rem;
         width: 100%;
         table-layout: fixed;
       }
@@ -41,7 +41,7 @@
       .vl {
         position: absolute;
         border-left: 2px solid #a9a9a9;
-        height: 75%;
+        height: 100%;
       }
       .text-container {
         margin: 1rem auto 0.2rem auto;
@@ -98,15 +98,6 @@
       <p id="region" class="resume-content">City, State/Province</p>
       <p id="email" class="resume-content">Email</p>
     </div>
-    <div class="text-container" style="margin-top: 2rem">
-      <h2 class="resume-title">SUMMARY OF QUALIFICATIONS</h2>
-      <hr />
-    </div>
-    <div class="text-container">
-      <p id="qulificationSummary" class="resume-content">
-        This is where a summary of qualifications will go.
-      </p>
-    </div>
 
     <table class="full-width">
       <tr>
@@ -118,12 +109,23 @@
         </th>
         <th class="third-width">
           <div class="vl"></div>
-          <div class="text-container-no-margin">
-            <h2 class="resume-title">SKILLS</h2>
+
+          <div class="text-container" style="margin-top: 2rem">
+            <h2 class="resume-title">SUMMARY OF QUALIFICATIONS</h2>
             <hr />
           </div>
+
           <div class="fixed-third-width">
+            <div class="text-container">
+              <p id="qulificationSummary" class="resume-content">
+                This is where a summary of qualifications will go.
+              </p>
+            </div>
             <table class="sub-content">
+              <div class="text-container-no-margin">
+                <h2 class="resume-title">SKILLS</h2>
+                <hr />
+              </div>
               <tr>
                 <th>
                   <p id="first-skill-section" class="resume-content">
