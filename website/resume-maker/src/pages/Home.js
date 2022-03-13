@@ -17,15 +17,15 @@ class Home extends Component {
         <Header />
         <div className="main-container">
           <div className="left-part">
-            <div className="vertical-center">
-              <Typography fontSize={"3rem"} align="center" variant="h1">
+            <div className="only-vertical-center">
+              <Typography fontSize={"3rem"} variant="h1" marginLeft={"8rem"}>
                 Build your resume.
               </Typography>
-              <Typography align="center" variant="body">
+              <Typography variant="body" marginLeft={"8rem"}>
                 Simple. No Acounts. Open Source.
               </Typography>
               <br></br>
-              <Typography align="center" variant="body">
+              <Typography variant="body" marginLeft={"8rem"}>
                 <a href="/resume">Build now.</a>
               </Typography>
             </div>
@@ -41,9 +41,23 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          
-          <CompletionBar progress={"50%"}/>
-          
+        </div>
+        <div style={{ backgroundColor: "#F0F0F0" }}>
+          <div
+            className="main-container"
+            style={{ backgroundColor: "#F0F0F0" }}
+          >
+            <Typography
+              fontSize={"3rem"}
+              variant="h1"
+              marginX={"8rem"}
+              marginY={"2rem"}
+            >
+              How it works.
+            </Typography>
+
+            <CompletionBar progress={"50%"} />
+          </div>
         </div>
 
         <Footer />
