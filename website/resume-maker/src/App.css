@@ -120,6 +120,11 @@ img {
   display: flex;
 }
 
+.how-it-works {
+  position: fixed;
+  width: 80%;
+}
+
 .left-half {
   width: 50%;
   float: left;

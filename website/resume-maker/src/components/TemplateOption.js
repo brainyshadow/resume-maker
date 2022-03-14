@@ -78,7 +78,7 @@ class TemplateOption extends Component {
         <Card
           sx={{
             alignItems: "center",
-            bgcolor: "#F5F5F5",
+            bgcolor: "#E0E0E0",
             overflow: "hidden",
             borderRadius: "12px",
             boxShadow: 1,
@@ -108,7 +108,7 @@ class TemplateOption extends Component {
             <div></div>
           )}
 
-          <Box sx={{ p: 2, display: "flex", width: "20rem", bgcolor: "white" }}>
+          <Box sx={{ p: 2, display: "flex", width: "20rem", bgcolor: "#F5F5F5" }}>
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
               <div style={{ display: "flex" }}>
