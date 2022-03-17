@@ -5,47 +5,20 @@ import { Typography } from "@mui/material";
 import Footer from "../components/Footer";
 import { Paper } from "@mui/material";
 import { Document, Page, pdfjs } from "react-pdf";
-import TemplateOne from "../assets/TemplateOne.pdf";
+import TemplateOne from "../assets/templates/TemplateOne.pdf";
+import Form from "../assets/other/ResumeGeneratorForm.png";
 import CompletionBar from "../components/CompletionBar";
 import { Parallax } from "react-scroll-parallax";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    const progress = 6;
-    this.state = { progress: progress };
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.listenToScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.listenToScroll);
-  }
-
-  listenToScroll = () => {
-    const winScroll =
-      document.body.scrollTop || document.documentElement.scrollTop;
-
-    const height =
-      document.documentElement.scrollHeight -
-      document.documentElement.clientHeight;
-
-    const scrolled = winScroll / height;
-    const percent = scrolled * 100;
-    this.setState({ progress: percent });
-  };
-
   render() {
-    const percent = this.state.progress;
-
     return (
       <>
         <div>
           <Header />
+
           <div className="main-container">
             <div className="left-part">
               <div className="only-vertical-center">
@@ -73,16 +46,31 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div style={{ backgroundColor: "#F0F0F0", height: "300vh" }}>
+          <div style={{ backgroundColor: "#F0F0F0" }}>
             <div
               className="main-container"
               style={{ backgroundColor: "#F0F0F0" }}
             >
-              <div className="how-it-works">
-                <Typography fontSize={"3rem"} variant="h1" marginX={"8rem"}>
-                  How it works.
+              <div style={{ height: "2rem" }}> </div>
+              <Typography
+                fontSize={"3rem"}
+                variant="h1"
+                marginX={"8rem"}
+                marginY="2rem"
+              >
+                How it works.
+              </Typography>
+              <div>
+                <Typography
+                  fontSize={"1rem"}
+                  variant="body"
+                  position="relative"
+                >
+                  Fill out our form. This gives the generator your
+                  qualifications allowing it to create a personalized resume for
+                  you.
                 </Typography>
-                <CompletionBar progress={percent} />
+                <img src={Form} className="center-main-image"></img>
               </div>
             </div>
           </div>

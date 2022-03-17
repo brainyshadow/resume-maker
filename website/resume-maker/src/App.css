@@ -87,7 +87,7 @@ img {
 .main-container {
   margin: auto;
   width: 80%;
-  min-height: 82vh;
+  min-height: 100vh;
 }
 
 .yellow-accent {
@@ -106,23 +106,28 @@ img {
   height: 4.5rem;
 }
 
+.center-main-image {
+  margin: 1rem auto 1rem auto;
+  width: 100%;
+}
+
 .left-part {
   width: 60%;
   float: left;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
 }
 
 .right-part {
   width: 40%;
   float: right;
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
 }
 
 .how-it-works {
-  position: fixed;
   width: 80%;
+  margin: auto;
 }
 
 .left-half {

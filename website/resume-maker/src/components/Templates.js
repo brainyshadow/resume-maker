@@ -5,9 +5,9 @@ import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 import TemplateOption from "./TemplateOption";
 
-import TemplateOne from "../assets/TemplateOne.pdf";
-import TemplateTwo from "../assets/TemplateTwo.pdf";
-import TemplateThree from "../assets/TemplateThree.pdf";
+import TemplateOne from "../assets/templates/TemplateOne.pdf";
+import TemplateTwo from "../assets/templates/TemplateTwo.pdf";
+import TemplateThree from "../assets/templates/TemplateThree.pdf";
 
 class Templates extends Component {
   templateSelect(id) {
