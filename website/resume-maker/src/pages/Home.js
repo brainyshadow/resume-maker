@@ -8,6 +8,7 @@ import { Document, Page, pdfjs } from "react-pdf";
 import TemplateOne from "../assets/templates/TemplateOne.pdf";
 import Form from "../assets/other/ResumeGeneratorForm.png";
 import Select from "../assets/other/SelectTemplate.png";
+import ProgressiveImage from "../components/ProgressiveImage";
 import CompletionBar from "../components/CompletionBar";
 import { Parallax } from "react-scroll-parallax";
 
@@ -73,7 +74,7 @@ class Home extends Component {
                   qualifications allowing it to create a personalized resume for
                   you.
                 </Typography>
-                <img src={Form} className="center-main-image"></img>
+                <ProgressiveImage src={Form} ></ProgressiveImage>
                 <Typography
                   fontSize={"1rem"}
                   variant="body"
@@ -84,7 +85,7 @@ class Home extends Component {
                   resume to look like. From here, we can fill our templates in
                   with the qualifications <b>you</b> gave us.
                 </Typography>
-                <img src={Select} className="center-main-image"></img>
+                <ProgressiveImage src={Select} className="center-main-image"></ProgressiveImage>
               </div>
             </div>
           </div>
