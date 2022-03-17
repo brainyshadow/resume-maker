@@ -5,6 +5,8 @@ import ResumeForm from "../components/ResumeForm";
 import Templates from "../components/Templates";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import CompletionBar from "../components/CompletionBar";
+import { Typography } from "@mui/material";
 
 class Generateresume extends Component {
   constructor(props) {
@@ -96,11 +98,27 @@ class Generateresume extends Component {
   }
 
   render() {
-    const qualificationsDone = this.state.qualificationsDone;
+    const qualificationsDone = true;
+    let message = "Tell us a bit about yourself.";
+    let progress = 0;
+    if (qualificationsDone){
+      progress =50;
+      message = "Select a template."
+    }
+
     return (
       <>
         <Header />
         <div className="resume-form">
+          <Typography
+            fontSize={"3rem"}
+            variant="h1"
+            align="center"
+            marginY="2rem"
+          >
+          {message}
+          </Typography>
+          <CompletionBar progress={progress} />
           {qualificationsDone ? (
             <Templates templateSelect={(id) => this.selectTemplate(id)} />
           ) : (

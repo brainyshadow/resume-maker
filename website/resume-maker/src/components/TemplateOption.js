@@ -117,7 +117,7 @@ class TemplateOption extends Component {
                     {description}
                   </Typography>
                 </div>
-                <div onClick={() => this.displayPreview()}>
+                <div onClick={() => this.displayPreview()} style={{ width: "5%" }}>
                   <AiOutlinePaperClip style={{ width: "200%" }} />
                 </div>
               </div>
