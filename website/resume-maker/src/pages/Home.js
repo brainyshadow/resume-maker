@@ -7,6 +7,7 @@ import { Paper } from "@mui/material";
 import { Document, Page, pdfjs } from "react-pdf";
 import TemplateOne from "../assets/templates/TemplateOne.pdf";
 import Form from "../assets/other/ResumeGeneratorForm.png";
+import Select from "../assets/other/SelectTemplate.png";
 import CompletionBar from "../components/CompletionBar";
 import { Parallax } from "react-scroll-parallax";
 
@@ -65,12 +66,25 @@ class Home extends Component {
                   fontSize={"1rem"}
                   variant="body"
                   position="relative"
+                  marginY={"1rem"}
+
                 >
                   Fill out our form. This gives the generator your
                   qualifications allowing it to create a personalized resume for
                   you.
                 </Typography>
                 <img src={Form} className="center-main-image"></img>
+                <Typography
+                  fontSize={"1rem"}
+                  variant="body"
+                  position="relative"
+                  marginY={"1rem"}
+                >
+                  Select a template. This tells us what you want your custom
+                  resume to look like. From here, we can fill our templates in
+                  with the qualifications <b>you</b> gave us.
+                </Typography>
+                <img src={Select} className="center-main-image"></img>
               </div>
             </div>
           </div>

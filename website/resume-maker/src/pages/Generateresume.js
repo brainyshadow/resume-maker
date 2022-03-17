@@ -98,27 +98,31 @@ class Generateresume extends Component {
   }
 
   render() {
-    const qualificationsDone = true;
+    const qualificationsDone = this.state.qualificationsDone;
     let message = "Tell us a bit about yourself.";
     let progress = 0;
-    if (qualificationsDone){
-      progress =50;
-      message = "Select a template."
+    if (qualificationsDone) {
+      progress = 50;
+      message = "Select a template.";
     }
 
     return (
       <>
         <Header />
-        <div className="resume-form">
-          <Typography
-            fontSize={"3rem"}
-            variant="h1"
-            align="center"
-            marginY="2rem"
-          >
+
+        <Typography
+          fontSize={"3rem"}
+          variant="h1"
+          align="center"
+          marginY="2rem"
+        >
           {message}
-          </Typography>
-          <CompletionBar progress={progress} />
+        </Typography>
+        <div className="resume-form" style={{height: "auto"}}>
+
+        <CompletionBar progress={progress} />
+        </div>
+        <div className="resume-form">
           {qualificationsDone ? (
             <Templates templateSelect={(id) => this.selectTemplate(id)} />
           ) : (
