@@ -53,6 +53,7 @@ class Templates extends Component {
               id="00000001"
               onClick={() => this.templateSelect("00000001")}
               preview={TemplateOne}
+              downloads={10}
             />
             <TemplateOption
               name="Simple Resume 2"
@@ -60,6 +61,7 @@ class Templates extends Component {
               id="00000002"
               onClick={() => this.templateSelect("00000002")}
               preview={TemplateTwo}
+              downloads={10}
             />
             <TemplateOption
               name="Name Focused Resume"
@@ -67,6 +69,7 @@ class Templates extends Component {
               id="00000003"
               onClick={() => this.templateSelect("00000003")}
               preview={TemplateThree}
+              downloads={10}
             />
           </div>
         </Paper>

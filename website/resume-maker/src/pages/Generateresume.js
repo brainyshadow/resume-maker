@@ -109,7 +109,6 @@ class Generateresume extends Component {
     return (
       <>
         <Header />
-
         <Typography
           fontSize={"3rem"}
           variant="h1"
@@ -118,9 +117,8 @@ class Generateresume extends Component {
         >
           {message}
         </Typography>
-        <div className="resume-form" style={{height: "auto"}}>
-
-        <CompletionBar progress={progress} />
+        <div className="resume-form" style={{ height: "auto" }}>
+          <CompletionBar progress={progress} />
         </div>
         <div className="resume-form">
           {qualificationsDone ? (

@@ -11,6 +11,7 @@ import {
 import "../App.css";
 import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
 import { AiOutlineCloseCircle } from "@react-icons/all-files/ai/AiOutlineCloseCircle";
+import { AiOutlineCloudDownload } from "@react-icons/all-files/ai/AiOutlineCloudDownload";
 import React, { Component } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -25,6 +26,7 @@ class TemplateOption extends Component {
       description: props.description,
       preview: props.preview,
       id: props.id,
+      downloads: props.downloads,
       displayPreview: false,
     };
     this.state = initialState;
@@ -71,6 +73,7 @@ class TemplateOption extends Component {
       preview,
       id,
       displayPreview,
+      downloads,
     } = this.state;
     let color = "#6495ED";
     return (
@@ -108,7 +111,9 @@ class TemplateOption extends Component {
             <div></div>
           )}
 
-          <Box sx={{ p: 2, display: "flex", width: "20rem", bgcolor: "#F5F5F5" }}>
+          <Box
+            sx={{ p: 2, display: "flex",width: "17rem", bgcolor: "#F5F5F5" }}
+          >
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
               <div style={{ display: "flex" }}>
@@ -117,7 +122,10 @@ class TemplateOption extends Component {
                     {description}
                   </Typography>
                 </div>
-                <div onClick={() => this.displayPreview()} style={{ width: "5%" }}>
+                <div
+                  onClick={() => this.displayPreview()}
+                  style={{ width: "5%" }}
+                >
                   <AiOutlinePaperClip style={{ width: "200%" }} />
                 </div>
               </div>
@@ -130,8 +138,17 @@ class TemplateOption extends Component {
             justifyContent="space-between"
             sx={{ px: 2, py: 1 }}
           >
-            <div></div>
-            <Typography color="white" fontWeight={300}>
+            <Typography color="white" fontWeight={300} align="left">
+              <Chip
+                sx={{ backgroundColor: color }}
+                label={
+                  <>
+                    <AiOutlineCloudDownload /> {downloads}
+                  </>
+                }
+              />
+            </Typography>
+            <Typography color="white" fontWeight={300} align="right">
               <Chip
                 sx={{ backgroundColor: color }}
                 label={"Select Template"}
