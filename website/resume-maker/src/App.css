@@ -87,12 +87,12 @@ img {
 .main-container {
   margin: auto;
   width: 80%;
-  min-height: 100vh;
+  min-height: 92vh;
 }
 
 .yellow-accent {
   background-color: #fecf6a;
-  width: 100%;
+  width: 101%;
   border-radius: 50%;
   padding-left: 5%;
   padding-right: 5%;
