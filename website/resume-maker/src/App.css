@@ -84,10 +84,16 @@ img {
   margin: auto;
 }
 
-.main-container {
-  margin: auto;
+.main-container-min-height {
+  margin: auto 0rem auto 0rem;
   width: 80%;
   min-height: 92vh;
+}
+
+.main-container {
+  margin: auto 0rem auto 0rem;
+  width: 80%;
+  min-height: 57vh;
 }
 
 .yellow-accent {
@@ -123,6 +129,20 @@ img {
   float: right;
   min-height: 100vh;
   display: flex;
+}
+
+.small-left-part {
+  width: 45%;
+  float: left;
+  display: flex;
+  min-height: 50vh;
+}
+
+.large-right-part {
+  width: 55%;
+  float: right;
+  display: flex;
+  min-height: 50vh;
 }
 
 .how-it-works {
