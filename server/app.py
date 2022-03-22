@@ -26,4 +26,10 @@ def downloadFile():
     path = "./Resume.pdf"
     return send_file(path, as_attachment=True)
 
+@app.route('/uploadtemplate', methods=['POST'])
+@cross_origin()
+def uploadTemplate():
+    content = request.data
+    
+
 app.run()

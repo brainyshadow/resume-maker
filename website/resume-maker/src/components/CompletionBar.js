@@ -1,4 +1,5 @@
 import "../App.css";
+import "./CompletionBar.css";
 
 function CompletionBar(props) {
   const progress = props.progress.toString() + "%";

@@ -8,7 +8,7 @@ import {
   Divider,
   Chip,
 } from "@mui/material";
-import "../App.css";
+import "./TemplateOption.css";
 import { AiOutlinePaperClip } from "@react-icons/all-files/ai/AiOutlinePaperClip";
 import { AiOutlineCloseCircle } from "@react-icons/all-files/ai/AiOutlineCloseCircle";
 import { AiOutlineCloudDownload } from "@react-icons/all-files/ai/AiOutlineCloudDownload";
@@ -112,7 +112,7 @@ class TemplateOption extends Component {
           )}
 
           <Box
-            sx={{ p: 2, display: "flex",width: "17rem", bgcolor: "#F5F5F5" }}
+            sx={{ p: 2, display: "flex", width: "17rem", bgcolor: "#F5F5F5" }}
           >
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>

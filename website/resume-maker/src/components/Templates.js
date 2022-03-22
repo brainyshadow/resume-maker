@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "../App.css";
+import "./Templates.css";
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
