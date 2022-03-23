@@ -1,4 +1,3 @@
-import "../App.css";
 import "./CompletionBar.css";
 
 function CompletionBar(props) {

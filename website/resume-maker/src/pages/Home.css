@@ -1,0 +1,55 @@
+.main-container-min-height {
+  margin: auto 0rem auto 0rem;
+  width: 80%;
+  min-height: 92vh;
+}
+
+.left-part {
+  width: 60%;
+  float: left;
+  min-height: 100vh;
+  display: flex;
+}
+
+.right-part {
+  width: 40%;
+  float: right;
+  min-height: 100vh;
+  display: flex;
+}
+
+.small-left-part {
+  width: 45%;
+  float: left;
+  display: flex;
+  min-height: 50vh;
+}
+
+.large-right-part {
+  width: 55%;
+  float: right;
+  display: flex;
+  min-height: 50vh;
+}
+
+.vertical-center {
+  margin: auto;
+}
+
+.only-vertical-center{
+    margin: auto 0rem auto 0rem;
+}
+
+.yellow-accent {
+  background-color: #fecf6a;
+  width: 101%;
+  border-radius: 50%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.main-container {
+    margin: auto 0rem auto 0rem;
+    width: 80%;
+    min-height: 57vh;
+  }

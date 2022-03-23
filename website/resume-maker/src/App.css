@@ -60,90 +60,13 @@ img {
   margin: 1rem auto 1rem auto;
 }
 
-.template-preview {
-  position: absolute;
-  top: 0.5rem;
-  z-index: 1;
-  background-color: white;
-  width: 50%;
-  left: 25%;
-  display: flex;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 1rem;
-}
-
-.form-container {
-  margin: 1rem auto 1rem auto;
-  background-color: #e8e8e8;
-
-  padding: 2rem;
-  border: 0.075rem solid black;
-  border-radius: 1rem;
-}
-
 .centered-element {
   margin: auto;
-}
-
-.main-container-min-height {
-  margin: auto 0rem auto 0rem;
-  width: 80%;
-  min-height: 92vh;
-}
-
-.main-container {
-  margin: auto 0rem auto 0rem;
-  width: 80%;
-  min-height: 57vh;
-}
-
-.yellow-accent {
-  background-color: #fecf6a;
-  width: 101%;
-  border-radius: 50%;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.footer {
-  text-align: center;
-  background-color: #212529;
-  text-align: center;
-  display: flex;
-  height: 4.5rem;
 }
 
 .center-main-image {
   margin: 1rem auto 1rem auto;
   width: 100%;
-}
-
-.left-part {
-  width: 60%;
-  float: left;
-  min-height: 100vh;
-  display: flex;
-}
-
-.right-part {
-  width: 40%;
-  float: right;
-  min-height: 100vh;
-  display: flex;
-}
-
-.small-left-part {
-  width: 45%;
-  float: left;
-  display: flex;
-  min-height: 50vh;
-}
-
-.large-right-part {
-  width: 55%;
-  float: right;
-  display: flex;
-  min-height: 50vh;
 }
 
 .how-it-works {
@@ -169,58 +92,9 @@ img {
   width: 100%;
 }
 
-.only-vertical-center {
-  margin: auto 0rem auto 0rem;
-}
-
-.project-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  margin: 1rem 1rem 1rem 1rem;
-}
-
 .content-container {
   width: 75%;
   margin: auto;
-}
-
-.vertical-center {
-  margin: auto;
-}
-
-.content-container-center {
-  display: flex;
-  width: 80%;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-}
-
-.progress-base {
-  height: 1rem;
-  width: 90%;
-  background-color: #dcdcdc;
-  margin: auto;
-  display: flex;
-  border-radius: 2rem;
-}
-
-.progress-status {
-  background-color: #6a99fe;
-  height: 1rem;
-  border-radius: 2rem;
-  z-index: 1;
 }
 
 @keyframes App-logo-spin {

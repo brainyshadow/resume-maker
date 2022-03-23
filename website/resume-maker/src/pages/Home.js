@@ -3,15 +3,12 @@ import { Component } from "react";
 import Header from "../components/Header";
 import { Typography } from "@mui/material";
 import Footer from "../components/Footer";
-import { Paper } from "@mui/material";
 import { Document, Page, pdfjs } from "react-pdf";
 import TemplateOne from "../assets/templates/TemplateOne.pdf";
 import Form from "../assets/other/ResumeGeneratorForm.png";
 import Select from "../assets/other/SelectTemplate.png";
 import ProgressiveImage from "../components/ProgressiveImage";
-import CompletionBar from "../components/CompletionBar";
-import { Parallax } from "react-scroll-parallax";
-
+import "./Home.css";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 class Home extends Component {

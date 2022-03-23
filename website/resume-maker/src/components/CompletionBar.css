@@ -1,0 +1,15 @@
+.progress-base {
+  height: 1rem;
+  width: 90%;
+  background-color: #dcdcdc;
+  margin: auto;
+  display: flex;
+  border-radius: 2rem;
+}
+
+.progress-status {
+  background-color: #6a99fe;
+  height: 1rem;
+  border-radius: 2rem;
+  z-index: 1;
+}
