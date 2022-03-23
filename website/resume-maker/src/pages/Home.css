@@ -36,8 +36,8 @@
   margin: auto;
 }
 
-.only-vertical-center{
-    margin: auto 0rem auto 0rem;
+.only-vertical-center {
+  margin: auto 0rem auto 0rem;
 }
 
 .yellow-accent {
@@ -49,7 +49,7 @@
 }
 
 .main-container {
-    margin: auto 0rem auto 0rem;
-    width: 80%;
-    min-height: 57vh;
-  }
+  margin: auto 0rem auto 0rem;
+  width: 80%;
+  min-height: 65vh;
+}
