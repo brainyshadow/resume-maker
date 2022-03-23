@@ -2,8 +2,8 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { Navbar, NavDropdown, Nav, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import "../App.css";
+import { GoMarkGithub } from "react-icons/go";
+import "./Header.css";
 
 function Header() {
   return (
@@ -24,6 +24,11 @@ function Header() {
               </Nav.Link>
               <Nav.Link className="spaced-link" href="/upload">
                 Upload Template
+              </Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link href="https://github.com/BrainyShadow/resume-maker">
+                <GoMarkGithub className="nav-logo" />
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
