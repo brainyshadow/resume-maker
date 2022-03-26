@@ -23,8 +23,8 @@ function validateHTML(htmlString) {
 class Upload extends Component {
   constructor() {
     super();
-    const validHTML = false;
-    this.state = { validHTML: validHTML };
+    const invalidHTML = true;
+    this.state = { invalidHTML: invalidHTML };
   }
 
   async handleSubmit(e) {
@@ -44,17 +44,18 @@ class Upload extends Component {
 
   checkHTML(e) {
     let html = e.target.value;
-    let validHTML = false;
+    let invalidHTML = false;
     if (validateHTML(html)) {
-      validHTML = true;
+      invalidHTML = true;
     } else {
-      validHTML = false;
+      invalidHTML = false;
     }
-    this.setState({ validHTML: validHTML });
+    this.setState({ invalidHTML: invalidHTML });
   }
 
   render() {
-    const validHTML = this.state.validHTML;
+    const validHTML = this.state.invalidHTML;
+
     return (
       <>
         <Header />
@@ -87,12 +88,26 @@ class Upload extends Component {
                   placeholder="HTML"
                   onChange={(e) => this.checkHTML(e)}
                   isInvalid={validHTML}
-                  feedback={"Please enter valid HTML"}
                 />
+                {validHTML ? (
+                  <Form.Control.Feedback type="invalid">
+                    Please enter valid HTML.
+                  </Form.Control.Feedback>
+                ) : (
+                  <div></div>
+                )}
               </Form.Group>
-              <Button type="submit" style={{ marginBottom: "1rem" }}>
-                Submit
-              </Button>
+              {validHTML ? (
+                <fieldset disabled>
+                  <Button type="submit" style={{ marginBottom: "1rem" }}>
+                    Submit
+                  </Button>
+                </fieldset>
+              ) : (
+                <Button type="submit" style={{ marginBottom: "1rem" }}>
+                  Submit
+                </Button>
+              )}
             </Form>
           </div>
         </div>
