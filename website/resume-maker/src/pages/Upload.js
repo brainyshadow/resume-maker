@@ -6,11 +6,30 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UploadTemplate from "../client/UploadTemplate";
+const parser = new DOMParser();
+
+function validateHTML(htmlString) {
+  let parser = new DOMParser();
+  let doc = parser.parseFromString(htmlString, "application/xml");
+  let errorNode = doc.querySelector("parsererror");
+
+  if (errorNode) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 class Upload extends Component {
+  constructor() {
+    super();
+    const validHTML = false;
+    this.state = { validHTML: validHTML };
+  }
+
   async handleSubmit(e) {
-    console.log("here");
-    e.preventDefault();
+    e.prevenDefault();
+    console.log("Submitting Form");
     let userInput = e.target.elements;
 
     var data = {
@@ -23,7 +42,19 @@ class Upload extends Component {
     await UploadTemplate(data);
   }
 
+  checkHTML(e) {
+    let html = e.target.value;
+    let validHTML = false;
+    if (validateHTML(html)) {
+      validHTML = true;
+    } else {
+      validHTML = false;
+    }
+    this.setState({ validHTML: validHTML });
+  }
+
   render() {
+    const validHTML = this.state.validHTML;
     return (
       <>
         <Header />
@@ -54,6 +85,9 @@ class Upload extends Component {
                   as="textarea"
                   rows={15}
                   placeholder="HTML"
+                  onChange={(e) => this.checkHTML(e)}
+                  isInvalid={validHTML}
+                  feedback={"Please enter valid HTML"}
                 />
               </Form.Group>
               <Button type="submit" style={{ marginBottom: "1rem" }}>
