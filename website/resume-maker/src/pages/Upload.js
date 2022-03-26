@@ -5,9 +5,11 @@ import "./Upload.css";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UploadTemplate from "../client/UploadTemplate";
 
 class Upload extends Component {
   async handleSubmit(e) {
+    console.log("here");
     e.preventDefault();
     let userInput = e.target.elements;
 
@@ -15,8 +17,10 @@ class Upload extends Component {
       TemplateName: userInput.templateName.value,
       TemplateDescription: userInput.templateDescription.value,
       Email: userInput.email.value,
-      Html: userInput.html.value,
+      HTML: userInput.html.value,
     };
+
+    await UploadTemplate(data);
   }
 
   render() {

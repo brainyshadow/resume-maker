@@ -5,7 +5,6 @@ import asyncio
 from sqlalchemy import false, true
 from resume import generateResume
 
-
 app = Flask(__name__)
 cors = CORS(app)
 app.config['Access-Control-Allow-Origin'] = 'http://localhost:3000'
@@ -29,7 +28,10 @@ def downloadFile():
 @app.route('/uploadtemplate', methods=['POST'])
 @cross_origin()
 def uploadTemplate():
+    print("TEST")
     content = request.data
-    
+    print(content)
+    return "", 200
+   
 
 app.run()
