@@ -11,14 +11,15 @@
   top: 0.5rem;
   z-index: 1;
   background-color: white;
-  width: 50%;
-  left: 25%;
+  width: auto;
+  padding: 2rem;
+  right: 50%;
+  transform: translateX(50%);
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
-
 .only-vertical-center {
-    margin: auto 0rem auto 0rem;
-  }
+  margin: auto 0rem auto 0rem;
+}

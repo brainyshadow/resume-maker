@@ -77,7 +77,7 @@ class Upload extends Component {
               Upload a template
             </Typography>
             <Typography align="center" margin={"auto"}>
-              Give others the opportunity to user your template.
+              Give others the opportunity to use your template.
             </Typography>
           </div>
           <div className="form-container">
