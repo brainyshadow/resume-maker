@@ -6,6 +6,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UploadTemplate from "../client/UploadTemplate";
+import { Typography } from "@mui/material";
 const parser = new DOMParser();
 
 function validateHTML(html) {
@@ -66,6 +67,19 @@ class Upload extends Component {
       <>
         <Header />
         <div style={{ alignItems: "center" }}>
+          <div className="form-width">
+            <Typography
+              fontSize={"3rem"}
+              variant="h1"
+              align="center"
+              marginY="2rem"
+            >
+              Upload a template
+            </Typography>
+            <Typography align="center" margin={"auto"}>
+              Give others the opportunity to user your template.
+            </Typography>
+          </div>
           <div className="form-container">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group className="mb-3" controlId="templateName">

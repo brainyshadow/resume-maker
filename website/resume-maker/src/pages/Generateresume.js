@@ -99,13 +99,14 @@ class Generateresume extends Component {
         <div className="resume-form" style={{ height: "auto" }}>
           <CompletionBar progress={progress} />
         </div>
-        <div className="resume-form">
-          {qualificationsDone ? (
+
+        {qualificationsDone ? (
+          <div className="template-display">
             <Templates templateSelect={(id) => this.selectTemplate(id)} />
-          ) : (
-            <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
-          )}
-        </div>
+          </div>
+        ) : (
+          <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
+        )}
         <Footer />
       </>
     );
