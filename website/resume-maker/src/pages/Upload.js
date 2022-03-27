@@ -8,12 +8,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import UploadTemplate from "../client/UploadTemplate";
 const parser = new DOMParser();
 
-function validateHTML(htmlString) {
-  let parser = new DOMParser();
-  let doc = parser.parseFromString(htmlString, "application/xml");
-  let errorNode = doc.querySelector("parsererror");
-
-  if (errorNode) {
+function validateHTML(html) {
+  let checkedHTML = html;
+  if (checkedHTML.includes("&")) {
+    checkedHTML = checkedHTML.replaceAll("&", "&amp;");
+  }
+  if (checkedHTML.includes("crossorigin")) {
+    checkedHTML = checkedHTML.replaceAll("crossorigin", "");
+  }
+  console.log(checkedHTML);
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(checkedHTML, "text/xml");
+  if (doc.documentElement.querySelector("parsererror")) {
     return true;
   } else {
     return false;
