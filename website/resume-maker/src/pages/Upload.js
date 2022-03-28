@@ -17,7 +17,6 @@ function validateHTML(html) {
   if (checkedHTML.includes("crossorigin")) {
     checkedHTML = checkedHTML.replaceAll("crossorigin", "");
   }
-  console.log(checkedHTML);
   const parser = new DOMParser();
   const doc = parser.parseFromString(checkedHTML, "text/xml");
   if (doc.documentElement.querySelector("parsererror")) {
@@ -36,7 +35,6 @@ class Upload extends Component {
 
   async handleSubmit(e) {
     e.prevenDefault();
-    console.log("Submitting Form");
     let userInput = e.target.elements;
 
     var data = {

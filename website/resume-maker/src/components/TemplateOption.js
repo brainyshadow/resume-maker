@@ -58,7 +58,6 @@ class TemplateOption extends Component {
   escFunction(event) {
     const popupIsOpen = this.state.displayPreview;
     if (event.key === "Escape") {
-      console.log("Here");
       if (popupIsOpen) {
         this.setState({ displayPreview: false });
       }
@@ -68,10 +67,10 @@ class TemplateOption extends Component {
   render() {
     const {
       templateName,
-      complexity,
+      
       description,
       preview,
-      id,
+  
       displayPreview,
       downloads,
     } = this.state;
