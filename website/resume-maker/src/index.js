@@ -3,15 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import keys from "./keys.json";
 import {
   GoogleReCaptchaProvider,
   GoogleReCaptcha,
 } from "react-google-recaptcha-v3";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <GoogleReCaptchaProvider reCaptchaKey={keys.recaptcha}>
     <App />
-  </React.StrictMode>,
+  </GoogleReCaptchaProvider>,
   document.getElementById("root")
 );
 
