@@ -10,6 +10,7 @@ import json
 # Open the HTML in which you want to make changes
 async def generateResume(passedJson):
 
+    #Parse the json data sent by the client.
     jsonData = json.loads(passedJson)
 
     # Remove the last segment of the path
