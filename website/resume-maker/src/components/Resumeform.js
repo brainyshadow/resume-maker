@@ -5,6 +5,64 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./ResumeForm.css";
 
 class ResumeForm extends Component {
+  constructor() {
+    super();
+
+    const currentOccupation = JSON.parse(localStorage.getItem("occupation"));
+    const region = JSON.parse(localStorage.getItem("region"));
+    const email = JSON.parse(localStorage.getItem("email"));
+    const skillSectionOne = JSON.parse(localStorage.getItem("skillSectionOne"));
+    const firstSkillOne = JSON.parse(localStorage.getItem("firstSkillOne"));
+    const secondSkillOne = JSON.parse(localStorage.getItem("secondSkillOne"));
+    const thirdSkillOne = JSON.parse(localStorage.getItem("thirdSkillOne"));
+    const fourthSkillOne = JSON.parse(localStorage.getItem("fourthSkillOne"));
+    const skillSectionTwo = JSON.parse(localStorage.getItem("skillSectionTwo"));
+    const firstSkillTwo = JSON.parse(localStorage.getItem("firstSkillTwo"));
+    const secondSkillTwo = JSON.parse(localStorage.getItem("secondSkillTwo"));
+    const thirdSkillTwo = JSON.parse(localStorage.getItem("thirdSkillTwo"));
+    const fourthSkillTwo = JSON.parse(localStorage.getItem("fourthSkillTwo"));
+    const skillSectionThree = JSON.parse(
+      localStorage.getItem("skillSectionThree")
+    );
+    const firstSkillThree = JSON.parse(localStorage.getItem("firstSkillThree"));
+    const secondSkillThree = JSON.parse(
+      localStorage.getItem("secondSkillThree")
+    );
+    const thirdSkillThree = JSON.parse(localStorage.getItem("thirdSkillThree"));
+    const fourthSkillThree = JSON.parse(
+      localStorage.getItem("fourthSkillThree")
+    );
+    const jobOneName = JSON.parse(localStorage.getItem("jobOneName"));
+    const jobOneDescription = JSON.parse(
+      localStorage.getItem("jobOneDescription")
+    );
+    const jobTwoName = JSON.parse(localStorage.getItem("jobTwoName"));
+    const jobTwoDescripton = JSON.parse(
+      localStorage.getItem("jobTwoDescription")
+    );
+    const jobThreeName = JSON.parse(localStorage.getItem("jobThreeName"));
+    const jobThreeDescription = JSON.parse(
+      localStorage.getItem("jobThreeDescription")
+    );
+    const hobbyOne = JSON.parse(localStorage.getItem("hobbyOneName"));
+    const hobbyTwo = JSON.parse(localStorage.getItem("hobbyTwoName"));
+    const hobbyThree = JSON.parse(localStorage.getItem("hobbyThreeName"));
+    const projectOne = JSON.parse(localStorage.getItem("projectOneName"));
+    const projectTwo = JSON.parse(localStorage.getItem("projectTwoName"));
+    const projectThree = JSON.parse(localStorage.getItem("projectTwoName"));
+    //this.state = { test: projectOne, project: projectThree };
+  }
+
+  valueChange(e) {
+    console.log(e.target.value);
+
+    //console.log(values);
+    //values[e.target.id] = e.target.value;
+    /*localStorage.setItem("resumeFormValues", JSON.stringify(values));
+    this.setState(values);
+    console.log(values);*/
+  }
+
   render() {
     return (
       <>
@@ -12,7 +70,11 @@ class ResumeForm extends Component {
           <Form onSubmit={this.props.onSubmit}>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name:</Form.Label>
-              <Form.Control required={true} placeholder="Name" />
+              <Form.Control
+                required={true}
+                placeholder="Name"
+                onChange={(e) => this.valueChange(e)}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="qualifications">
               <Form.Label>Summary of Qualifications:</Form.Label>
