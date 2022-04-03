@@ -10,7 +10,12 @@ import {
 } from "react-google-recaptcha-v3";
 
 ReactDOM.render(
-  <GoogleReCaptchaProvider reCaptchaKey={keys.recaptcha}>
+  <GoogleReCaptchaProvider
+    useRecaptchaNet
+    reCaptchaKey={keys.recaptcha}
+    useEnterprise={true}
+    scriptProps={{ async: true, defer: true, appendTo: "body" }}
+  >
     <App />
   </GoogleReCaptchaProvider>,
   document.getElementById("root")

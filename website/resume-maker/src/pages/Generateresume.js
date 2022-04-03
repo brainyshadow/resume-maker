@@ -63,6 +63,7 @@ class Generateresume extends Component {
       projectOne: userInput.projectOneName.value,
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
+      reCAPTCHAkey: "TestValue"
     };
     this.setState({ qualificationsDone: true });
     this.attributes = data;

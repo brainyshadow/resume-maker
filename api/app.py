@@ -17,19 +17,29 @@ async def makeResume(argument):
     await generateResume(argument)
     return 1
 
-#route for generating a resume
+# route for generating a resume
+
+
 @app.route('/download', methods=['POST'])
 @cross_origin()
 def downloadFile():
     content = request.data
-    asyncio.set_event_loop(asyncio.new_event_loop())     #the resume function is async and must be waited for   
-    loop = asyncio.get_event_loop()                        
-    loop.run_until_complete(makeResume(content))        
-    loop.stop()
-    path = "./Resume.pdf"
-    return send_file(path, as_attachment=True)
+    jsonContent = json.loads(content)
+    reCAPTCHAkey = jsonContent["reCAPTCHAkey"]
+    print(reCAPTCHAkey)
+    if(True):  # Verify Token
+        # the resume function is async and must be waited for
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        loop = asyncio.get_event_loop()
+        loop.run_until_complete(makeResume(content))
+        loop.stop()
+        path = "./Resume.pdf"
+        return send_file(path, as_attachment=True)
+        # route for adding custom template
+    else:
+        return "Incorrect Token", 401
 
-#route for adding custom template
+
 @app.route('/uploadtemplate', methods=['POST'])
 @cross_origin()
 def uploadTemplate():
