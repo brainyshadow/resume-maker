@@ -44,7 +44,7 @@ class Upload extends Component {
       HTML: userInput.html.value,
     };
 
-    await UploadTemplate(data);
+    UploadTemplate(data);
   }
 
   checkHTML(e) {
@@ -79,7 +79,7 @@ class Upload extends Component {
             </Typography>
           </div>
           <div className="form-container">
-            <Form onSubmit={this.handleSubmit}>
+            <Form onSubmit={(e) => this.handleSubmit(e)}>
               <Form.Group className="mb-3" controlId="templateName">
                 <Form.Label>Template Name:</Form.Label>
                 <Form.Control required={true} placeholder="Name" />

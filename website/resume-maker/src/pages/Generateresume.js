@@ -33,7 +33,7 @@ class Generateresume extends Component {
     var data = {
       name: userInput.name.value,
       qualifications: userInput.qualifications.value,
-      currentOccupation: userInput.occupation.value,
+      currentOccupation: userInput.currentOccupation.value,
       region: userInput.region.value,
       email: userInput.email.value,
       skillSectionOne: userInput.skillSectionOne.value,
@@ -54,7 +54,7 @@ class Generateresume extends Component {
       jobOneName: userInput.jobOneName.value,
       jobOneDescription: userInput.jobOneDescription.value,
       jobTwoName: userInput.jobTwoName.value,
-      jobTwoDescripton: userInput.jobTwoDescription.value,
+      jobTwoDescription: userInput.jobTwoDescription.value,
       jobThreeName: userInput.jobThreeName.value,
       jobThreeDescription: userInput.jobThreeDescription.value,
       hobbyOne: userInput.hobbyOneName.value,
@@ -99,7 +99,6 @@ class Generateresume extends Component {
         <div className="resume-form" style={{ height: "auto" }}>
           <CompletionBar progress={progress} />
         </div>
-
         {qualificationsDone ? (
           <div className="template-display">
             <Templates templateSelect={(id) => this.selectTemplate(id)} />

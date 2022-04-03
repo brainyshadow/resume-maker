@@ -10,7 +10,7 @@ import json
 # Open the HTML in which you want to make changes
 async def generateResume(passedJson):
 
-    #Parse the json data sent by the client.
+    # Parse the json data sent by the client.
     jsonData = json.loads(passedJson)
 
     # Remove the last segment of the path
@@ -54,7 +54,7 @@ async def generateResume(passedJson):
     jobOneName = jsonData["jobOneName"]
     jobOneDescription = jsonData["jobOneDescription"]
     jobTwoName = jsonData["jobTwoName"]
-    jobTwoDescripton = jsonData["jobTwoDescripton"]
+    jobTwoDescription = jsonData["jobTwoDescription"]
     jobThreeName = jsonData["jobThreeName"]
     jobThreeDescription = jsonData["jobThreeDescription"]
     hobbyOne = jsonData["hobbyOne"]
@@ -81,146 +81,146 @@ async def generateResume(passedJson):
     new_text = old_text.find(text=re.compile(
         'Education/Occupation')).replace_with(currentOccupation)
 
-    #Replace Region
+    # Replace Region
     old_text = soup.find("p", {"id": "region"})
     new_text = old_text.find(
         text=re.compile('City, State/Province')).replace_with(region)
 
-    #Replace Email
+    # Replace Email
     old_text = soup.find("p", {"id": "email"})
     new_text = old_text.find(text=re.compile('Email')).replace_with(email)
 
-    #Replace first skill
+    # Replace first skill
     old_text = soup.find("p", {"id": "first-skill-section"})
     new_text = old_text.find(
         text=re.compile('Skill Section One')).replace_with(skillSectionOne)
 
-    #Replace second skill
+    # Replace second skill
     old_text = soup.find("p", {"id": "second-skill-section"})
     new_text = old_text.find(
         text=re.compile('Skill Section Two')).replace_with(skillSectionTwo)
 
-    #Replace third skill section
+    # Replace third skill section
     old_text = soup.find("p", {"id": "third-skill-section"})
     new_text = old_text.find(
         text=re.compile('Skill Section Three')).replace_with(skillSectionThree)
 
-    #Replace first skill
+    # Replace first skill
     old_text = soup.find("p", {"id": "first-skill-one"})
     new_text = old_text.find(
         text=re.compile('First Skills')).replace_with(firstSkillOne)
 
-    #Replace second skill
+    # Replace second skill
     old_text = soup.find("p", {"id": "first-skill-two"})
     new_text = old_text.find(
         text=re.compile('Second Skills')).replace_with(secondSkillOne)
 
-    #Replace third skill
+    # Replace third skill
     old_text = soup.find("p", {"id": "first-skill-three"})
     new_text = old_text.find(
         text=re.compile('Third Skills')).replace_with(thirdSkillOne)
 
-    #Replace fourth skill
+    # Replace fourth skill
     old_text = soup.find("p", {"id": "first-skill-four"})
     new_text = old_text.find(
         text=re.compile('Fourth Skills')).replace_with(fourthSkillOne)
 
-    #Replace first skill
+    # Replace first skill
     old_text = soup.find("p", {"id": "second-skill-one"})
     new_text = old_text.find(
         text=re.compile('First Skills')).replace_with(firstSkillTwo)
 
-    #Replace second skill
+    # Replace second skill
     old_text = soup.find("p", {"id": "second-skill-two"})
     new_text = old_text.find(
         text=re.compile('Second Skills')).replace_with(secondSkillTwo)
 
-    #Replace third skill
+    # Replace third skill
     old_text = soup.find("p", {"id": "second-skill-three"})
     new_text = old_text.find(
         text=re.compile('Third Skills')).replace_with(thirdSkillTwo)
 
-    #Replace fourth skill
+    # Replace fourth skill
     old_text = soup.find("p", {"id": "second-skill-four"})
     new_text = old_text.find(
         text=re.compile('Fourth Skills')).replace_with(fourthSkillTwo)
 
-    #Replace first skill
+    # Replace first skill
     old_text = soup.find("p", {"id": "third-skill-one"})
     new_text = old_text.find(
         text=re.compile('First Skills')).replace_with(firstSkillThree)
 
-    #Replace second skill
+    # Replace second skill
     old_text = soup.find("p", {"id": "third-skill-two"})
     new_text = old_text.find(
         text=re.compile('Second Skills')).replace_with(secondSkillThree)
 
-    #Replace third skill
+    # Replace third skill
     old_text = soup.find("p", {"id": "third-skill-three"})
     new_text = old_text.find(
         text=re.compile('Third Skills')).replace_with(thirdSkillThree)
 
-    #Replace fourth skill
+    # Replace fourth skill
     old_text = soup.find("p", {"id": "third-skill-four"})
     new_text = old_text.find(
         text=re.compile('Fourth Skills')).replace_with(fourthSkillThree)
 
-    #Replace job one name
+    # Replace job one name
     old_text = soup.find("p", {"id": "jobeOneName"})
     new_text = old_text.find(
         text=re.compile('Job Name')).replace_with(jobOneName)
 
-    #Replace the job one description
+    # Replace the job one description
     old_text = soup.find("p", {"id": "jobOne"})
     new_text = old_text.find(
         text=re.compile('First Job.')).replace_with(jobOneDescription)
 
-    #Replace the job two name
+    # Replace the job two name
     old_text = soup.find("p", {"id": "jobeTwoName"})
     new_text = old_text.find(
         text=re.compile('Job Name')).replace_with(jobTwoName)
 
-    #Replace the job two description
+    # Replace the job two description
     old_text = soup.find("p", {"id": "jobTwo"})
     new_text = old_text.find(
-        text=re.compile('Second Job.')).replace_with(jobTwoDescripton)
+        text=re.compile('Second Job.')).replace_with(jobTwoDescription)
 
-    #Replace the job two name
+    # Replace the job two name
     old_text = soup.find("p", {"id": "jobeThreeName"})
     new_text = old_text.find(
         text=re.compile('Job Name')).replace_with(jobThreeName)
 
-    #Replace the job three description
+    # Replace the job three description
     old_text = soup.find("p", {"id": "jobThree"})
     new_text = old_text.find(
         text=re.compile('Third Job.')).replace_with(jobThreeDescription)
 
-    #Replace the first porject
+    # Replace the first porject
     old_text = soup.find("p", {"id": "projectOne"})
     new_text = old_text.find(
         text=re.compile('Project one')).replace_with(projectOne)
 
-    #Replace the second porject
+    # Replace the second porject
     old_text = soup.find("p", {"id": "projectTwo"})
     new_text = old_text.find(
         text=re.compile('Project two')).replace_with(projectTwo)
 
-    #Replace the second porject
+    # Replace the second porject
     old_text = soup.find("p", {"id": "projectThree"})
     new_text = old_text.find(
         text=re.compile('Project three')).replace_with(projectThree)
 
-    #Replace the job two description
+    # Replace the job two description
     old_text = soup.find("p", {"id": "hobbyOne"})
     new_text = old_text.find(
         text=re.compile('Hobby one')).replace_with(hobbyOne)
 
-    #Replace the job two description
+    # Replace the job two description
     old_text = soup.find("p", {"id": "hobbyTwo"})
     new_text = old_text.find(
         text=re.compile('Hobby two')).replace_with(hobbyTwo)
 
-    #Replace the job two description
+    # Replace the job two description
     old_text = soup.find("p", {"id": "hobbyThree"})
     new_text = old_text.find(
         text=re.compile('Hobby three')).replace_with(hobbyThree)

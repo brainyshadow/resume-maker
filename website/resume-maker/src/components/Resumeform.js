@@ -7,8 +7,11 @@ import "./ResumeForm.css";
 class ResumeForm extends Component {
   constructor() {
     super();
-
-    const currentOccupation = JSON.parse(localStorage.getItem("occupation"));
+    const name = JSON.parse(localStorage.getItem("name"));
+    const qualifications = JSON.parse(localStorage.getItem("qualifications"));
+    const currentOccupation = JSON.parse(
+      localStorage.getItem("currentOccupation")
+    );
     const region = JSON.parse(localStorage.getItem("region"));
     const email = JSON.parse(localStorage.getItem("email"));
     const skillSectionOne = JSON.parse(localStorage.getItem("skillSectionOne"));
@@ -37,7 +40,7 @@ class ResumeForm extends Component {
       localStorage.getItem("jobOneDescription")
     );
     const jobTwoName = JSON.parse(localStorage.getItem("jobTwoName"));
-    const jobTwoDescripton = JSON.parse(
+    const jobTwoDescription = JSON.parse(
       localStorage.getItem("jobTwoDescription")
     );
     const jobThreeName = JSON.parse(localStorage.getItem("jobThreeName"));
@@ -50,20 +53,82 @@ class ResumeForm extends Component {
     const projectOne = JSON.parse(localStorage.getItem("projectOneName"));
     const projectTwo = JSON.parse(localStorage.getItem("projectTwoName"));
     const projectThree = JSON.parse(localStorage.getItem("projectTwoName"));
-    //this.state = { test: projectOne, project: projectThree };
+    this.state = {
+      name: name,
+      qualifications: qualifications,
+      currentOccupation: currentOccupation,
+      region: region,
+      email: email,
+      skillSectionOne: skillSectionOne,
+      firstSkillOne: firstSkillOne,
+      secondSkillOne: secondSkillOne,
+      thirdSkillOne: thirdSkillOne,
+      fourthSkillOne: fourthSkillOne,
+      skillSectionTwo: skillSectionTwo,
+      firstSkillTwo: firstSkillTwo,
+      secondSkillTwo: secondSkillTwo,
+      thirdSkillTwo: thirdSkillTwo,
+      fourthSkillTwo: fourthSkillTwo,
+      skillSectionThree: skillSectionThree,
+      firstSkillThree: firstSkillThree,
+      secondSkillThree: secondSkillThree,
+      thirdSkillThree: thirdSkillThree,
+      fourthSkillThree: fourthSkillThree,
+      jobOneName: jobOneName,
+      jobOneDescription: jobOneDescription,
+      jobTwoName: jobTwoName,
+      jobTwoDescription: jobTwoDescription,
+      jobThreeName: jobThreeName,
+      jobThreeDescription: jobThreeDescription,
+      hobbyOne: hobbyOne,
+      hobbyTwo: hobbyTwo,
+      hobbyThree: hobbyThree,
+      projectOne: projectOne,
+      projectTwo: projectTwo,
+      projectThree: projectThree,
+    };
   }
 
   valueChange(e) {
-    console.log(e.target.value);
-
-    //console.log(values);
-    //values[e.target.id] = e.target.value;
-    /*localStorage.setItem("resumeFormValues", JSON.stringify(values));
-    this.setState(values);
-    console.log(values);*/
+    this.setState({ [e.target.id]: e.target.value });
+    localStorage.setItem(e.target.id, JSON.stringify(e.target.value));
   }
 
   render() {
+    const {
+      name,
+      qualifications,
+      currentOccupation,
+      region,
+      email,
+      skillSectionOne,
+      firstSkillOne,
+      secondSkillOne,
+      thirdSkillOne,
+      fourthSkillOne,
+      skillSectionTwo,
+      firstSkillTwo,
+      secondSkillTwo,
+      thirdSkillTwo,
+      fourthSkillTwo,
+      skillSectionThree,
+      firstSkillThree,
+      secondSkillThree,
+      thirdSkillThree,
+      fourthSkillThree,
+      jobOneName,
+      jobOneDescription,
+      jobTwoName,
+      jobTwoDescription,
+      jobThreeName,
+      jobThreeDescription,
+      hobbyOne,
+      hobbyTwo,
+      hobbyThree,
+      projectOne,
+      projectTwo,
+      projectThree,
+    } = this.state;
     return (
       <>
         <div className="form-container">
@@ -74,6 +139,7 @@ class ResumeForm extends Component {
                 required={true}
                 placeholder="Name"
                 onChange={(e) => this.valueChange(e)}
+                value={name ? name : ""}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="qualifications">
@@ -83,39 +149,81 @@ class ResumeForm extends Component {
                 as="textarea"
                 rows={3}
                 placeholder="Qualifications"
+                onChange={(e) => this.valueChange(e)}
+                value={qualifications ? qualifications : ""}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="occupation">
+            <Form.Group className="mb-3" controlId="currentOccupation">
               <Form.Label>Current Occupation:</Form.Label>
-              <Form.Control required={true} placeholder="Occupation" />
+              <Form.Control
+                required={true}
+                placeholder="Occupation"
+                onChange={(e) => this.valueChange(e)}
+                value={currentOccupation}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="region">
               <Form.Label>Region:</Form.Label>
-              <Form.Control required={true} placeholder="Region" />
+              <Form.Control
+                required={true}
+                placeholder="Region"
+                onChange={(e) => this.valueChange(e)}
+                value={region}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="email">
               <Form.Label>Email:</Form.Label>
-              <Form.Control required={true} placeholder="Email" />
+              <Form.Control
+                required={true}
+                placeholder="Email"
+                onChange={(e) => this.valueChange(e)}
+                value={email}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="skillSectionOne">
               <Form.Label>First Skill Section:</Form.Label>
-              <Form.Control required={true} placeholder="First Skill Section" />
+              <Form.Control
+                required={true}
+                placeholder="First Skill Section"
+                onChange={(e) => this.valueChange(e)}
+                value={skillSectionOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="firstSkillOne">
               <Form.Label>First Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill One" />
+              <Form.Control
+                required={true}
+                placeholder="Skill One"
+                onChange={(e) => this.valueChange(e)}
+                value={firstSkillOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="secondSkillOne">
               <Form.Label>Second Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Two" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Two"
+                onChange={(e) => this.valueChange(e)}
+                value={secondSkillOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="thirdSkillOne">
               <Form.Label>Third Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Three" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Three"
+                onChange={(e) => this.valueChange(e)}
+                value={thirdSkillOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="fourthSkillOne">
               <Form.Label>Fourth Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Three" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Three"
+                onChange={(e) => this.valueChange(e)}
+                value={fourthSkillOne}
+              />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="skillSectionTwo">
@@ -123,94 +231,198 @@ class ResumeForm extends Component {
               <Form.Control
                 required={true}
                 placeholder="Second Skill Section"
+                onChange={(e) => this.valueChange(e)}
+                value={skillSectionTwo}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="firstSkillTwo">
               <Form.Label>First Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill One" />
+              <Form.Control
+                required={true}
+                placeholder="Skill One"
+                onChange={(e) => this.valueChange(e)}
+                value={firstSkillTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="secondSkillTwo">
               <Form.Label>Second Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Two" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Two"
+                onChange={(e) => this.valueChange(e)}
+                value={secondSkillTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="thirdSkillTwo">
               <Form.Label>Third Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Three" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Three"
+                onChange={(e) => this.valueChange(e)}
+                value={thirdSkillTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="fourthSkillTwo">
               <Form.Label>Fourth Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Three" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Three"
+                onChange={(e) => this.valueChange(e)}
+                value={fourthSkillTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="skillSectionThree">
               <Form.Label>Third Skill Section:</Form.Label>
-              <Form.Control required={true} placeholder="Third Skill Section" />
+              <Form.Control
+                required={true}
+                placeholder="Third Skill Section"
+                onChange={(e) => this.valueChange(e)}
+                value={skillSectionThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="firstSkillThree">
               <Form.Label>First Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill One" />
+              <Form.Control
+                required={true}
+                placeholder="Skill One"
+                onChange={(e) => this.valueChange(e)}
+                value={firstSkillThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="secondSkillThree">
               <Form.Label>Second Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Two" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Two"
+                onChange={(e) => this.valueChange(e)}
+                value={secondSkillThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="thirdSkillThree">
               <Form.Label>Third Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Three" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Three"
+                onChange={(e) => this.valueChange(e)}
+                value={thirdSkillThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="fourthSkillThree">
               <Form.Label>Fourth Skill:</Form.Label>
-              <Form.Control required={true} placeholder="Skill Four" />
+              <Form.Control
+                required={true}
+                placeholder="Skill Four"
+                onChange={(e) => this.valueChange(e)}
+                value={fourthSkillThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobOneName">
               <Form.Label>Enter the name of your first job:</Form.Label>
-              <Form.Control required={true} placeholder="Job One Name" />
+              <Form.Control
+                required={true}
+                placeholder="Job One Name"
+                onChange={(e) => this.valueChange(e)}
+                value={jobOneName}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobOneDescription">
               <Form.Label>Enter a description of your first job:</Form.Label>
-              <Form.Control required={true} placeholder="Job One Description" />
+              <Form.Control
+                required={true}
+                placeholder="Job One Description"
+                onChange={(e) => this.valueChange(e)}
+                value={jobOneDescription}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobTwoName">
               <Form.Label>Enter the name of your second job:</Form.Label>
-              <Form.Control required={true} placeholder="Job Two Name" />
+              <Form.Control
+                required={true}
+                placeholder="Job Two Name"
+                onChange={(e) => this.valueChange(e)}
+                value={jobTwoName}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobTwoDescription">
               <Form.Label>Enter a description of your second job:</Form.Label>
-              <Form.Control required={true} placeholder="Job Two Description" />
+              <Form.Control
+                required={true}
+                placeholder="Job Two Description"
+                onChange={(e) => this.valueChange(e)}
+                value={jobTwoDescription}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobThreeName">
               <Form.Label>Enter the name of your third job:</Form.Label>
-              <Form.Control required={true} placeholder="Job Three Name" />
+              <Form.Control
+                required={true}
+                placeholder="Job Three Name"
+                onChange={(e) => this.valueChange(e)}
+                value={jobThreeName}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="jobThreeDescription">
               <Form.Label>Enter a description of your third job:</Form.Label>
               <Form.Control
                 required={true}
                 placeholder="Job Three Description"
+                onChange={(e) => this.valueChange(e)}
+                value={jobThreeDescription}
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="hobbyOneName">
               <Form.Label>Enter your first hobby:</Form.Label>
-              <Form.Control required={true} placeholder="Hobby One" />
+              <Form.Control
+                required={true}
+                placeholder="Hobby One"
+                onChange={(e) => this.valueChange(e)}
+                value={hobbyOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="hobbyTwoName">
               <Form.Label>Enter your second hobby:</Form.Label>
-              <Form.Control required={true} placeholder="Hobby Two" />
+              <Form.Control
+                required={true}
+                placeholder="Hobby Two"
+                onChange={(e) => this.valueChange(e)}
+                value={hobbyTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="hobbyThreeName">
               <Form.Label>Enter your third hobby:</Form.Label>
-              <Form.Control required={true} placeholder="Hobby Three" />
+              <Form.Control
+                required={true}
+                placeholder="Hobby Three"
+                onChange={(e) => this.valueChange(e)}
+                value={hobbyThree}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="projectOneName">
               <Form.Label>Enter your first project:</Form.Label>
-              <Form.Control required={true} placeholder="Project One" />
+              <Form.Control
+                required={true}
+                placeholder="Project One"
+                onChange={(e) => this.valueChange(e)}
+                value={projectOne}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="projectTwoName">
               <Form.Label>Enter your second project:</Form.Label>
-              <Form.Control required={true} placeholder="Project Two" />
+              <Form.Control
+                required={true}
+                placeholder="Project Two"
+                onChange={(e) => this.valueChange(e)}
+                value={projectTwo}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="projectThreeName">
               <Form.Label>Enter your third project:</Form.Label>
-              <Form.Control required={true} placeholder="Project Three" />
+              <Form.Control
+                required={true}
+                placeholder="Project Three"
+                onChange={(e) => this.valueChange(e)}
+                value={projectThree}
+              />
             </Form.Group>
             <Button
               type="submit"
