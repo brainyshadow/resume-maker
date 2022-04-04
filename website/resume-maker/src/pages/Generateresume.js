@@ -8,25 +8,13 @@ import Footer from "../components/Footer";
 import CompletionBar from "../components/CompletionBar";
 import { Typography } from "@mui/material";
 import GetResume from "../client/GetResume";
+import { useState } from "react";
 
-class Generateresume extends Component {
-  constructor(props) {
-    super(props);
-    const qualificationsDone = false;
-    const attributes = "";
-    this.state = {
-      qualificationsDone: qualificationsDone,
-      attributes: attributes,
-    };
-  }
+function Generateresume() {
+  const [qualificationsDone, setQualificationsDone] = useState(false);
+  const [attributes, setAttributes] = useState(new Object());
 
-  async generateResume(passedAttributes) {
-    GetResume(passedAttributes).then(() => {
-      this.setState({ qualificationsDone: false });
-    });
-  }
-
-  async handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     let userInput = e.target.elements;
 
@@ -63,54 +51,53 @@ class Generateresume extends Component {
       projectOne: userInput.projectOneName.value,
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
-      reCAPTCHAkey: "TestValue"
+      reCAPTCHAkey: "TestValue",
     };
-    this.setState({ qualificationsDone: true });
-    this.attributes = data;
+    setQualificationsDone(true);
+    setAttributes(data);
   }
 
-  async selectTemplate(id) {
-    let attributes = this.attributes;
-    attributes["Template Id"] = parseInt(id);
+  async function selectTemplate(id) {
+    console.log(attributes);
+
+    let temp = attributes;
+    temp["Template Id"] = parseInt(id);
     const raw = JSON.stringify(attributes);
-    this.attributes = raw;
-    this.generateResume(raw);
+    setAttributes(raw);
+    generateResume(raw);
   }
 
-  render() {
-    const qualificationsDone = this.state.qualificationsDone;
-    let message = "Tell us a bit about yourself.";
-    let progress = 0;
-    if (qualificationsDone) {
-      progress = 50;
-      message = "Select a template.";
-    }
+  async function generateResume(passedAttributes) {
+    GetResume(passedAttributes).then(() => {
+      setQualificationsDone(false);
+    });
+  }
 
-    return (
-      <>
-        <Header />
-        <Typography
-          fontSize={"3rem"}
-          variant="h1"
-          align="center"
-          marginY="2rem"
-        >
-          {message}
-        </Typography>
-        <div className="resume-form" style={{ height: "auto" }}>
-          <CompletionBar progress={progress} />
+  let message = "Tell us a bit about yourself.";
+  let progress = 0;
+  if (qualificationsDone) {
+    progress = 50;
+    message = "Select a template.";
+  }
+  return (
+    <>
+      <Header />
+      <Typography fontSize={"3rem"} variant="h1" align="center" marginY="2rem">
+        {message}
+      </Typography>
+      <div className="resume-form" style={{ height: "auto" }}>
+        <CompletionBar progress={progress} />
+      </div>
+      {qualificationsDone ? (
+        <div className="template-display">
+          <Templates templateSelect={(id) => selectTemplate(id)} />
         </div>
-        {qualificationsDone ? (
-          <div className="template-display">
-            <Templates templateSelect={(id) => this.selectTemplate(id)} />
-          </div>
-        ) : (
-          <ResumeForm onSubmit={(e) => this.handleSubmit(e)} />
-        )}
-        <Footer />
-      </>
-    );
-  }
+      ) : (
+        <ResumeForm onSubmit={(e) => handleSubmit(e)} />
+      )}
+      <Footer />
+    </>
+  );
 }
 
 export default Generateresume;
