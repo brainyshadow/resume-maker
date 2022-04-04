@@ -20,6 +20,17 @@
   border-radius: 0.5rem;
 }
 
+.template-preview-background {
+  position: fixed;
+  height: 100%;
+  z-index: 1;
+
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 .only-vertical-center {
   margin: auto 0rem auto 0rem;
 }

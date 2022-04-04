@@ -39,10 +39,6 @@ class TemplateOption extends Component {
     this.setState({ numPages });
   };
 
-  goToPrevPage = () =>
-    this.setState((state) => ({ pageNumber: state.pageNumber - 1 }));
-  goToNextPage = () =>
-    this.setState((state) => ({ pageNumber: state.pageNumber + 1 }));
   displayPreview() {
     const displayPreview = this.state.displayPreview;
     this.setState({ displayPreview: !displayPreview });
@@ -89,22 +85,24 @@ class TemplateOption extends Component {
           }}
         >
           {displayPreview ? (
-            <div className="template-preview">
-              <AiOutlineCloseCircle
-                onClick={() => this.displayPreview()}
-                style={{
-                  position: "absolute",
-                  top: "1rem",
-                  right: "1rem",
-                }}
-              />
-              <div className="vertical-center">
-                <Document
-                  style={{ display: "block", margin: "auto" }}
-                  file={preview}
-                >
-                  <Page pageNumber={1} />
-                </Document>
+            <div className="template-preview-background">
+              <div className="template-preview">
+                <AiOutlineCloseCircle
+                  onClick={() => this.displayPreview()}
+                  style={{
+                    position: "absolute",
+                    top: "1rem",
+                    right: "1rem",
+                  }}
+                />
+                <div className="vertical-center">
+                  <Document
+                    style={{ display: "block", margin: "auto" }}
+                    file={preview}
+                  >
+                    <Page pageNumber={1} />
+                  </Document>
+                </div>
               </div>
             </div>
           ) : (
