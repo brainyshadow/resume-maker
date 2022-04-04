@@ -7,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UploadTemplate from "../client/UploadTemplate";
 import { Typography } from "@mui/material";
-const parser = new DOMParser();
 
 function validateHTML(html) {
   let checkedHTML = html;

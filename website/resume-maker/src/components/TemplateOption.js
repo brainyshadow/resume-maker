@@ -67,10 +67,10 @@ class TemplateOption extends Component {
   render() {
     const {
       templateName,
-      
+
       description,
       preview,
-  
+
       displayPreview,
       downloads,
     } = this.state;
@@ -82,9 +82,10 @@ class TemplateOption extends Component {
             alignItems: "center",
             bgcolor: "#E0E0E0",
             overflow: "hidden",
-            borderRadius: "12px",
+            borderRadius: "5px",
             boxShadow: 1,
             fontWeight: "bold",
+            width: "15rem",
           }}
         >
           {displayPreview ? (
@@ -111,7 +112,11 @@ class TemplateOption extends Component {
           )}
 
           <Box
-            sx={{ p: 2, display: "flex", width: "17rem", bgcolor: "#F5F5F5" }}
+            sx={{
+              p: 2,
+              display: "flex",
+              bgcolor: "#F5F5F5",
+            }}
           >
             <Stack spacing={0.5}>
               <Typography fontWeight={700}>{templateName}</Typography>
