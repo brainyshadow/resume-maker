@@ -8,16 +8,64 @@ import Footer from "../components/Footer";
 import CompletionBar from "../components/CompletionBar";
 import { Typography } from "@mui/material";
 import GetResume from "../client/GetResume";
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
   const [attributes, setAttributes] = useState(new Object());
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [token, setToken] = useState("");
+  const [noOfVerifications, setNoOfVerifications] = useState(0);
+  const [dynamicAction, setDynamicAction] = useState("homepage");
+  const [actionToChange, setActionToChange] = useState("");
+
+  const clickHandler = useCallback(async () => {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const result = await executeRecaptcha("dynamicAction");
+    console.log(result);
+    setToken(result);
+    setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
+  }, [dynamicAction, executeRecaptcha]);
+
+  async function getToken() {
+    if (!executeRecaptcha) {
+      return;
+    }
+    const result = await executeRecaptcha("dynamicAction");
+    return result;
+  }
+
+  const handleTextChange = useCallback((event) => {
+    setActionToChange(event.target.value);
+  }, []);
+
+  const handleCommitAction = useCallback(() => {
+    setDynamicAction(actionToChange);
+  }, [actionToChange]);
+
+  useEffect(() => {
+    if (!executeRecaptcha || !dynamicAction) {
+      return;
+    }
+
+    const handleReCaptchaVerify = async () => {
+      const token = await executeRecaptcha(dynamicAction);
+      setToken(token);
+      setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
+    };
+
+    handleReCaptchaVerify();
+  }, [executeRecaptcha, dynamicAction]);
 
   async function handleSubmit(e) {
+    clickHandler();
     e.preventDefault();
     let userInput = e.target.elements;
-
+    let reCAPTCHAtoken = await getToken();
     var data = {
       name: userInput.name.value,
       qualifications: userInput.qualifications.value,
@@ -51,7 +99,7 @@ function Generateresume() {
       projectOne: userInput.projectOneName.value,
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
-      reCAPTCHAkey: "TestValue",
+      reCAPTCHAkey: reCAPTCHAtoken,
     };
     setQualificationsDone(true);
     setAttributes(data);
