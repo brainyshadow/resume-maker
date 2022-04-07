@@ -6,6 +6,7 @@ import asyncio
 from sqlalchemy import false, true
 import json
 from resume import generateResume
+import os
 
 
 app = Flask(__name__)
@@ -34,7 +35,10 @@ def downloadFile():
         loop.run_until_complete(makeResume(content))
         loop.stop()
         path = "./Resume.pdf"
-        return send_file(path, as_attachment=True)
+        try:
+            return send_file(path, as_attachment=True)
+        finally:
+            os.remove("Resume.pdf")
         # route for adding custom template
     else:
         return "Incorrect Token", 401
