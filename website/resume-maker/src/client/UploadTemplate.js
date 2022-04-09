@@ -1,4 +1,4 @@
-async function UploadTemplate(templateData) {
+async function UploadTemplate(templateData, token) {
   const { TemplateName, TemplateDescription, Email, HTML } = templateData;
   let templateAttributes = {
     TemplateName: TemplateName,
@@ -9,6 +9,7 @@ async function UploadTemplate(templateData) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "");
+  myHeaders.append("reCAPTCHA-Token", token);
   var requestOptions = {
     method: "POST",
     headers: myHeaders,

@@ -17,7 +17,7 @@ function Generateresume() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [token, setToken] = useState("");
   const [noOfVerifications, setNoOfVerifications] = useState(0);
-  const [dynamicAction, setDynamicAction] = useState("homepage");
+  const [dynamicAction, setDynamicAction] = useState("generateResume");
   const [actionToChange, setActionToChange] = useState("");
 
   const clickHandler = useCallback(async () => {
@@ -25,8 +25,7 @@ function Generateresume() {
       return;
     }
 
-    const result = await executeRecaptcha("dynamicAction");
-    console.log(result);
+    const result = await executeRecaptcha("generateResume");
     setToken(result);
     setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
   }, [dynamicAction, executeRecaptcha]);
@@ -35,7 +34,7 @@ function Generateresume() {
     if (!executeRecaptcha) {
       return;
     }
-    const result = await executeRecaptcha("dynamicAction");
+    const result = await executeRecaptcha("generateResume");
     return result;
   }
 
@@ -65,7 +64,6 @@ function Generateresume() {
     clickHandler();
     e.preventDefault();
     let userInput = e.target.elements;
-    let reCAPTCHAtoken = await getToken();
     var data = {
       name: userInput.name.value,
       qualifications: userInput.qualifications.value,
@@ -99,15 +97,12 @@ function Generateresume() {
       projectOne: userInput.projectOneName.value,
       projectTwo: userInput.projectTwoName.value,
       projectThree: userInput.projectTwoName.value,
-      reCAPTCHAkey: reCAPTCHAtoken,
     };
     setQualificationsDone(true);
     setAttributes(data);
   }
 
   async function selectTemplate(id) {
-    console.log(attributes);
-
     let temp = attributes;
     temp["Template Id"] = parseInt(id);
     const raw = JSON.stringify(attributes);
@@ -116,7 +111,9 @@ function Generateresume() {
   }
 
   async function generateResume(passedAttributes) {
-    GetResume(passedAttributes).then(() => {
+    let reCAPTCHAtoken = await getToken();
+    console.log(reCAPTCHAtoken);
+    GetResume(passedAttributes, reCAPTCHAtoken).then(() => {
       setQualificationsDone(false);
     });
   }

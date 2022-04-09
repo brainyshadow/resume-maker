@@ -8,6 +8,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import UploadTemplate from "../client/UploadTemplate";
 import { Typography } from "@mui/material";
 
+import { useState, useCallback, useEffect } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+
 function validateHTML(html) {
   let checkedHTML = html;
   if (checkedHTML.includes("&")) {
@@ -25,14 +28,57 @@ function validateHTML(html) {
   }
 }
 
-class Upload extends Component {
-  constructor() {
-    super();
-    const invalidHTML = true;
-    this.state = { invalidHTML: invalidHTML };
+function Upload() {
+  const [invalidHTML, setInvalidHTML] = useState(true);
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [token, setToken] = useState("");
+  const [noOfVerifications, setNoOfVerifications] = useState(0);
+  const [dynamicAction, setDynamicAction] = useState("homepage");
+  const [actionToChange, setActionToChange] = useState("");
+
+  const clickHandler = useCallback(async () => {
+    if (!executeRecaptcha) {
+      return;
+    }
+
+    const result = await executeRecaptcha("dynamicAction");
+    console.log(result);
+    setToken(result);
+    setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
+  }, [dynamicAction, executeRecaptcha]);
+
+  async function getToken() {
+    if (!executeRecaptcha) {
+      return;
+    }
+    const result = await executeRecaptcha("dynamicAction");
+    return result;
   }
 
-  async handleSubmit(e) {
+  const handleTextChange = useCallback((event) => {
+    setActionToChange(event.target.value);
+  }, []);
+
+  const handleCommitAction = useCallback(() => {
+    setDynamicAction(actionToChange);
+  }, [actionToChange]);
+
+  useEffect(() => {
+    if (!executeRecaptcha || !dynamicAction) {
+      return;
+    }
+
+    const handleReCaptchaVerify = async () => {
+      const token = await executeRecaptcha(dynamicAction);
+      setToken(token);
+      setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
+    };
+
+    handleReCaptchaVerify();
+  }, [executeRecaptcha, dynamicAction]);
+
+  async function handleSubmit(e) {
+    let token = await getToken();
     e.prevenDefault();
     let userInput = e.target.elements;
 
@@ -42,11 +88,10 @@ class Upload extends Component {
       Email: userInput.email.value,
       HTML: userInput.html.value,
     };
-
-    UploadTemplate(data);
+    UploadTemplate(data, token);
   }
 
-  checkHTML(e) {
+  function checkHTML(e) {
     let html = e.target.value;
     let invalidHTML = false;
     if (validateHTML(html)) {
@@ -54,84 +99,80 @@ class Upload extends Component {
     } else {
       invalidHTML = false;
     }
-    this.setState({ invalidHTML: invalidHTML });
+    setInvalidHTML(invalidHTML);
   }
 
-  render() {
-    const validHTML = this.state.invalidHTML;
-
-    return (
-      <>
-        <Header />
-        <div style={{ alignItems: "center" }}>
-          <div className="form-width">
-            <Typography
-              fontSize={"3rem"}
-              variant="h1"
-              align="center"
-              marginY="2rem"
-            >
-              Upload a template
-            </Typography>
-            <Typography align="center" margin={"auto"}>
-              Give others the opportunity to use your template.
-            </Typography>
-          </div>
-          <div className="form-container">
-            <Form onSubmit={(e) => this.handleSubmit(e)}>
-              <Form.Group className="mb-3" controlId="templateName">
-                <Form.Label>Template Name:</Form.Label>
-                <Form.Control required={true} placeholder="Name" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="templateDescription">
-                <Form.Label>Template Description:</Form.Label>
-                <Form.Control
-                  required={true}
-                  as="textarea"
-                  rows={3}
-                  placeholder="Description"
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Your Email:</Form.Label>
-                <Form.Control required={true} placeholder="Email" />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="html">
-                <Form.Label>Template:</Form.Label>
-                <Form.Control
-                  required={true}
-                  as="textarea"
-                  rows={15}
-                  placeholder="HTML"
-                  onChange={(e) => this.checkHTML(e)}
-                  isInvalid={validHTML}
-                />
-                {validHTML ? (
-                  <Form.Control.Feedback type="invalid">
-                    Please enter valid HTML.
-                  </Form.Control.Feedback>
-                ) : (
-                  <div></div>
-                )}
-              </Form.Group>
-              {validHTML ? (
-                <fieldset disabled>
-                  <Button type="submit" style={{ marginBottom: "1rem" }}>
-                    Submit
-                  </Button>
-                </fieldset>
+  return (
+    <>
+      <Header />
+      <div style={{ alignItems: "center" }}>
+        <div className="form-width">
+          <Typography
+            fontSize={"3rem"}
+            variant="h1"
+            align="center"
+            marginY="2rem"
+          >
+            Upload a template
+          </Typography>
+          <Typography align="center" margin={"auto"}>
+            Give others the opportunity to use your template.
+          </Typography>
+        </div>
+        <div className="form-container">
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form.Group className="mb-3" controlId="templateName">
+              <Form.Label>Template Name:</Form.Label>
+              <Form.Control required={true} placeholder="Name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="templateDescription">
+              <Form.Label>Template Description:</Form.Label>
+              <Form.Control
+                required={true}
+                as="textarea"
+                rows={3}
+                placeholder="Description"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="email">
+              <Form.Label>Your Email:</Form.Label>
+              <Form.Control required={true} placeholder="Email" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="html">
+              <Form.Label>Template:</Form.Label>
+              <Form.Control
+                required={true}
+                as="textarea"
+                rows={15}
+                placeholder="HTML"
+                onChange={(e) => checkHTML(e)}
+                isInvalid={invalidHTML}
+              />
+              {invalidHTML ? (
+                <Form.Control.Feedback type="invalid">
+                  Please enter valid HTML.
+                </Form.Control.Feedback>
               ) : (
+                <div></div>
+              )}
+            </Form.Group>
+            {invalidHTML ? (
+              <fieldset disabled>
                 <Button type="submit" style={{ marginBottom: "1rem" }}>
                   Submit
                 </Button>
-              )}
-            </Form>
-          </div>
+              </fieldset>
+            ) : (
+              <Button type="submit" style={{ marginBottom: "1rem" }}>
+                Submit
+              </Button>
+            )}
+          </Form>
         </div>
-        <Footer />
-      </>
-    );
-  }
+      </div>
+      <Footer />
+    </>
+  );
 }
 
 export default Upload;

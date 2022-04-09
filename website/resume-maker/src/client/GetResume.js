@@ -1,7 +1,8 @@
-async function GetResume(passedAttributes) {
+async function GetResume(passedAttributes, token) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "");
+  myHeaders.append("reCAPTCHA-Token", token);
   var requestOptions = {
     method: "POST",
     headers: myHeaders,
