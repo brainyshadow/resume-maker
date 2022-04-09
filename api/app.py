@@ -8,10 +8,12 @@ import json
 from resume import generateResume
 import os
 from decouple import config
+import requests
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+
 
 async def makeResume(argument):
     await generateResume(argument)
@@ -23,9 +25,22 @@ async def makeResume(argument):
 @app.route('/download', methods=['POST'])
 @cross_origin()
 def downloadFile():
+    recaptchaKey = config('recaptchaKey')
+    recaptchaAPIkey = config('API_KEY')
+    projectId = config('projectId')
     content = request.data
     token = request.headers.get('reCAPTCHA-Token')
-    if(True):  # Verify Token
+    response = requests.post(
+        "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
+            "event": {
+                "token": token,
+                "siteKey": recaptchaKey,
+                "expectedAction": "generateResume"
+            }
+        }
+    )
+    score = response.json()["score"]
+    if(score>0.5):
         # the resume function is async and must be waited for
         asyncio.set_event_loop(asyncio.new_event_loop())
         loop = asyncio.get_event_loop()
@@ -38,7 +53,7 @@ def downloadFile():
             os.remove("Resume.pdf")
         # route for adding custom template
     else:
-        return "Incorrect Token", 401
+        return "Invalid Token", 401
 
 
 @app.route('/uploadtemplate', methods=['POST'])
