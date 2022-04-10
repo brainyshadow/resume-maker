@@ -1,4 +1,5 @@
 from curses.ascii import HT
+from http import server
 from pickle import FALSE
 from flask import send_file, request, Flask
 from flask_cors import CORS, cross_origin
@@ -9,26 +10,39 @@ from resume import generateResume
 import os
 from decouple import config
 import requests
+from pymongo import MongoClient
+
 
 app = Flask(__name__)
 cors = CORS(app)
 app.config['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+conn_str = config('conn_str')
+client = MongoClient(conn_str, serverSelectionTimeoutMS=5000)
+db = client['RESUMEMAKER']
 
 
-async def makeResume(argument):
-    await generateResume(argument)
+async def makeResume(template, argument):
+    await generateResume(template, argument)
     return 1
-
 # route for generating a resume
 
 
 @app.route('/download', methods=['POST'])
 @cross_origin()
 def downloadFile():
+    content = request.data
+    parsedRequestBody = json.loads(content)
+    templateId = int(parsedRequestBody["Template Id"])
+
+    templateCollection = db["ResumeTemplates"]
+    cursor = templateCollection.find({"TemplateID": templateId}).limit(1)
+    list_cur = list(cursor)
+    HTML = list_cur[0]["HTML"]
+
     recaptchaKey = config('recaptchaKey')
     recaptchaAPIkey = config('API_KEY')
     projectId = config('projectId')
-    content = request.data
+
     token = request.headers.get('reCAPTCHA-Token')
     exceptedAction = "generateResume"
     response = requests.post(
@@ -46,7 +60,7 @@ def downloadFile():
         # the resume function is async and must be waited for
         asyncio.set_event_loop(asyncio.new_event_loop())
         loop = asyncio.get_event_loop()
-        loop.run_until_complete(makeResume(content))
+        loop.run_until_complete(makeResume(HTML, content))
         loop.stop()
         path = "./Resume.pdf"
         try:
