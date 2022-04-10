@@ -37,7 +37,12 @@ def downloadFile():
     templateCollection = db["ResumeTemplates"]
     cursor = templateCollection.find({"TemplateID": templateId}).limit(1)
     list_cur = list(cursor)
-    HTML = list_cur[0]["HTML"]
+    template = list_cur[0]
+    HTML = template["HTML"]
+    downloadCount = template["DownloadCount"]
+    documentId = template["_id"]
+    templateCollection.update_one(
+        {"_id": documentId}, {"$set": {"DownloadCount": downloadCount+1}})
 
     recaptchaKey = config('recaptchaKey')
     recaptchaAPIkey = config('API_KEY')
