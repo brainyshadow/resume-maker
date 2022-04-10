@@ -30,17 +30,19 @@ def downloadFile():
     projectId = config('projectId')
     content = request.data
     token = request.headers.get('reCAPTCHA-Token')
+    exceptedAction = "generateResume"
     response = requests.post(
         "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
             "event": {
                 "token": token,
                 "siteKey": recaptchaKey,
-                "expectedAction": "generateResume"
+                "expectedAction": exceptedAction
             }
         }
     )
     score = response.json()["score"]
-    if(score>0.5):
+    action = response.json()["tokenProperties"]["action"]
+    if(score > 0.5 and action == exceptedAction):
         # the resume function is async and must be waited for
         asyncio.set_event_loop(asyncio.new_event_loop())
         loop = asyncio.get_event_loop()
@@ -59,14 +61,36 @@ def downloadFile():
 @app.route('/uploadtemplate', methods=['POST'])
 @cross_origin()
 def uploadTemplate():
+    recaptchaKey = config('recaptchaKey')
+    recaptchaAPIkey = config('API_KEY')
+    projectId = config('projectId')
     content = request.data
-    jsonData = json.loads(content)
-    tempalteName = jsonData["name"]
-    tempalteDescription = jsonData["description"]
-    userEmail = jsonData["email"]
-    HTML = jsonData["HTML"]
-    print(tempalteName, tempalteDescription, userEmail, HTML)
-    return "", 200
+    token = request.headers.get('reCAPTCHA-Token')
+    exceptedAction = "uploadTemplate"
+    response = requests.post(
+        "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
+            "event": {
+                "token": token,
+                "siteKey": recaptchaKey,
+                "expectedAction": exceptedAction
+            }
+        }
+    )
+    score = response.json()["score"]
+    action = response.json()["tokenProperties"]["action"]
+    if(score > 0.5 and action == exceptedAction):
+        content = request.data
+        jsonData = json.loads(content)
+        tempalteName = jsonData["TemplateName"]
+        tempalteDescription = jsonData["TemplateDescription"]
+        userEmail = jsonData["Email"]
+        HTML = jsonData["HTML"]
+        print(tempalteName, tempalteDescription, userEmail, HTML)
+        print("Valid")
+        return "", 200
+    else:
+        print("Invalid")
+        return "Invalid Token", 401
 
 
 app.run()

@@ -41,7 +41,7 @@ function Upload() {
       return;
     }
 
-    const result = await executeRecaptcha("dynamicAction");
+    const result = await executeRecaptcha("uploadTemplate");
     console.log(result);
     setToken(result);
     setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
@@ -51,7 +51,7 @@ function Upload() {
     if (!executeRecaptcha) {
       return;
     }
-    const result = await executeRecaptcha("dynamicAction");
+    const result = await executeRecaptcha("uploadTemplate");
     return result;
   }
 
@@ -78,10 +78,9 @@ function Upload() {
   }, [executeRecaptcha, dynamicAction]);
 
   async function handleSubmit(e) {
+    e.preventDefault();
     let token = await getToken();
-    e.prevenDefault();
     let userInput = e.target.elements;
-
     var data = {
       TemplateName: userInput.templateName.value,
       TemplateDescription: userInput.templateDescription.value,

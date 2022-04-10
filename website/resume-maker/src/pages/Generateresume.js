@@ -112,7 +112,6 @@ function Generateresume() {
 
   async function generateResume(passedAttributes) {
     let reCAPTCHAtoken = await getToken();
-    console.log(reCAPTCHAtoken);
     GetResume(passedAttributes, reCAPTCHAtoken).then(() => {
       setQualificationsDone(false);
     });
