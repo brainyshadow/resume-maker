@@ -38,44 +38,47 @@ def downloadFile():
     cursor = templateCollection.find({"TemplateID": templateId}).limit(1)
     list_cur = list(cursor)
     template = list_cur[0]
-    HTML = template["HTML"]
-    downloadCount = template["DownloadCount"]
-    documentId = template["_id"]
-    templateCollection.update_one(
-        {"_id": documentId}, {"$set": {"DownloadCount": downloadCount+1}})
+    aprovalStatus = template["Approved"]
+    if(aprovalStatus):
+        HTML = template["HTML"]
+        downloadCount = template["DownloadCount"]
+        documentId = template["_id"]
+        templateCollection.update_one(
+            {"_id": documentId}, {"$set": {"DownloadCount": downloadCount+1}})
 
-    recaptchaKey = config('recaptchaKey')
-    recaptchaAPIkey = config('API_KEY')
-    projectId = config('projectId')
+        recaptchaKey = config('recaptchaKey')
+        recaptchaAPIkey = config('API_KEY')
+        projectId = config('projectId')
 
-    token = request.headers.get('reCAPTCHA-Token')
-    exceptedAction = "generateResume"
-    response = requests.post(
-        "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
-            "event": {
-                "token": token,
-                "siteKey": recaptchaKey,
-                "expectedAction": exceptedAction
+        token = request.headers.get('reCAPTCHA-Token')
+        exceptedAction = "generateResume"
+        response = requests.post(
+            "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
+                "event": {
+                    "token": token,
+                    "siteKey": recaptchaKey,
+                    "expectedAction": exceptedAction
+                }
             }
-        }
-    )
-    score = response.json()["score"]
-    action = response.json()["tokenProperties"]["action"]
-    if(score > 0.5 and action == exceptedAction):
-        # the resume function is async and must be waited for
-        asyncio.set_event_loop(asyncio.new_event_loop())
-        loop = asyncio.get_event_loop()
-        loop.run_until_complete(makeResume(HTML, content))
-        loop.stop()
-        path = "./Resume.pdf"
-        try:
-            return send_file(path, as_attachment=True)
-        finally:
-            os.remove("Resume.pdf")
-        # route for adding custom template
+        )
+        score = response.json()["score"]
+        action = response.json()["tokenProperties"]["action"]
+        if(score > 0.5 and action == exceptedAction):
+            # the resume function is async and must be waited for
+            asyncio.set_event_loop(asyncio.new_event_loop())
+            loop = asyncio.get_event_loop()
+            loop.run_until_complete(makeResume(HTML, content))
+            loop.stop()
+            path = "./Resume.pdf"
+            try:
+                return send_file(path, as_attachment=True)
+            finally:
+                os.remove("Resume.pdf")
+            # route for adding custom template
+        else:
+            return "Invalid Token", 401
     else:
-        return "Invalid Token", 401
-
+        return "Invalid Template Id", 400
 
 @app.route('/uploadtemplate', methods=['POST'])
 @cross_origin()
