@@ -1,9 +1,10 @@
 from curses.ascii import HT
 from http import server
 from pickle import FALSE
-from flask import send_file, request, Flask
+from flask import send_file, request, Flask, jsonify
 from flask_cors import CORS, cross_origin
 import asyncio
+from jinja2 import TemplateSyntaxError
 from sqlalchemy import false, true
 import json
 from resume import generateResume
@@ -26,6 +27,20 @@ async def makeResume(template, argument):
     await generateResume(template, argument)
     return 1
 # route for generating a resume
+
+
+@app.route('/gettemplate', methods=['GET'])
+@cross_origin()
+def getTemplate():
+
+    cursor = templateCollection.find({"Approved": True}, {
+                                     "_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
+    list_cur = list(cursor)
+    templates = list_cur
+    templatesArray = []
+    for template in templates:
+        templatesArray.append(template)
+    return jsonify(templatesArray), 200
 
 
 @app.route('/download', methods=['POST'])
@@ -90,7 +105,6 @@ def uploadTemplate():
     content = request.data
     token = request.headers.get('reCAPTCHA-Token')
 
-
     exceptedAction = "uploadTemplate"
     response = requests.post(
         "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
@@ -115,10 +129,11 @@ def uploadTemplate():
 
         template = list_cur[0]
         recentTemplate = template["TemplateID"]
-        newTemplateId = recentTemplate +1
+        newTemplateId = recentTemplate + 1
         HTML = jsonData["HTML"]
         userEmail = jsonData["Email"]
-        templateCollection.insert_one({"TemplateID": newTemplateId, "TempalteName":tempalteName, "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
+        templateCollection.insert_one({"TemplateID": newTemplateId, "TempalteName": tempalteName,
+                                      "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
 
         print("Valid")
         return "", 200
