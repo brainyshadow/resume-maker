@@ -19,6 +19,7 @@ app.config['Access-Control-Allow-Origin'] = 'http://localhost:3000'
 conn_str = config('conn_str')
 client = MongoClient(conn_str, serverSelectionTimeoutMS=5000)
 db = client['RESUMEMAKER']
+templateCollection = db["ResumeTemplates"]
 
 
 async def makeResume(template, argument):
@@ -34,7 +35,6 @@ def downloadFile():
     parsedRequestBody = json.loads(content)
     templateId = int(parsedRequestBody["Template Id"])
 
-    templateCollection = db["ResumeTemplates"]
     cursor = templateCollection.find({"TemplateID": templateId}).limit(1)
     list_cur = list(cursor)
     template = list_cur[0]
@@ -80,6 +80,7 @@ def downloadFile():
     else:
         return "Invalid Template Id", 400
 
+
 @app.route('/uploadtemplate', methods=['POST'])
 @cross_origin()
 def uploadTemplate():
@@ -88,6 +89,8 @@ def uploadTemplate():
     projectId = config('projectId')
     content = request.data
     token = request.headers.get('reCAPTCHA-Token')
+
+
     exceptedAction = "uploadTemplate"
     response = requests.post(
         "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
@@ -105,9 +108,18 @@ def uploadTemplate():
         jsonData = json.loads(content)
         tempalteName = jsonData["TemplateName"]
         tempalteDescription = jsonData["TemplateDescription"]
-        userEmail = jsonData["Email"]
+
+        cursor = templateCollection.find().sort("TemplateID", -1).limit(1)
+
+        list_cur = list(cursor)
+
+        template = list_cur[0]
+        recentTemplate = template["TemplateID"]
+        newTemplateId = recentTemplate +1
         HTML = jsonData["HTML"]
-        print(tempalteName, tempalteDescription, userEmail, HTML)
+        userEmail = jsonData["Email"]
+        templateCollection.insert_one({"TemplateID": newTemplateId, "TempalteName":tempalteName, "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
+
         print("Valid")
         return "", 200
     else:
