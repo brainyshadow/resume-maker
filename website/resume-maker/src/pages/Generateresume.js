@@ -54,12 +54,12 @@ function Generateresume() {
       jobTwoDescription: userInput.jobTwoDescription.value,
       jobThreeName: userInput.jobThreeName.value,
       jobThreeDescription: userInput.jobThreeDescription.value,
-      hobbyOne: userInput.hobbyOneName.value,
-      hobbyTwo: userInput.hobbyTwoName.value,
-      hobbyThree: userInput.hobbyThreeName.value,
-      projectOne: userInput.projectOneName.value,
-      projectTwo: userInput.projectTwoName.value,
-      projectThree: userInput.projectTwoName.value,
+      hobbyOne: userInput.hobbyOne.value,
+      hobbyTwo: userInput.hobbyTwo.value,
+      hobbyThree: userInput.hobbyThree.value,
+      projectOne: userInput.projectOne.value,
+      projectTwo: userInput.projectTwo.value,
+      projectThree: userInput.projectThree.value,
     };
     setQualificationsDone(true);
     setAttributes(data);

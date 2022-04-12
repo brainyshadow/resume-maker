@@ -90,6 +90,7 @@ class ResumeForm extends Component {
   }
 
   valueChange(e) {
+    console.log(e.target.id);
     this.setState({ [e.target.id]: e.target.value });
     localStorage.setItem(e.target.id, JSON.stringify(e.target.value));
   }
@@ -370,7 +371,7 @@ class ResumeForm extends Component {
                 value={jobThreeDescription}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="hobbyOneName">
+            <Form.Group className="mb-3" controlId="hobbyOne">
               <Form.Label>Enter your first hobby:</Form.Label>
               <Form.Control
                 required={true}
@@ -379,7 +380,7 @@ class ResumeForm extends Component {
                 value={hobbyOne}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="hobbyTwoName">
+            <Form.Group className="mb-3" controlId="hobbyTwo">
               <Form.Label>Enter your second hobby:</Form.Label>
               <Form.Control
                 required={true}
@@ -388,7 +389,7 @@ class ResumeForm extends Component {
                 value={hobbyTwo}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="hobbyThreeName">
+            <Form.Group className="mb-3" controlId="hobbyThree">
               <Form.Label>Enter your third hobby:</Form.Label>
               <Form.Control
                 required={true}
@@ -397,7 +398,7 @@ class ResumeForm extends Component {
                 value={hobbyThree}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="projectOneName">
+            <Form.Group className="mb-3" controlId="projectOne">
               <Form.Label>Enter your first project:</Form.Label>
               <Form.Control
                 required={true}
@@ -406,7 +407,7 @@ class ResumeForm extends Component {
                 value={projectOne}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="projectTwoName">
+            <Form.Group className="mb-3" controlId="projectTwo">
               <Form.Label>Enter your second project:</Form.Label>
               <Form.Control
                 required={true}
@@ -415,7 +416,7 @@ class ResumeForm extends Component {
                 value={projectTwo}
               />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="projectThreeName">
+            <Form.Group className="mb-3" controlId="projectThree">
               <Form.Label>Enter your third project:</Form.Label>
               <Form.Control
                 required={true}
