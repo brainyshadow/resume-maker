@@ -1,4 +1,4 @@
-async function GetResume(passedAttributes, token) {
+async function GetResume(token) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "");
@@ -6,14 +6,13 @@ async function GetResume(passedAttributes, token) {
   var requestOptions = {
     method: "GET",
     headers: myHeaders,
-    body: passedAttributes,
     redirect: "follow",
   };
-  await fetch("http://127.0.0.1:5000/gettemplate", requestOptions).then(
-    (res) => {
-      console.log(res);
-    }
+  let response = await fetch(
+    "http://127.0.0.1:5000/gettemplate",
+    requestOptions
   );
+  return response.json();
 }
 
 export default GetResume;

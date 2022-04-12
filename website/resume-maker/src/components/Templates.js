@@ -1,21 +1,50 @@
-import { Component } from "react";
+import { Component, useEffect } from "react";
 import "./Templates.css";
 import { Paper } from "@mui/material";
 import { Typography } from "@mui/material";
 import { Divider } from "@mui/material";
 import TemplateOption from "./TemplateOption";
-
 import TemplateOne from "../assets/templates/TemplateOne.pdf";
-import TemplateTwo from "../assets/templates/TemplateTwo.pdf";
-import TemplateThree from "../assets/templates/TemplateThree.pdf";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import GetTemplates from "../client/GetTemplates";
+import { useState } from "react";
+import React from "react";
 
 function Templates(props) {
   function templateSelect(id) {
     props.templateSelect(id);
   }
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  const [templateOptions, setTemplateOptions] = useState([]);
 
-  
+  async function getToken() {
+    if (!executeRecaptcha) {
+      return;
+    }
+    const result = await executeRecaptcha("getTemplate");
+    return result;
+  }
 
+  useEffect(async () => {
+    let token = await getToken();
+    let templates = await GetTemplates(token);
+    let templateOptions = [];
+    templates.forEach((template) => {
+      templateOptions.push(
+        <TemplateOption
+          name={template.TempalteName}
+          description={template.TemplateDescription}
+          id={template.TemplateID}
+          onClick={() => templateSelect(template.TemplateID.toString())}
+          preview={TemplateOne}
+          downloads={template.DownloadCount}
+        />
+      );
+    });
+    setTemplateOptions(templateOptions);
+  }, []);
+
+  console.log(templateOptions);
   return (
     <>
       <Paper
@@ -48,30 +77,7 @@ function Templates(props) {
         ></Divider>
 
         <div className="project-container" id="main-area">
-          <TemplateOption
-            name="Simple Resume 1"
-            description="A template that has a personal section on the right and a large section for all your qualifications on the left."
-            id="00000001"
-            onClick={() => templateSelect("00000001")}
-            preview={TemplateOne}
-            downloads={10}
-          />
-          <TemplateOption
-            name="Simple Resume 2"
-            description="A template that has a personal section on the left and a large section for all your qualifications on the right."
-            id="00000002"
-            onClick={() => templateSelect("00000002")}
-            preview={TemplateTwo}
-            downloads={10}
-          />
-          <TemplateOption
-            name="Name Focused Resume"
-            description="A template that focuses attention to your name and has all the qualifications below, neatly orginized."
-            id="00000003"
-            onClick={() => templateSelect("00000003")}
-            preview={TemplateThree}
-            downloads={10}
-          />
+          {React.Children.toArray(templateOptions)}
         </div>
       </Paper>
     </>

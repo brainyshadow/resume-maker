@@ -36,7 +36,7 @@ def getTemplate():
     recaptchaAPIkey = config('API_KEY')
     projectId = config('projectId')
     token = request.headers.get('reCAPTCHA-Token')
-    exceptedAction = "getTemplates"
+    exceptedAction = "getTemplate"
     response = requests.post(
         "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
             "event": {
@@ -49,8 +49,9 @@ def getTemplate():
     score = response.json()["score"]
     action = response.json()["tokenProperties"]["action"]
     if(score > 0.5 and action == exceptedAction):
-        # the resume function is async and must be waited for       
-        cursor = templateCollection.find({"Approved": True}, {"_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
+        # the resume function is async and must be waited for
+        cursor = templateCollection.find({"Approved": True}, {
+                                         "_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
         list_cur = list(cursor)
         templates = list_cur
         templatesArray = []
@@ -60,9 +61,6 @@ def getTemplate():
     else:
         return "Invalid Token", 401
 
-    
-   
-  
 @app.route('/download', methods=['POST'])
 @cross_origin()
 def downloadFile():

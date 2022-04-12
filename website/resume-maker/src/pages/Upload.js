@@ -31,17 +31,8 @@ function validateHTML(html) {
 function Upload() {
   const [invalidHTML, setInvalidHTML] = useState(true);
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [token, setToken] = useState("");
-  const [noOfVerifications, setNoOfVerifications] = useState(0);
-  const [dynamicAction, setDynamicAction] = useState("homepage");
-  const [actionToChange, setActionToChange] = useState("");
+ 
 
-  const clickHandler = useCallback(async () => {
-    const result = await executeRecaptcha("uploadTemplate");
-    console.log(result);
-    setToken(result);
-    setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
-  }, [dynamicAction, executeRecaptcha]);
 
   async function getToken() {
     if (!executeRecaptcha) {
@@ -50,28 +41,6 @@ function Upload() {
     const result = await executeRecaptcha("uploadTemplate");
     return result;
   }
-
-  const handleTextChange = useCallback((event) => {
-    setActionToChange(event.target.value);
-  }, []);
-
-  const handleCommitAction = useCallback(() => {
-    setDynamicAction(actionToChange);
-  }, [actionToChange]);
-
-  useEffect(() => {
-    if (!executeRecaptcha || !dynamicAction) {
-      return;
-    }
-
-    const handleReCaptchaVerify = async () => {
-      const token = await executeRecaptcha(dynamicAction);
-      setToken(token);
-      setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);
-    };
-
-    handleReCaptchaVerify();
-  }, [executeRecaptcha, dynamicAction]);
 
   async function handleSubmit(e) {
     e.preventDefault();
