@@ -37,10 +37,6 @@ function Upload() {
   const [actionToChange, setActionToChange] = useState("");
 
   const clickHandler = useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
-
     const result = await executeRecaptcha("uploadTemplate");
     console.log(result);
     setToken(result);

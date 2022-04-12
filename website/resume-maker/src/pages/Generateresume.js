@@ -21,10 +21,6 @@ function Generateresume() {
   const [actionToChange, setActionToChange] = useState("");
 
   const clickHandler = useCallback(async () => {
-    if (!executeRecaptcha) {
-      return;
-    }
-
     const result = await executeRecaptcha("generateResume");
     setToken(result);
     setNoOfVerifications((noOfVerifications) => noOfVerifications + 1);

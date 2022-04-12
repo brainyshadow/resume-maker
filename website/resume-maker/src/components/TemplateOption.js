@@ -125,7 +125,10 @@ class TemplateOption extends Component {
                   </Typography>
                 </div>
                 <div
-                  onClick={() => this.displayPreview()}
+                  onClick={() => {
+                    this.displayPreview();
+                    this.handleVerifyRecaptcha();
+                  }}
                   style={{ width: "5%" }}
                 >
                   <AiOutlinePaperClip style={{ width: "200%" }} />
