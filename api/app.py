@@ -32,17 +32,37 @@ async def makeResume(template, argument):
 @app.route('/gettemplate', methods=['GET'])
 @cross_origin()
 def getTemplate():
+    recaptchaKey = config('recaptchaKey')
+    recaptchaAPIkey = config('API_KEY')
+    projectId = config('projectId')
+    token = request.headers.get('reCAPTCHA-Token')
+    exceptedAction = "getTemplates"
+    response = requests.post(
+        "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
+            "event": {
+                "token": token,
+                "siteKey": recaptchaKey,
+                "expectedAction": exceptedAction
+            }
+        }
+    )
+    score = response.json()["score"]
+    action = response.json()["tokenProperties"]["action"]
+    if(score > 0.5 and action == exceptedAction):
+        # the resume function is async and must be waited for       
+        cursor = templateCollection.find({"Approved": True}, {"_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
+        list_cur = list(cursor)
+        templates = list_cur
+        templatesArray = []
+        for template in templates:
+            templatesArray.append(template)
+        return jsonify(templatesArray), 200
+    else:
+        return "Invalid Token", 401
 
-    cursor = templateCollection.find({"Approved": True}, {
-                                     "_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
-    list_cur = list(cursor)
-    templates = list_cur
-    templatesArray = []
-    for template in templates:
-        templatesArray.append(template)
-    return jsonify(templatesArray), 200
-
-
+    
+   
+  
 @app.route('/download', methods=['POST'])
 @cross_origin()
 def downloadFile():
