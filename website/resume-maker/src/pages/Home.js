@@ -17,37 +17,37 @@ class Home extends Component {
       <>
         <Header />
         <div className="main-container-min-height">
-          <div className="left-part">
-            <div className="only-vertical-center">
-              <Typography fontSize={"3rem"} variant="h1" marginLeft={"8rem"}>
-                Build your resume.
-              </Typography>
-              <Typography variant="body" marginLeft={"8rem"}>
-                Simple. No Acounts. Open Source.
-              </Typography>
-              <br></br>
-              <Typography variant="body" marginLeft={"8rem"}>
-                <a href="/resume">Build now.</a>
-              </Typography>
+          <div>
+            <div className="left-part">
+              <div className="only-vertical-center">
+                <Typography fontSize={"3rem"} variant="h1" marginLeft={"8rem"}>
+                  Build your resume.
+                </Typography>
+                <Typography variant="body" marginLeft={"8rem"}>
+                  Simple. No Acounts. Open Source.
+                </Typography>
+                <br></br>
+                <Typography variant="body" marginLeft={"8rem"}>
+                  <a href="/resume">Build now.</a>
+                </Typography>
+              </div>
             </div>
-          </div>
-          <div className="right-part">
-            <div className="only-vertical-center">
-              <div className="yellow-accent">
-                <div className="vertical-center">
-                  <Document file={TemplateOne}>
-                    <Page scale={0.7} pageNumber={1} />
-                  </Document>
+            <div className="right-part">
+              <div className="only-vertical-center">
+                <div className="yellow-accent">
+                  <div className="vertical-center">
+                    <Document file={TemplateOne}>
+                      <Page scale={0.7} pageNumber={1} />
+                    </Document>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div style={{ backgroundColor: "#F0F0F0" }}>
-          <div
-            className="main-container"
-            style={{ backgroundColor: "#F0F0F0" }}
-          >
+
+        <div style={{ backgroundColor: "F0F0F0" }}>
+          <div className="main-container" style={{ backgroundColor: "F0F0F0" }}>
             <div className="small-left-part">
               <div className="only-vertical-center">
                 <Typography fontSize={"3rem"} variant="h1" marginLeft={"8rem"}>
@@ -92,8 +92,8 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              <div className="vertical-center">
-                <div className="large-right-part">
+              <div className="large-right-part">
+                <div className="vertical-center">
                   <ProgressiveImage src={Select}></ProgressiveImage>
                 </div>
               </div>

@@ -1,7 +1,9 @@
 .main-container-min-height {
-  margin: auto 0rem auto 0rem;
+  margin: 2rem 0rem 2rem 0rem;
   width: 80%;
-  min-height: 92vh;
+  position: relative;
+  display: inline-flex;
+
 }
 
 .left-part {
@@ -51,5 +53,6 @@
 .main-container {
   margin: auto 0rem auto 0rem;
   width: 80%;
-  min-height: 65vh;
+  position: relative;
+  display: inline-flex;
 }
