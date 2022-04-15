@@ -10,9 +10,11 @@ import { Typography } from "@mui/material";
 import GetResume from "../client/GetResume";
 import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import ErrorPopup from "../components/ErrorPopup";
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
+  const [displayError, setDisplayError] = useState(false);
   const [attributes, setAttributes] = useState(new Object());
   const { executeRecaptcha } = useGoogleReCaptcha();
 
@@ -75,9 +77,17 @@ function Generateresume() {
 
   async function generateResume(passedAttributes) {
     let reCAPTCHAtoken = await getToken();
-    GetResume(passedAttributes, reCAPTCHAtoken).then(() => {
+    let status = await GetResume(passedAttributes, reCAPTCHAtoken);
+    if (status === 200) {
       setQualificationsDone(false);
-    });
+    } else {
+      setDisplayError(true);
+      const timeId = setTimeout(() => {
+        // After 3 seconds set the show value to false
+        setDisplayError(false);
+        clearTimeout(timeId);
+      }, 3000);
+    }
   }
 
   let message = "Tell us a bit about yourself.";
@@ -102,6 +112,7 @@ function Generateresume() {
       ) : (
         <ResumeForm onSubmit={(e) => handleSubmit(e)} />
       )}
+      {displayError ? <ErrorPopup /> : <></>}
       <Footer />
     </>
   );

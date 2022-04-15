@@ -44,7 +44,6 @@ function Templates(props) {
     setTemplateOptions(templateOptions);
   }, []);
 
-  console.log(templateOptions);
   return (
     <>
       <Paper

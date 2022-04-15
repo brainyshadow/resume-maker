@@ -51,7 +51,7 @@ def getTemplate():
     if(score > 0.5 and action == exceptedAction):
         # the resume function is async and must be waited for
         cursor = templateCollection.find({"Approved": True}, {
-                                         "_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1})
+                                         "_id": 0, "TemplateID": 1, "TempalteName": 1, "TemplateDescription": 1,  "DownloadCount": 1}).limit(25)
         list_cur = list(cursor)
         templates = list_cur
         templatesArray = []

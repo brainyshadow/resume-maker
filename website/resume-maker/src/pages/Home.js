@@ -46,8 +46,8 @@ class Home extends Component {
           </div>
         </div>
 
-        <div style={{ backgroundColor: "F0F0F0" }}>
-          <div className="main-container" style={{ backgroundColor: "F0F0F0" }}>
+        <div style={{ backgroundColor: "#F0F0F0" }}>
+          <div className="main-container" style={{ backgroundColor: "#F0F0F0" }}>
             <div className="small-left-part">
               <div className="only-vertical-center">
                 <Typography fontSize={"3rem"} variant="h1" marginLeft={"8rem"}>
@@ -69,10 +69,10 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div style={{ backgroundColor: "#F0F0F0" }}>
+          <div style={{ backgroundColor: "#F5F5F5" }}>
             <div
               className="main-container"
-              style={{ backgroundColor: "#F0F0F0" }}
+              style={{ backgroundColor: "#F5F5F5" }}
             >
               <div className="small-left-part">
                 <div className="vertical-center">

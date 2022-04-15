@@ -47,12 +47,12 @@ class ResumeForm extends Component {
     const jobThreeDescription = JSON.parse(
       localStorage.getItem("jobThreeDescription")
     );
-    const hobbyOne = JSON.parse(localStorage.getItem("hobbyOneName"));
-    const hobbyTwo = JSON.parse(localStorage.getItem("hobbyTwoName"));
-    const hobbyThree = JSON.parse(localStorage.getItem("hobbyThreeName"));
-    const projectOne = JSON.parse(localStorage.getItem("projectOneName"));
-    const projectTwo = JSON.parse(localStorage.getItem("projectTwoName"));
-    const projectThree = JSON.parse(localStorage.getItem("projectTwoName"));
+    const hobbyOne = JSON.parse(localStorage.getItem("hobbyOne"));
+    const hobbyTwo = JSON.parse(localStorage.getItem("hobbyTwo"));
+    const hobbyThree = JSON.parse(localStorage.getItem("hobbyThree"));
+    const projectOne = JSON.parse(localStorage.getItem("projectOne"));
+    const projectTwo = JSON.parse(localStorage.getItem("projectTwo"));
+    const projectThree = JSON.parse(localStorage.getItem("projectTwo"));
     this.state = {
       name: name,
       qualifications: qualifications,

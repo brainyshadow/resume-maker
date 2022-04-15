@@ -1,0 +1,29 @@
+.error-popup {
+  height: 2rem;
+  width: 12rem;
+  background-color: #F5F5F5;
+  z-index: 1;
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 10px 24px;
+  border: 0.75px solid black;
+  border-radius: 1rem;
+}
+
+.error-logo {
+  color: red;
+  transform: scale(1.2);
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+
+.error-text {
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  font-size: 0.9rem;
+}
