@@ -30,13 +30,14 @@ function Templates(props) {
     let templates = await GetTemplates(token);
     let templateOptions = [];
     templates.forEach((template) => {
+      console.log(template.previewUrl);
       templateOptions.push(
         <TemplateOption
           name={template.TempalteName}
           description={template.TemplateDescription}
           id={template.TemplateID}
           onClick={() => templateSelect(template.TemplateID.toString())}
-          preview={TemplateOne}
+          previewUrl={template.previewUrl}
           downloads={template.DownloadCount}
         />
       );

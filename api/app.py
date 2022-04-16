@@ -56,10 +56,12 @@ def getTemplate():
         templates = list_cur
         templatesArray = []
         for template in templates:
+            template["previewUrl"] = "https://storage.googleapis.com/resume-maker-template/template"+str(template["TemplateID"])+ ".jpg"
             templatesArray.append(template)
         return jsonify(templatesArray), 200
     else:
         return "Invalid Token", 401
+
 
 @app.route('/download', methods=['POST'])
 @cross_origin()

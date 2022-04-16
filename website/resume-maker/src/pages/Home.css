@@ -1,20 +1,20 @@
 .main-container-min-height {
   margin: 2rem 0rem 2rem 0rem;
-  width: 80%;
+  width: 100%;
   position: relative;
   display: inline-flex;
-
 }
 
 .left-part {
-  width: 60%;
+  width: 70%;
   float: left;
   min-height: 100vh;
   display: flex;
+
 }
 
 .right-part {
-  width: 40%;
+  width: 30%;
   float: right;
   min-height: 100vh;
   display: flex;

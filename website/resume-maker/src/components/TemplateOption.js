@@ -24,7 +24,7 @@ class TemplateOption extends Component {
       githubLink: props.projectLink,
       templateName: props.name,
       description: props.description,
-      preview: props.preview,
+      previewUrl: props.previewUrl,
       id: props.id,
       downloads: props.downloads,
       displayPreview: false,
@@ -65,12 +65,13 @@ class TemplateOption extends Component {
       templateName,
 
       description,
-      preview,
+      previewUrl,
 
       displayPreview,
       downloads,
     } = this.state;
     let color = "#6495ED";
+    console.log(previewUrl);
     return (
       <div className="card-container">
         <Card
@@ -96,12 +97,7 @@ class TemplateOption extends Component {
                   }}
                 />
                 <div className="vertical-center">
-                  <Document
-                    style={{ display: "block", margin: "auto" }}
-                    file={preview}
-                  >
-                    <Page pageNumber={1} />
-                  </Document>
+                  <img src={previewUrl} className="template" width={700}></img>
                 </div>
               </div>
             </div>
