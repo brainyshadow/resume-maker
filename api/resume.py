@@ -16,7 +16,6 @@ async def generateResume(template, passedJson):
     # Parse the json data sent by the client.
     jsonData = json.loads(passedJson)
 
-
     # Open the HTML in which you want to make changes
 
     html = template

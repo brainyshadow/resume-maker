@@ -8,6 +8,7 @@ from jinja2 import TemplateSyntaxError
 from sqlalchemy import false, true
 import json
 from resume import generateResume
+from confirmation_email import sendConfirmationEmail
 import os
 from decouple import config
 import requests
@@ -56,7 +57,8 @@ def getTemplate():
         templates = list_cur
         templatesArray = []
         for template in templates:
-            template["previewUrl"] = "https://storage.googleapis.com/resume-maker-template/template"+str(template["TemplateID"])+ ".jpg"
+            template["previewUrl"] = "https://storage.googleapis.com/resume-maker-template/template" + \
+                str(template["TemplateID"]) + ".jpg"
             templatesArray.append(template)
         return jsonify(templatesArray), 200
     else:
@@ -154,7 +156,9 @@ def uploadTemplate():
         userEmail = jsonData["Email"]
         templateCollection.insert_one({"TemplateID": newTemplateId, "TempalteName": tempalteName,
                                       "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
-
+        email = config('email')
+        password = config('password')
+        sendConformationEmail(email, password, userEmail, tempalteName)
         print("Valid")
         return "", 200
     else:
