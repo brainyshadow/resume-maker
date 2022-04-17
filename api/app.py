@@ -158,7 +158,7 @@ def uploadTemplate():
                                       "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
         email = config('email')
         password = config('password')
-        sendConformationEmail(email, password, userEmail, tempalteName)
+        sendConfirmationEmail(email, password, userEmail, tempalteName)
         print("Valid")
         return "", 200
     else:
