@@ -155,10 +155,10 @@ def uploadTemplate():
         HTML = jsonData["HTML"]
         userEmail = jsonData["Email"]
         templateCollection.insert_one({"TemplateID": newTemplateId, "TempalteName": tempalteName,
-                                      "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
+                                     "TemplateDescription": tempalteDescription, "HTML": HTML, "Approved": False, "DownloadCount": 0, "UserEmail": userEmail})
         email = config('email')
         password = config('password')
-        sendConfirmationEmail(email, password, userEmail, tempalteName)
+        sendConfirmationEmail(email, password, userEmail, tempalteName, tempalteDescription, HTML )
         print("Valid")
         return "", 200
     else:
