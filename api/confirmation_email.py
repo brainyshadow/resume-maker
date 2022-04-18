@@ -12,6 +12,10 @@ import pandas as pd
 def sendConfirmationEmail(user, pwd, recipient, templateName, templateDescription, HTML):
 
     # Define the HTML document
+    displayHTML = HTML.replace("&", "&amp;")
+    displayHTML = displayHTML.replace("<", "&lt;")
+    displayHTML = displayHTML.replace(">", "&gt;")
+
     html = '''
 <html>
 <head>
@@ -197,7 +201,7 @@ def sendConfirmationEmail(user, pwd, recipient, templateName, templateDescriptio
           </tr>
         <tr>
             <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p style="margin: 0 10px 0 10px;">HTML :  ''' + HTML+''' </p>
+              <p style="margin: 0 10px 0 10px;">HTML : <pre> <code>''' + displayHTML+'''</code></pre> </p>
             </td>
           </tr>
       
