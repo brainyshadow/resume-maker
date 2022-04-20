@@ -12,7 +12,7 @@ function Header() {
         collapseOnSelect
         bg="dark"
         variant="dark"
-        style={{ height: "4.5rem" }}
+        style={{ height: "8vh" }}
       >
         <Container>
           <Navbar.Brand href="home">Resume Maker</Navbar.Brand>
@@ -22,7 +22,7 @@ function Header() {
               <Nav.Link className="spaced-link" href="/resume">
                 Generate Resume
               </Nav.Link>
-              <Nav.Link className="spaced-link" href="/upload">
+              <Nav.Link className="spaced-link" href="/howto">
                 Upload Template
               </Nav.Link>
             </Nav>

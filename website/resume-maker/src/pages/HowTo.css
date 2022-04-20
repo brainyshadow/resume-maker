@@ -10,7 +10,6 @@
   float: left;
   min-height: 85vh;
   display: flex;
-
 }
 
 .right-part {
@@ -18,20 +17,6 @@
   float: right;
   min-height: 85vh;
   display: flex;
-}
-
-.small-left-part {
-  width: 45%;
-  float: left;
-  display: flex;
-  min-height: 50vh;
-}
-
-.large-right-part {
-  width: 55%;
-  float: right;
-  display: flex;
-  min-height: 50vh;
 }
 
 .vertical-center {
@@ -50,9 +35,14 @@
   padding-right: 1rem;
 }
 
-.main-container {
-  margin: auto auto auto auto;
+.my-grey-portion {
+  background-color: #f0f0f0;
+  width: 100%;
+  margin: 0rem auto 0rem auto;
+    
+}
+
+.my-main-container {
+  margin: auto;
   width: 80%;
-  position: relative;
-  display: inline-flex;
 }
