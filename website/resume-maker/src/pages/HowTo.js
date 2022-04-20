@@ -56,13 +56,181 @@ function HowTo() {
             <code>h2</code> element with the <code>id</code> field set to "name"
             and the text set to "NAME". Below, you find all the fields that each
             resume requires. When creating a template, ensure the type of
-            element is the same as outlined below and that the <code>id</code>{" "}
-            is also the same. To view the Simple Resume 1 template{" "}
+            element is the same as outlined below, that the <code>id</code> is
+            the same as below and that the vlaue is also the same as below. To
+            view the Simple Resume 1 template{" "}
             <a href={TemplateOneHTML} download="Example.html">
               click here
             </a>
             .
           </p>
+          <table className="how-to-table">
+            <tr>
+              <th className="third-width">Element Type </th>
+              <th className="third-width">
+                <code>id</code>
+              </th>
+              <th className="third-width">Text</th>
+            </tr>
+            <tr>
+              <td>h2</td>
+              <td>name</td>
+              <td>NAME</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>occupation</td>
+              <td>Education/Occupation</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>region</td>
+              <td>City, State/Province</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>email</td>
+              <td>Email</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>first-skill-section</td>
+              <td>Skill Section One</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>second-skill-section</td>
+              <td>Skill Section Two</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>third-skill-section</td>
+              <td>Skill Section Three</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>first-skill-one</td>
+              <td>First Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>first-skill-two</td>
+              <td>Second Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>first-skill-three</td>
+              <td>Third Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>first-skill-four</td>
+              <td>Fourth Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>second-skill-one</td>
+              <td>First Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>second-skill-two</td>
+              <td>Second Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>second-skill-three</td>
+              <td>Third Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>second-skill-four</td>
+              <td>Fourth Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>third-skill-one</td>
+              <td>First Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>third-skill-two</td>
+              <td>Second Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>third-skill-three</td>
+              <td>Third Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>third-skill-four</td>
+              <td>Fourth Skills</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobeOneName</td>
+              <td>Job Name</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobOne</td>
+              <td>First Job</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobeTwoName</td>
+              <td>Job Name</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobTwo</td>
+              <td>Second Job</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobeThreeName</td>
+              <td>Job Name</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>jobThree</td>
+              <td>Third Job</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>projectOne</td>
+              <td>Project one</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>projectTwo</td>
+              <td>Project two</td>
+            </tr>
+
+            <tr>
+              <td>p</td>
+              <td>projectThree</td>
+              <td>Project three</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>hobbyOne</td>
+              <td>Hobby one</td>
+            </tr>
+            <tr>
+              <td>p</td>
+              <td>hobbyTwo</td>
+              <td>Hobby two</td>
+            </tr>
+
+            <tr>
+              <td>p</td>
+              <td>hobbyThree</td>
+              <td>Hobby three</td>
+            </tr>
+          </table>
+
           <p>
             Now that you know how, submit your template for review{" "}
             <a href="upload">here</a>.

@@ -39,10 +39,17 @@
   background-color: #f0f0f0;
   width: 100%;
   margin: 0rem auto 0rem auto;
-    
 }
 
 .my-main-container {
   margin: auto;
   width: 80%;
+}
+
+.how-to-table {
+  width: 50%;
+}
+
+.third-width {
+  width: 33%;
 }
