@@ -1,2 +1,8 @@
-# resume-maker
-A website that using a custom python API to generate a customer resume based on user qualifications and a template selected by the user.
+<img src = 'https://storage.googleapis.com/resume-maker-template/logo.png' height = 150>
+<h1>resume-maker</h1>
+
+Resume Maker is a full stack applicaiton that aims to make building resume's more efficient and seamless. It shifts focus from style to <b>content</b>. This, reduces the time it takes to build an effective resume by <b>80%</b>.
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
+<i>Brainy Shadow</i>
