@@ -11,6 +11,7 @@ import GetResume from "../client/GetResume";
 import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import ErrorPopup from "../components/ErrorPopup";
+import GetHTML from "../client/GetHTML";
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
@@ -78,6 +79,10 @@ function Generateresume() {
   async function generateResume(passedAttributes) {
     let reCAPTCHAtoken = await getToken();
     let status = await GetResume(passedAttributes, reCAPTCHAtoken);
+    reCAPTCHAtoken = await getToken();
+
+    let html = await GetHTML(passedAttributes, reCAPTCHAtoken);
+    console.log(html);
     if (status === 200) {
       setQualificationsDone(false);
     } else {

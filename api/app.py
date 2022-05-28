@@ -158,8 +158,7 @@ def downloadhtml():
             # the resume function is async and must be waited for
 
             html = generateHTMl(HTML, content)
-            return html
-
+            return jsonify(html), 200
         else:
             return "Invalid Token", 401
     else:

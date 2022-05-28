@@ -71,7 +71,6 @@ class TemplateOption extends Component {
       downloads,
     } = this.state;
     let color = "#6495ED";
-    console.log(previewUrl);
     return (
       <div className="card-container">
         <Card
@@ -96,8 +95,9 @@ class TemplateOption extends Component {
                     right: "1rem",
                   }}
                 />
+
                 <div className="vertical-center">
-                  <img src={previewUrl} className="template" width={700}></img>
+                  <iframe></iframe>
                 </div>
               </div>
             </div>

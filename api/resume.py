@@ -467,5 +467,4 @@ def generateHTMl(template, passedJson):
     old_text = soup.find("p", {"id": "hobbyThree"})
     new_text = old_text.find(
         text=re.compile('Hobby three')).replace_with(hobbyThree)
-    print(type(soup))
-    return soup
+    return str(soup)

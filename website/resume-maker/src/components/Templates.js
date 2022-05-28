@@ -12,6 +12,7 @@ import React from "react";
 
 function Templates(props) {
   function templateSelect(id) {
+    window.print();
     props.templateSelect(id);
   }
   const { executeRecaptcha } = useGoogleReCaptcha();
