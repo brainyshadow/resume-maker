@@ -22,7 +22,6 @@
 
 .template-preview-background {
   position: fixed;
-  height: 100%;
   z-index: 1;
 
   width: 100%;

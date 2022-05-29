@@ -97,7 +97,7 @@ class TemplateOption extends Component {
                 />
 
                 <div className="vertical-center">
-                  <iframe></iframe>
+                  <img src={{ previewUrl }}></img>
                 </div>
               </div>
             </div>
@@ -127,7 +127,9 @@ class TemplateOption extends Component {
                   }}
                   style={{ width: "5%" }}
                 >
-                  <AiOutlinePaperClip style={{ width: "200%" }} />
+                  <AiOutlinePaperClip
+                    style={{ width: "200%", cursor: "pointer" }}
+                  />
                 </div>
               </div>
             </Stack>

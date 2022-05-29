@@ -12,6 +12,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import ErrorPopup from "../components/ErrorPopup";
 import GetHTML from "../client/GetHTML";
+import ResumePreview from "../components/ResumePreview";
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
@@ -115,7 +116,12 @@ function Generateresume() {
           <Templates templateSelect={(id) => selectTemplate(id)} />
         </div>
       ) : (
-        <ResumeForm onSubmit={(e) => handleSubmit(e)} />
+        <>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <ResumeForm onSubmit={(e) => handleSubmit(e)} />
+            <ResumePreview />
+          </div>
+        </>
       )}
       {displayError ? <ErrorPopup /> : <></>}
       <Footer />
