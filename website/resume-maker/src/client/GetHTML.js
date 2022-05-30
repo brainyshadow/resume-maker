@@ -1,4 +1,4 @@
-async function GetHTML(passedAttributes, token) {
+async function GetHTML(templateId, token) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("Authorization", "");
@@ -6,7 +6,7 @@ async function GetHTML(passedAttributes, token) {
   var requestOptions = {
     method: "POST",
     headers: myHeaders,
-    body: passedAttributes,
+    body: templateId,
     redirect: "follow",
   };
 

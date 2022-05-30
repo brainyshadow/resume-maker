@@ -7,7 +7,7 @@ import asyncio
 from jinja2 import TemplateSyntaxError
 from sqlalchemy import false, true
 import json
-from resume import generateResume, generateHTMl
+from resume import generateResume
 from confirmation_email import sendConfirmationEmail
 import os
 from decouple import config
@@ -105,7 +105,6 @@ def downloadFile():
             asyncio.set_event_loop(asyncio.new_event_loop())
             loop = asyncio.get_event_loop()
             loop.run_until_complete(makeResume(HTML, content))
-            generateHTMl(HTML, content)
             loop.stop()
             path = "./Resume.pdf"
             try:
@@ -124,7 +123,8 @@ def downloadFile():
 def downloadhtml():
     content = request.data
     parsedRequestBody = json.loads(content)
-    templateId = int(parsedRequestBody["Template Id"])
+    templateId = int(parsedRequestBody)
+    print(templateId)
 
     cursor = templateCollection.find({"TemplateID": templateId}).limit(1)
     list_cur = list(cursor)
@@ -134,33 +134,9 @@ def downloadhtml():
         HTML = template["HTML"]
         downloadCount = template["DownloadCount"]
         documentId = template["_id"]
-        templateCollection.update_one(
-            {"_id": documentId}, {"$set": {"DownloadCount": downloadCount+1}})
 
-        recaptchaKey = config('recaptchaKey')
-        recaptchaAPIkey = config('API_KEY')
-        projectId = config('projectId')
+        return jsonify(HTML), 200
 
-        token = request.headers.get('reCAPTCHA-Token')
-        exceptedAction = "generateResume"
-        response = requests.post(
-            "https://recaptchaenterprise.googleapis.com/v1beta1/projects/"+projectId+"/assessments?key="+recaptchaAPIkey, json={
-                "event": {
-                    "token": token,
-                    "siteKey": recaptchaKey,
-                    "expectedAction": exceptedAction
-                }
-            }
-        )
-        score = response.json()["score"]
-        action = response.json()["tokenProperties"]["action"]
-        if(score > 0.5 and action == exceptedAction):
-            # the resume function is async and must be waited for
-
-            html = generateHTMl(HTML, content)
-            return jsonify(html), 200
-        else:
-            return "Invalid Token", 401
     else:
         return "Invalid Template Id", 400
 

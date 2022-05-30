@@ -19,6 +19,7 @@ function Generateresume() {
   const [displayError, setDisplayError] = useState(false);
   const [attributes, setAttributes] = useState(new Object());
   const { executeRecaptcha } = useGoogleReCaptcha();
+  const [rawTemplate, setRawTemplate] = useState("");
 
   async function getToken() {
     if (!executeRecaptcha) {
@@ -27,6 +28,13 @@ function Generateresume() {
     const result = await executeRecaptcha("generateResume");
     return result;
   }
+
+  useEffect(async () => {
+    const token = await getToken();
+    const rawTemplate = await GetHTML(1, token);
+    setRawTemplate(rawTemplate);
+    // Your code here
+  }, []);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -119,7 +127,7 @@ function Generateresume() {
         <>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <ResumeForm onSubmit={(e) => handleSubmit(e)} />
-            <ResumePreview />
+            <ResumePreview template={rawTemplate} userData={attributes} />
           </div>
         </>
       )}
