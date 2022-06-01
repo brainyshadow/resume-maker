@@ -12,7 +12,6 @@ import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import ErrorPopup from "../components/ErrorPopup";
 import GetHTML from "../client/GetHTML";
-import ResumePreview from "../components/ResumePreview";
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
@@ -21,6 +20,7 @@ function Generateresume() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [rawTemplate, setRawTemplate] = useState("");
 
+  
   async function getToken() {
     if (!executeRecaptcha) {
       return;
@@ -37,6 +37,7 @@ function Generateresume() {
   }, []);
 
   async function handleSubmit(e) {
+    this.changeMade(e);
     e.preventDefault();
     let userInput = e.target.elements;
     var data = {
@@ -119,19 +120,17 @@ function Generateresume() {
       <div className="resume-form" style={{ height: "auto" }}>
         <CompletionBar progress={progress} />
       </div>
-      {qualificationsDone ? (
-        <div className="template-display">
-          <Templates templateSelect={(id) => selectTemplate(id)} />
+
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <ResumeForm
+          onChange={(e) => this.handleSubmit(e)}
+          onSubmit={(e) => handleSubmit(e)}
+        />
+        <div className="paper" dangerouslySetInnerHTML={{ __html: rawTemplate }} >
+
         </div>
-      ) : (
-        <>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <ResumeForm onSubmit={(e) => handleSubmit(e)} />
-            <ResumePreview template={rawTemplate} userData={attributes} />
-          </div>
-        </>
-      )}
-      {displayError ? <ErrorPopup /> : <></>}
+      </div>
+
       <Footer />
     </>
   );

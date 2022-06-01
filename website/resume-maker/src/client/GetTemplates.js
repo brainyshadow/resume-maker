@@ -12,6 +12,7 @@ async function GetResume(token) {
     "http://127.0.0.1:5000/gettemplate",
     requestOptions
   );
+  
   return response.json();
 }
 

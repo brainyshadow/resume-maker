@@ -4,3 +4,12 @@
   overflow: auto;
   height: 83vh;
 }
+
+.paper {
+  background-color: white;
+  margin: 1rem;
+  width: 8.5in;
+  height: 11in;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+}

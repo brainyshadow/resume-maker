@@ -133,7 +133,7 @@ class ResumeForm extends Component {
     return (
       <>
         <div className="my-form-container">
-          <Form onSubmit={this.props.onSubmit}>
+          <Form onSubmit={this.props.onSubmit} onChange={this.props.onChange}>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name:</Form.Label>
               <Form.Control
