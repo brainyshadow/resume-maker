@@ -95,6 +95,11 @@ class ResumeForm extends Component {
     localStorage.setItem(e.target.id, JSON.stringify(e.target.value));
   }
 
+  updateResume() {
+    const formValue = this.state;
+    this.props.onChange(formValue);
+  }
+
   render() {
     const {
       name,
@@ -133,7 +138,7 @@ class ResumeForm extends Component {
     return (
       <>
         <div className="my-form-container">
-          <Form onSubmit={this.props.onSubmit} onChange={this.props.onChange}>
+          <Form onSubmit={this.props.onSubmit} onChange={() => this.updateResume()}>
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name:</Form.Label>
               <Form.Control

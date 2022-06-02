@@ -35,10 +35,11 @@ function Generateresume() {
     // Your code here
   }, []);
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    console.log(e.target);
+  function changeInForm(formValues) {
+    console.log(formValues);
+  }
 
+  async function handleSubmit(e) {
     let userInput = e.target.elements;
     var data = {
       name: userInput.name.value,
@@ -116,7 +117,7 @@ function Generateresume() {
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <ResumeForm
-          onChange={(e) => handleSubmit(e)}
+          onChange={(formValues) => changeInForm(formValues)}
           onSubmit={(e) => handleSubmit(e)}
         />
         <div
