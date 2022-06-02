@@ -20,7 +20,6 @@ function Generateresume() {
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [rawTemplate, setRawTemplate] = useState("");
 
-  
   async function getToken() {
     if (!executeRecaptcha) {
       return;
@@ -37,8 +36,9 @@ function Generateresume() {
   }, []);
 
   async function handleSubmit(e) {
-    this.changeMade(e);
     e.preventDefault();
+    console.log(e.target);
+
     let userInput = e.target.elements;
     var data = {
       name: userInput.name.value,
@@ -106,29 +106,23 @@ function Generateresume() {
   }
 
   let message = "Tell us a bit about yourself.";
-  let progress = 0;
-  if (qualificationsDone) {
-    progress = 50;
-    message = "Select a template.";
-  }
+
   return (
     <>
       <Header />
       <Typography fontSize={"3rem"} variant="h1" align="center" marginY="2rem">
         {message}
       </Typography>
-      <div className="resume-form" style={{ height: "auto" }}>
-        <CompletionBar progress={progress} />
-      </div>
 
       <div style={{ display: "flex", justifyContent: "center" }}>
         <ResumeForm
-          onChange={(e) => this.handleSubmit(e)}
+          onChange={(e) => handleSubmit(e)}
           onSubmit={(e) => handleSubmit(e)}
         />
-        <div className="paper" dangerouslySetInnerHTML={{ __html: rawTemplate }} >
-
-        </div>
+        <div
+          className="paper"
+          dangerouslySetInnerHTML={{ __html: rawTemplate }}
+        ></div>
       </div>
 
       <Footer />

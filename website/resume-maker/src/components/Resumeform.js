@@ -425,13 +425,6 @@ class ResumeForm extends Component {
                 value={projectThree}
               />
             </Form.Group>
-            <Button
-              type="submit"
-              className="btn btn-primary"
-              style={{ display: "flex" }}
-            >
-              Select Template
-            </Button>
           </Form>
         </div>
       </>
