@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./ResumeForm.css";
 
 class ResumeForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     const name = JSON.parse(localStorage.getItem("name"));
     const qualifications = JSON.parse(localStorage.getItem("qualifications"));
     const currentOccupation = JSON.parse(
@@ -87,17 +87,18 @@ class ResumeForm extends Component {
       projectTwo: projectTwo,
       projectThree: projectThree,
     };
+    props.onChange(this.state);
+  }
+
+  updateResume() {
+    const formValue = this.state;
+    this.props.onChange(formValue);
   }
 
   valueChange(e) {
     console.log(e.target.id);
     this.setState({ [e.target.id]: e.target.value });
     localStorage.setItem(e.target.id, JSON.stringify(e.target.value));
-  }
-
-  updateResume() {
-    const formValue = this.state;
-    this.props.onChange(formValue);
   }
 
   render() {
@@ -138,7 +139,10 @@ class ResumeForm extends Component {
     return (
       <>
         <div className="my-form-container">
-          <Form onSubmit={this.props.onSubmit} onChange={() => this.updateResume()}>
+          <Form
+            onSubmit={this.props.onSubmit}
+            onChange={() => this.updateResume()}
+          >
             <Form.Group className="mb-3" controlId="name">
               <Form.Label>Name:</Form.Label>
               <Form.Control

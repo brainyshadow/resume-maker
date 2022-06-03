@@ -106,12 +106,19 @@ function Generateresume() {
     }
   }
 
+
+
   let message = "Create your resume";
 
   return (
     <>
       <Header />
-      <Typography fontSize={"3rem"} variant="h1" align="center" marginY="0.5rem">
+      <Typography
+        fontSize={"3rem"}
+        variant="h1"
+        align="center"
+        marginY="0.5rem"
+      >
         {message}
       </Typography>
 
@@ -120,13 +127,15 @@ function Generateresume() {
           onChange={(formValues) => changeInForm(formValues)}
           onSubmit={(e) => handleSubmit(e)}
         />
-        <div style={{ textAlign: "center" }}>
+        <div>
           <div
             className="paper"
             dangerouslySetInnerHTML={{ __html: rawTemplate }}
           ></div>
-          <button className="template-button">Generate Resume</button>
-          <button className="template-button">Change Templates</button>
+          <div style={{ textAlign: "center" }}>
+            <button className="template-button">Generate Resume</button>
+            <button className="template-button">Change Templates</button>
+          </div>
         </div>
       </div>
 
