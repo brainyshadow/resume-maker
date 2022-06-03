@@ -13,3 +13,20 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
 }
+
+.template-button {
+  background-color: #fecf6a;
+  border: 1px solid black;
+  margin: 0 1rem 0 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.template-button:hover {
+  background-color: #fecf6a;
+  border: 1px solid black;
+  margin: 0 1rem 0 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.75rem;
+  transform: scale(1.005);
+}
