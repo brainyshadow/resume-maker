@@ -7,10 +7,13 @@
 
 .paper {
   background-color: white;
-  margin: 1rem;
-  width: 8.5in;
-  height: 11in;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 0;
+  height: 279mm;
+  width: 216mm;
+  border: 0;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+
   overflow: hidden;
 }
 
@@ -29,4 +32,11 @@
   font-size: 1.25rem;
   border-radius: 0.75rem;
   transform: scale(1.005);
+}
+
+.export-icon {
+  margin: 2rem;
+  transform: scale(2);
+  opacity: 0.6;
+  cursor: pointer;
 }

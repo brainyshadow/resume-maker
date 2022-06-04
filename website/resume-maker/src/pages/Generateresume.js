@@ -11,6 +11,8 @@ import GetResume from "../client/GetResume";
 import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import ErrorPopup from "../components/ErrorPopup";
+import { AiOutlineDownload } from "react-icons/ai";
+import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
 
 function Generateresume() {
@@ -19,6 +21,7 @@ function Generateresume() {
   const [attributes, setAttributes] = useState(new Object());
   const { executeRecaptcha } = useGoogleReCaptcha();
   const [rawTemplate, setRawTemplate] = useState("");
+  const [previewResume, setPreviewResume] = useState(false);
 
   async function getToken() {
     if (!executeRecaptcha) {
@@ -87,6 +90,10 @@ function Generateresume() {
     generateResume(raw);
   }
 
+  function displayResumePreview() {
+    setPreviewResume(!previewResume);
+  }
+
   async function generateResume(passedAttributes) {
     let reCAPTCHAtoken = await getToken();
     let status = await GetResume(passedAttributes, reCAPTCHAtoken);
@@ -106,40 +113,68 @@ function Generateresume() {
     }
   }
 
-
-
   let message = "Create your resume";
+  
 
   return (
     <>
-      <Header />
-      <Typography
-        fontSize={"3rem"}
-        variant="h1"
-        align="center"
-        marginY="0.5rem"
-      >
-        {message}
-      </Typography>
-
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <ResumeForm
-          onChange={(formValues) => changeInForm(formValues)}
-          onSubmit={(e) => handleSubmit(e)}
-        />
-        <div>
-          <div
-            className="paper"
-            dangerouslySetInnerHTML={{ __html: rawTemplate }}
-          ></div>
-          <div style={{ textAlign: "center" }}>
-            <button className="template-button">Generate Resume</button>
-            <button className="template-button">Change Templates</button>
+      {previewResume ? (
+        <>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <div
+              className="paper"
+              dangerouslySetInnerHTML={{ __html: rawTemplate }}
+            ></div>
           </div>
-        </div>
-      </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <AiOutlineDownload
+              className="export-icon"
+              onClick={() => window.print()}
+            />
+            <RiArrowGoBackFill
+              onClick={displayResumePreview}
+              className="export-icon"
+            />
+          </div>
+        </>
+      ) : (
+        <>
+          <Header />
+          <Typography
+            fontSize={"3rem"}
+            variant="h1"
+            align="center"
+            marginY="0.5rem"
+          >
+            {message}
+          </Typography>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <ResumeForm
+              onChange={(formValues) => changeInForm(formValues)}
+              onSubmit={(e) => handleSubmit(e)}
+            />
+            <div>
+              <div style={{ padding: "1rem" }}>
+                <div
+                  className="paper"
+                  dangerouslySetInnerHTML={{ __html: rawTemplate }}
+                ></div>
+              </div>
 
-      <Footer />
+              <div style={{ textAlign: "center" }}>
+                <button
+                  className="template-button"
+                  onClick={() => displayResumePreview()}
+                >
+                  Generate Resume
+                </button>
+                <button className="template-button">Change Templates</button>
+              </div>
+            </div>
+          </div>
+          <Footer />
+        </>
+      )}
     </>
   );
 }
