@@ -72,10 +72,10 @@ class Home extends Component {
               </div>
             </div>
           </div>
-          <div style={{ backgroundColor: "#F5F5F5" }}>
+          <div style={{backgroundColor: "white"}}>
             <div
               className="main-container"
-              style={{ backgroundColor: "#F5F5F5" }}
+              
             >
               <div className="small-left-part">
                 <div className="vertical-center">

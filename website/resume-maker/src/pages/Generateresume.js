@@ -15,6 +15,8 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
 
+
+
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
   const [displayError, setDisplayError] = useState(false);
@@ -31,11 +33,22 @@ function Generateresume() {
     return result;
   }
 
+  function escFunction(e) {
+    if (e.key === "Escape") {
+      if (previewResume) {
+        displayResumePreview();
+      }
+    }
+  }
+
   useEffect(async () => {
     const token = await getToken();
     const rawTemplate = await GetHTML(1, token);
     setRawTemplate(rawTemplate);
-    // Your code here
+    document.addEventListener("keydown", escFunction, false);
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
   }, []);
 
   function changeInForm(formValues) {
@@ -114,7 +127,6 @@ function Generateresume() {
   }
 
   let message = "Create your resume";
-  
 
   return (
     <>
@@ -122,6 +134,7 @@ function Generateresume() {
         <>
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div
+              id="resume-preview"
               className="paper"
               dangerouslySetInnerHTML={{ __html: rawTemplate }}
             ></div>
@@ -156,6 +169,7 @@ function Generateresume() {
             <div>
               <div style={{ padding: "1rem" }}>
                 <div
+                  id="resume-preview"
                   className="paper"
                   dangerouslySetInnerHTML={{ __html: rawTemplate }}
                 ></div>

@@ -10,7 +10,6 @@
   float: left;
   min-height: 85vh;
   display: flex;
-
 }
 
 .right-part {
@@ -45,9 +44,14 @@
 .yellow-accent {
   background-color: #fecf6a;
   width: 101%;
+  padding-left: 0rem;
+  padding-right: 0rem;
   border-radius: 50%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+}
+
+.resume-sample {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
 }
 
 .main-container {
