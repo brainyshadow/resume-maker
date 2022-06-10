@@ -14,6 +14,7 @@ import ErrorPopup from "../components/ErrorPopup";
 import { AiOutlineDownload } from "react-icons/ai";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
+import { getElementError } from "@testing-library/react";
 
 function getElement(html, elementId) {
   let body = html.slice(
@@ -27,6 +28,7 @@ function getElement(html, elementId) {
       break;
     }
   }
+  let startIndex = indexOf + html.indexOf("<body>");
 
   body = body.slice(indexOf, body.length);
   let countOfOpen = body.split("<").length - 1;
@@ -52,9 +54,10 @@ function getElement(html, elementId) {
       indexOf = i + 1;
     }
   }
-  body = body.slice(0, indexOf);
+  let endIndex = indexOf + startIndex;
 
-  return body;
+  body = body.slice(0, indexOf);
+  return { body: body, startIndex: startIndex, endIndex: endIndex };
 }
 
 function Generateresume() {
@@ -90,6 +93,8 @@ function Generateresume() {
       document.removeEventListener("keydown", escFunction, false);
     };
   }, []);
+
+ 
 
   function changeInForm(formValues) {
     console.log(formValues);
