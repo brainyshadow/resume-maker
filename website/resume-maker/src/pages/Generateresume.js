@@ -15,7 +15,47 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
 
+function getElement(html, elementId) {
+  let body = html.slice(
+    html.indexOf("<body>"),
+    html.indexOf("</body>") - "</body>".length + 1
+  );
+  let indexOf = body.indexOf('id="' + elementId + '"');
+  for (let i = indexOf; i > 30; i--) {
+    if (body[i] == "<") {
+      indexOf = i;
+      break;
+    }
+  }
 
+  body = body.slice(indexOf, body.length);
+  let countOfOpen = body.split("<").length - 1;
+  let countOfClosed = body.split("</").length - 1;
+  countOfOpen = countOfOpen - countOfClosed;
+  let overElementCount = countOfClosed - countOfOpen;
+  overElementCount = Math.abs(overElementCount);
+  let openCount = 0;
+  for (let i = 0; i < body.length; i++) {
+    if (body[i] == "<" && !(body[i + 1] == "/")) {
+      openCount++;
+    }
+    if (body[i] == "<" && body[i + 1] == "/") {
+      openCount--;
+      if (openCount === 0) {
+        indexOf = i + 1;
+        break;
+      }
+    }
+  }
+  for (let i = indexOf; i < body.length; i++) {
+    if (body[i] == ">") {
+      indexOf = i + 1;
+    }
+  }
+  body = body.slice(0, indexOf);
+
+  return body;
+}
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
