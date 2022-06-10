@@ -1,20 +1,16 @@
 import React from "react";
-import { Component } from "react";
 import "./GenerateResume.css";
 import ResumeForm from "../components/ResumeForm";
 import Templates from "../components/Templates";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import CompletionBar from "../components/CompletionBar";
 import { Typography } from "@mui/material";
 import GetResume from "../client/GetResume";
 import { useState, useCallback, useEffect } from "react";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import ErrorPopup from "../components/ErrorPopup";
 import { AiOutlineDownload } from "react-icons/ai";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
-import { getElementError } from "@testing-library/react";
 
 function getElement(html, elementId) {
   let body = html.slice(
