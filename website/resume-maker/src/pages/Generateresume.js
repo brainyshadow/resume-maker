@@ -13,10 +13,13 @@ import { RiArrowGoBackFill } from "react-icons/ri";
 import GetHTML from "../client/GetHTML";
 
 function getElement(html, elementId) {
-  let body = html.slice(
-    html.indexOf("<body>"),
-    html.indexOf("</body>") - "</body>".length + 1
-  );
+  let body = html;
+  if (html.indexOf("<body>") !== -1 || html.indexOf("</body>") !== -1) {
+    body = html.slice(
+      html.indexOf("<body>"),
+      html.indexOf("</body>") - "</body>".length + 1
+    );
+  }
   let indexOf = body.indexOf('id="' + elementId + '"');
   for (let i = indexOf; i > 30; i--) {
     if (body[i] == "<") {
@@ -27,11 +30,7 @@ function getElement(html, elementId) {
   let startIndex = indexOf + html.indexOf("<body>");
 
   body = body.slice(indexOf, body.length);
-  let countOfOpen = body.split("<").length - 1;
-  let countOfClosed = body.split("</").length - 1;
-  countOfOpen = countOfOpen - countOfClosed;
-  let overElementCount = countOfClosed - countOfOpen;
-  overElementCount = Math.abs(overElementCount);
+
   let openCount = 0;
   for (let i = 0; i < body.length; i++) {
     if (body[i] == "<" && !(body[i + 1] == "/")) {
@@ -39,6 +38,9 @@ function getElement(html, elementId) {
     }
     if (body[i] == "<" && body[i + 1] == "/") {
       openCount--;
+
+      console.log(openCount);
+
       if (openCount === 0) {
         indexOf = i + 1;
         break;
@@ -48,6 +50,7 @@ function getElement(html, elementId) {
   for (let i = indexOf; i < body.length; i++) {
     if (body[i] == ">") {
       indexOf = i + 1;
+      break;
     }
   }
   let endIndex = indexOf + startIndex;
@@ -55,6 +58,7 @@ function getElement(html, elementId) {
   body = body.slice(0, indexOf);
   return { body: body, startIndex: startIndex, endIndex: endIndex };
 }
+
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
@@ -90,10 +94,10 @@ function Generateresume() {
     };
   }, []);
 
- 
-
   function changeInForm(formValues) {
-    console.log(formValues);
+    
+    //let newHtml = replaceText(body, "first-skill-two", formValues.name);
+    //console.log(newHtml);
   }
 
   async function handleSubmit(e) {
@@ -168,6 +172,8 @@ function Generateresume() {
   }
 
   let message = "Create your resume";
+
+  
 
   return (
     <>
