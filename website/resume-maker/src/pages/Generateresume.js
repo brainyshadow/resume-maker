@@ -39,8 +39,6 @@ function getElement(html, elementId) {
     if (body[i] == "<" && body[i + 1] == "/") {
       openCount--;
 
-      console.log(openCount);
-
       if (openCount === 0) {
         indexOf = i + 1;
         break;
@@ -59,6 +57,14 @@ function getElement(html, elementId) {
   return { body: body, startIndex: startIndex, endIndex: endIndex };
 }
 
+function replaceText(html, elementId, newText) {
+  let { body, startIndex, endIndex } = getElement(html, elementId);
+  let openTagIndex = body.slice(1, body.length).indexOf(">") + 2;
+  let closeTagIndex = body.slice(1, body.length).indexOf("<");
+  let oldText = body.slice(openTagIndex, closeTagIndex);
+  body = body.replace(oldText, newText);
+  return body;
+}
 
 function Generateresume() {
   const [qualificationsDone, setQualificationsDone] = useState(false);
@@ -95,9 +101,7 @@ function Generateresume() {
   }, []);
 
   function changeInForm(formValues) {
-    
-    //let newHtml = replaceText(body, "first-skill-two", formValues.name);
-    //console.log(newHtml);
+    console.log(formValues);
   }
 
   async function handleSubmit(e) {
@@ -172,8 +176,6 @@ function Generateresume() {
   }
 
   let message = "Create your resume";
-
-  
 
   return (
     <>

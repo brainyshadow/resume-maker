@@ -96,7 +96,6 @@ class ResumeForm extends Component {
   }
 
   valueChange(e) {
-    console.log(e.target.id);
     this.setState({ [e.target.id]: e.target.value });
     localStorage.setItem(e.target.id, JSON.stringify(e.target.value));
   }
