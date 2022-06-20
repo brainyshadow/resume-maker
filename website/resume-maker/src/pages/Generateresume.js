@@ -60,9 +60,10 @@ function getElement(html, elementId) {
 function replaceText(html, elementId, newText) {
   let { body, startIndex, endIndex } = getElement(html, elementId);
   let openTagIndex = body.slice(1, body.length).indexOf(">") + 2;
-  let closeTagIndex = body.slice(1, body.length).indexOf("<");
-  let oldText = body.slice(openTagIndex, closeTagIndex);
-  body = body.replace(oldText, newText);
+  let closeTagIndex = body.slice(1, body.length).indexOf("<") + 1;
+  let firstHalf = body.slice(0, openTagIndex);
+  let secondHalf = body.slice(closeTagIndex, body.length);
+  body = firstHalf + newText + secondHalf;
   return body;
 }
 
@@ -100,9 +101,7 @@ function Generateresume() {
     };
   }, []);
 
-  function changeInForm(formValues) {
-    console.log(formValues);
-  }
+  function changeInForm(formValues) {}
 
   async function handleSubmit(e) {
     let userInput = e.target.elements;
@@ -162,7 +161,6 @@ function Generateresume() {
     reCAPTCHAtoken = await getToken();
 
     let html = await GetHTML(passedAttributes, reCAPTCHAtoken);
-    console.log(html);
     if (status === 200) {
       setQualificationsDone(false);
     } else {
